@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sudasun · Front-end developer in Bangkok</title>
+  <meta name="description" content="Sudasun is a front-end developer and student at Siam University in Bangkok. Projects: Resonance, a browser voice studio; Velonix, a 3D vehicle configurator; and two concept websites.">
+  <link rel="canonical" href="https://sudarsun-24.github.io/">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Link previews (Open Graph / social) -->
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Sudasun">
+  <meta property="og:title" content="Sudasun · Front-end developer in Bangkok">
+  <meta property="og:description" content="Browser apps and websites built with plain HTML, CSS and JavaScript: a voice studio, a 3D vehicle configurator and two concept sites.">
+  <meta property="og:url" content="https://sudarsun-24.github.io/">
+  <meta property="og:image" content="https://sudarsun-24.github.io/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sudasun, front-end developer in Bangkok, with screenshots of four projects">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sudasun",
+    "jobTitle": "Front-end developer",
+    "url": "https://sudarsun-24.github.io/",
+    "email": "mailto:sudarsun78@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Bangkok", "addressCountry": "TH" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Siam University" },
+    "knowsLanguage": ["en", "th", "ne", "hi"],
+    "sameAs": [
+      "https://github.com/SUDARSUN-24",
+      "https://www.linkedin.com/in/sudarsun-020298348/"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="#top">Sudasun</a>
+      <nav aria-label="Main">
+        <ul class="nav" role="list">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero wrap" id="top" aria-labelledby="hero-title">
+      <p class="eyebrow">Front-end developer · Bangkok, Thailand</p>
+      <h1 id="hero-title">Sudasun</h1>
+      <p class="lead">I build fast, accessible websites and browser apps with plain HTML, CSS and JavaScript. I'm a student at Siam University, looking for a front-end internship or junior role.</p>
+      <ul class="actions" role="list">
+        <li><a class="btn btn--primary" href="#projects">View projects</a></li>
+        <li><a class="btn" href="mailto:sudarsun78@gmail.com">Email me</a></li>
+        <li><a class="btn" href="https://github.com/SUDARSUN-24">GitHub</a></li>
+        <li><a class="btn" href="https://www.linkedin.com/in/sudarsun-020298348/">LinkedIn</a></li>
+      </ul>
+      <p class="hero__meta"><span class="dot" aria-hidden="true"></span>Open to work · Speaks English, Thai, Nepali and Hindi</p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section wrap" id="projects" aria-labelledby="projects-title">
+      <div class="section__head">
+        <p class="label" aria-hidden="true">01</p>
+        <h2 id="projects-title">Projects</h2>
+        <p class="section__intro">All four are solo projects: I designed, built, tested and deployed each one.</p>
+      </div>
+
+      <article class="project project--featured" id="resonance" aria-labelledby="resonance-title">
+        <figure class="project__shot">
+          <img src="assets/resonance-800.webp"
+               srcset="assets/resonance-800.webp 800w, assets/resonance-1600.webp 1600w"
+               sizes="(min-width: 960px) 580px, calc(100vw - 32px)"
+               width="1600" height="1000" decoding="async"
+               alt="Resonance home page: a dark studio screen with a ring of voice characters, stats for 7 voices and 45+ languages, and a box to type text for a voice to read.">
+        </figure>
+        <div class="project__body">
+          <h3 id="resonance-title">Resonance</h3>
+          <p class="project__summary">A voice studio that runs in the browser. Type any text, pick one of 7 voices and 45+ languages, and hear it with live captions. No install or account needed.</p>
+          <ul class="project__points">
+            <li>Eight tools on one site: read documents aloud, perform multi-voice stories, analyse your own voice, make beats and play speaking games.</li>
+            <li>Serverless back end on Netlify Functions and Blobs for the leaderboard, voice requests and a protected admin page.</li>
+            <li>116 automated tests run before every deploy. A failing test blocks the release.</li>
+            <li>Installable, and works offline after the first visit.</li>
+          </ul>
+          <dl class="spec">
+            <div><dt>Role</dt><dd>Solo: design, front end, back end, testing</dd></div>
+            <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, Web Speech API, Web Audio API, Service Worker, Netlify Functions, Netlify Blobs, Node test runner</dd></div>
+          </dl>
+          <p class="project__links">
+            <a href="https://resonancesun.netlify.app/">Live site<span class="sr-only"> for Resonance</span> <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/SUDARSUN-24/Resonance">Code<span class="sr-only"> for Resonance on GitHub</span> <span aria-hidden="true">↗</span></a>
+          </p>
+        </div>
+      </article>
+
+      <article class="project project--featured" id="velonix" aria-labelledby="velonix-title">
+        <figure class="project__shot">
+          <img src="assets/velonix-800.webp"
+               srcset="assets/velonix-800.webp 800w, assets/velonix-1600.webp 1600w"
+               sizes="(min-width: 960px) 580px, calc(100vw - 32px)"
+               width="1600" height="1000" loading="lazy" decoding="async"
+               alt="Velonix configurator: a blue coupé rendered in 3D on a neon grid, with a panel of model, paint, wheel and lighting options and a running build price.">
+        </figure>
+        <div class="project__body">
+          <h3 id="velonix-title">Velonix Customs</h3>
+          <p class="project__summary">An interactive 3D vehicle showroom. Rotate five vehicles in the browser, customise one in the configurator and rev its engine.</p>
+          <ul class="project__points">
+            <li>One Three.js scene drives both the home page and the configurator. The camera moves to a new angle for each section as you scroll.</li>
+            <li>Configurator with paint, wheels, exterior, lighting, interior and power options, and a price that updates as you choose.</li>
+            <li>The engine sound is generated in code with the Web Audio API, one voice per cylinder, with no audio files.</li>
+            <li>Browser tests with Puppeteer.</li>
+          </ul>
+          <dl class="spec">
+            <div><dt>Role</dt><dd>Solo: design, 3D, front end, testing</dd></div>
+            <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, Three.js, Lenis, Web Audio API, Puppeteer, Vercel</dd></div>
+          </dl>
+          <p class="project__links">
+            <a href="https://velonixsun.vercel.app/">Live site<span class="sr-only"> for Velonix Customs</span> <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/SUDARSUN-24/Velonix">Code<span class="sr-only"> for Velonix Customs on GitHub</span> <span aria-hidden="true">↗</span></a>
+          </p>
+        </div>
+      </article>
+
+      <div class="concepts" aria-labelledby="concepts-title">
+        <div class="concepts__head">
+          <h3 id="concepts-title">Concept projects (fictional clients)</h3>
+          <p>Websites for made-up businesses, built as if for a real client brief. The businesses, people and prices are invented.</p>
+        </div>
+
+        <div class="concepts__grid">
+          <article class="project project--concept" id="atelier-thorne" aria-labelledby="atelier-title">
+            <figure class="project__shot">
+              <img src="assets/atelier-thorne-800.webp"
+                   srcset="assets/atelier-thorne-800.webp 800w, assets/atelier-thorne-1600.webp 1600w"
+                   sizes="(min-width: 960px) 460px, (min-width: 720px) 45vw, calc(100vw - 32px)"
+                   width="1600" height="1000" loading="lazy" decoding="async"
+                   alt="Atelier Thorne home page: the headline 'One pattern, cut for you alone' in a serif typeface beside a photo of a tailor cutting navy cloth.">
+        </figure>
+            <div class="project__body">
+              <h4 id="atelier-title">Atelier Thorne</h4>
+              <p class="project__summary">A concept website for a fictional bespoke tailor in Bangkok, with six views, a filterable gallery and a consultation form that sends email without a server.</p>
+              <dl class="spec">
+                <div><dt>Role</dt><dd>Solo: design and development</dd></div>
+                <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, Web3Forms, GitHub Pages</dd></div>
+              </dl>
+              <p class="project__links">
+                <a href="https://sudarsun-24.github.io/Tailor_trial/">Live site<span class="sr-only"> for Atelier Thorne</span> <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/SUDARSUN-24/Tailor_trial">Code<span class="sr-only"> for Atelier Thorne on GitHub</span> <span aria-hidden="true">↗</span></a>
+              </p>
+            </div>
+          </article>
+
+          <article class="project project--concept" id="sample-cafe" aria-labelledby="cafe-title">
+            <figure class="project__shot">
+              <img src="assets/sample-cafe-800.webp"
+                   srcset="assets/sample-cafe-800.webp 800w, assets/sample-cafe-1600.webp 1600w"
+                   sizes="(min-width: 960px) 460px, (min-width: 720px) 45vw, calc(100vw - 32px)"
+                   width="1600" height="1000" loading="lazy" decoding="async"
+                   alt="Sample Cafe home page in English: a warm photo of iced lattes, the cafe name, today's opening status and buttons for directions and LINE.">
+        </figure>
+            <div class="project__body">
+              <h4 id="cafe-title">Sample Cafe</h4>
+              <p class="project__summary">A bilingual (Thai/English) concept website for a fictional Bangkok cafe, built as a reusable template: one config file sets up the whole site. Includes table booking and an in-browser voice assistant.</p>
+              <dl class="spec">
+                <div><dt>Role</dt><dd>Solo: design, development, back end, testing</dd></div>
+                <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, Node.js, Netlify Functions, Web Speech API, Python (Pillow), Playwright, Lighthouse</dd></div>
+              </dl>
+              <p class="project__links">
+                <a href="https://sample-cafe-demo.netlify.app/">Live site<span class="sr-only"> for Sample Cafe</span> <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/SUDARSUN-24/sample-cafe">Code<span class="sr-only"> for Sample Cafe on GitHub</span> <span aria-hidden="true">↗</span></a>
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section wrap" id="about" aria-labelledby="about-title">
+      <div class="section__head">
+        <p class="label" aria-hidden="true">02</p>
+        <h2 id="about-title">About</h2>
+      </div>
+      <div class="about">
+        <div class="about__text">
+          <p>I'm a student at Siam University in Bangkok. I learn by building complete projects and putting them online, from the first sketch to tests and deployment.</p>
+          <p>I like working close to the browser. Most of my projects use plain HTML, CSS and JavaScript with the browser's own APIs for speech, audio and 3D graphics, instead of large frameworks or paid services. That keeps them fast and free to host.</p>
+          <p>I care about the details users notice: pages that load quickly on a phone, work with a keyboard, respect reduced-motion settings and read clearly.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Based in</dt><dd>Bangkok, Thailand</dd></div>
+          <div><dt>Studying at</dt><dd>Siam University</dd></div>
+          <div><dt>Languages</dt><dd>English, Thai, Nepali, Hindi</dd></div>
+          <div><dt>Looking for</dt><dd>Front-end internship or junior role</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section wrap" id="skills" aria-labelledby="skills-title">
+      <div class="section__head">
+        <p class="label" aria-hidden="true">03</p>
+        <h2 id="skills-title">Skills</h2>
+        <p class="section__intro">Each skill links to a project where I used it.</p>
+      </div>
+      <table class="skills">
+        <caption class="sr-only">Skills, tools and the projects that use them</caption>
+        <thead>
+          <tr><th scope="col">Area</th><th scope="col">Tools</th><th scope="col">Used in</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Core web</th>
+            <td>HTML, CSS, JavaScript (ES modules), responsive and mobile-first layout</td>
+            <td><a href="#resonance">Resonance</a>, <a href="#velonix">Velonix</a>, <a href="#atelier-thorne">Atelier Thorne</a>, <a href="#sample-cafe">Sample Cafe</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Accessibility and performance</th>
+            <td>Semantic HTML, keyboard support, reduced motion, image optimisation (WebP, AVIF), Lighthouse, axe</td>
+            <td><a href="#atelier-thorne">Atelier Thorne</a>, <a href="#sample-cafe">Sample Cafe</a></td>
+          </tr>
+          <tr>
+            <th scope="row">3D graphics</th>
+            <td>Three.js (WebGL)</td>
+            <td><a href="#velonix">Velonix</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Browser audio and speech</th>
+            <td>Web Audio API, Web Speech API</td>
+            <td><a href="#resonance">Resonance</a>, <a href="#velonix">Velonix</a>, <a href="#sample-cafe">Sample Cafe</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Back end</th>
+            <td>Node.js, Netlify Functions, Netlify Blobs</td>
+            <td><a href="#resonance">Resonance</a>, <a href="#sample-cafe">Sample Cafe</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Offline and installable apps</th>
+            <td>Service Worker, Web App Manifest</td>
+            <td><a href="#resonance">Resonance</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Testing</th>
+            <td>Node test runner, Puppeteer, Playwright</td>
+            <td><a href="#resonance">Resonance</a>, <a href="#velonix">Velonix</a>, <a href="#sample-cafe">Sample Cafe</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Tools and hosting</th>
+            <td>Git, GitHub, Python scripts, GitHub Pages, Netlify, Vercel</td>
+            <td>All projects</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section wrap" id="contact" aria-labelledby="contact-title">
+      <div class="section__head">
+        <p class="label" aria-hidden="true">04</p>
+        <h2 id="contact-title">Contact</h2>
+        <p class="section__intro">Email is the best way to reach me.</p>
+      </div>
+      <div class="contact">
+        <p class="contact__email">
+          <a href="mailto:sudarsun78@gmail.com">sudarsun78@gmail.com</a>
+          <button type="button" class="copy-btn" data-copy="sudarsun78@gmail.com" hidden>Copy</button>
+          <span class="copy-status" role="status" aria-live="polite"></span>
+        </p>
+        <ul class="contact__links" role="list">
+          <li><a href="https://github.com/SUDARSUN-24">GitHub <span class="muted">SUDARSUN-24</span></a></li>
+          <li><a href="https://www.linkedin.com/in/sudarsun-020298348/">LinkedIn <span class="muted">sudarsun-020298348</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <p>© 2026 Sudasun. Built with HTML, CSS and a little JavaScript.</p>
+      <p><a href="https://github.com/SUDARSUN-24/SUDARSUN-24.github.io">Source code</a> · <a href="#top">Back to top</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

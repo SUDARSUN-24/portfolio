@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .bg { fill: #1b1b19; } .fg { fill: #f6f5f1; } .acc { fill: #5ccfb5; }
+    @media (prefers-color-scheme: dark) { .bg { fill: #ecebe6; } .fg { fill: #121211; } .acc { fill: #0a6b5a; } }
+  </style>
+  <rect class="bg" width="64" height="64" rx="14"/>
+  <text class="fg" x="31" y="46" font-family="Helvetica, Arial, sans-serif" font-size="40" font-weight="700" text-anchor="middle">S</text>
+  <circle class="acc" cx="48" cy="44" r="4.5"/>
+</svg>
