@@ -34,6 +34,10 @@ Save a 1920×1200 capture (16:10) and make the two WebP sizes:
 python -c "from PIL import Image; im=Image.open('shot.png').convert('RGB'); [im.resize((w,w*10//16),Image.LANCZOS).save(f'assets/NAME-{w}.webp',quality=80,method=6) for w in (800,1600)]"
 ```
 
+## Contact
+
+sudarsun78@gmail.com · [GitHub](https://github.com/SUDARSUN-24) · [LinkedIn](https://www.linkedin.com/in/sudarsun-020298348/)
+
 ## Deploy
 
 Hosted on Vercel (project `sudasun`). From this folder:
