@@ -31,6 +31,64 @@
   });
 })();
 
+// Game gallery: open a screenshot full size in a dialog (without JS the link opens the image).
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll("[data-gallery] .shot-link"));
+  if (!links.length || typeof HTMLDialogElement !== "function") return;
+
+  var dlg = document.createElement("dialog");
+  dlg.className = "lightbox";
+  dlg.setAttribute("aria-label", "Screenshot viewer");
+  dlg.innerHTML =
+    '<figure><img alt="" decoding="async"><figcaption><span class="lightbox__text"></span>' +
+    '<span class="lightbox__bar"><span class="lightbox__count mono"></span>' +
+    '<button type="button" data-step="-1" aria-label="Previous screenshot">←</button>' +
+    '<button type="button" data-step="1" aria-label="Next screenshot">→</button>' +
+    '<button type="button" data-close aria-label="Close" autofocus>✕</button></span></figcaption></figure>';
+  document.body.appendChild(dlg);
+
+  var img = dlg.querySelector("img");
+  var text = dlg.querySelector(".lightbox__text");
+  var count = dlg.querySelector(".lightbox__count");
+  var current = 0;
+  var opener = null;
+
+  function show(i) {
+    current = (i + links.length) % links.length;
+    var a = links[current];
+    var thumb = a.querySelector("img");
+    img.src = a.getAttribute("href");
+    img.alt = thumb ? thumb.alt : "";
+    text.textContent = a.getAttribute("data-caption") || "";
+    count.textContent = (current + 1) + " / " + links.length;
+  }
+
+  links.forEach(function (a, i) {
+    a.addEventListener("click", function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // let "open in new tab" work
+      e.preventDefault();
+      opener = a;
+      show(i);
+      dlg.showModal();
+    });
+  });
+
+  dlg.addEventListener("click", function (e) {
+    var t = e.target;
+    if (t === dlg || t.hasAttribute("data-close")) { dlg.close(); return; }
+    var step = t.getAttribute("data-step");
+    if (step) show(current + Number(step));
+  });
+  dlg.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") show(current + 1);
+    if (e.key === "ArrowLeft") show(current - 1);
+  });
+  dlg.addEventListener("close", function () {
+    img.removeAttribute("src");
+    if (opener) opener.focus();
+  });
+})();
+
 // "Copy email" button.
 (function () {
   var btn = document.querySelector(".copy-btn");

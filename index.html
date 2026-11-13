@@ -95,7 +95,7 @@
           <span class="index__type mono">3D web app</span>
           <span class="index__year mono">2026</span>
         </a></li>
-        <li><a class="index__row" href="#whispers" data-preview="">
+        <li><a class="index__row" href="#whispers" data-preview="/assets/wotr-crossing-800.webp">
           <span class="index__no mono">03</span>
           <span class="index__name">Whispers of the River</span>
           <span class="index__type mono">Game · group</span>
@@ -197,13 +197,35 @@
           <span class="mono">03 — Game · group project</span>
           <h3 id="p3" class="project__title">Whispers of the River</h3>
         </header>
-        <figure class="project__shot project__shot--title" aria-hidden="true">
-          <div class="titlecard">
-            <span class="titlecard__eyebrow mono">A first-person horror game</span>
-            <span class="titlecard__river"></span>
-            <span class="titlecard__foot mono">Godot 4 · Windows</span>
-          </div>
-        </figure>
+        <div class="game-gallery" data-gallery>
+          <figure class="project__shot project__shot--game">
+            <a class="shot-link" href="/assets/wotr-crossing-1600.webp" data-caption="The crossing: rowing to the far bank at night.">
+              <img src="/assets/wotr-crossing-800.webp"
+                   srcset="/assets/wotr-crossing-800.webp 800w, /assets/wotr-crossing-1600.webp 1600w"
+                   sizes="(min-width: 1200px) 1136px, calc(100vw - 2 * var(--gutter))"
+                   width="1600" height="900" loading="lazy" decoding="async"
+                   alt="First-person view from a wooden rowing boat at night. A lantern hangs at the bow, dead trees stand in the dark water and lamplit huts wait on the far shore.">
+            </a>
+          </figure>
+          <ul class="gallery" aria-label="More screenshots from Whispers of the River">
+            <li><a class="shot-link" href="/assets/wotr-menu-1280.webp" data-caption="Title menu.">
+              <img src="/assets/wotr-menu-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="Title screen: Whispers of the River in serif capitals over a rainy night dock, with New Game, Options, Credits and Exit."></a></li>
+            <li><a class="shot-link" href="/assets/wotr-house-1600.webp" data-caption="The Ferryman's house, lit by the hand lamp.">
+              <img src="/assets/wotr-house-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="Inside a wooden house at night, holding a lit oil lamp. A fire glows red at the back of the room."></a></li>
+            <li><a class="shot-link" href="/assets/wotr-village-1600.webp" data-caption="The village, searched by the light of the Spirit Lamp.">
+              <img src="/assets/wotr-village-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="A village yard at night. The Spirit Lamp's beam picks out a small table of candles beside a wooden house."></a></li>
+            <li><a class="shot-link" href="/assets/wotr-lamp-1600.webp" data-caption="Leaving the dock in the rain.">
+              <img src="/assets/wotr-lamp-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="The bow of the boat in the rain, an oil lamp hanging from a curved pole, the river black beyond it."></a></li>
+            <li><a class="shot-link" href="/assets/wotr-graphics-1280.webp" data-caption="Options, Graphics tab: Low, Medium and High modes, plus each setting on its own.">
+              <img src="/assets/wotr-graphics-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="Options screen, Graphics tab, with graphics mode set to Medium and settings for quality, anti-aliasing, shadows, textures, environment, effects, water, fog and brightness."></a></li>
+          </ul>
+          <p class="gallery__note mono">Captured in game on a laptop (Intel Iris Xe). Gameplay shots use the in-game brightness at 140%.</p>
+        </div>
         <div class="project__info">
           <p class="project__lede">A first-person 3D horror game. Cross a river at night into a village haunted by a Vetala, a spirit from Indian folklore.</p>
           <dl class="project__meta">
@@ -274,9 +296,12 @@
           <p class="about__lede">I learn by shipping. Every project here is live, tested and built from scratch, mostly with plain HTML, CSS and JavaScript.</p>
           <h3 class="about__sub mono">Education</h3>
           <dl class="toolkit">
-            <div><dt class="mono">University</dt><dd>Siam University, Bangkok</dd></div>
+            <div><dt class="mono">Degree</dt><dd>B.Sc. Information Technology, Siam University</dd></div>
+            <div><dt class="mono">Graduating</dt><dd>Expected May 2027</dd></div>
             <div><dt class="mono">Languages</dt><dd>English, Thai, Nepali, Hindi</dd></div>
           </dl>
+          <p class="availability">Available from January 2027 · Based in Bangkok, January to May 2027 · Remote welcome</p>
+          <p class="about__actions"><a class="btn-resume mono" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Download resume (PDF) <span aria-hidden="true">↓</span></a></p>
         </div>
         <div>
           <h3 class="about__sub mono">Skills</h3>
@@ -296,8 +321,9 @@
     <section class="contact wrap" id="contact" aria-labelledby="contact-title">
       <div class="kicker"><h2 id="contact-title" class="mono">Contact</h2></div>
       <p class="contact__line">Hiring a front-end intern or junior developer? Email&nbsp;me at <a href="mailto:sudarsun78@gmail.com">sudarsun78@gmail.com</a></p>
-      <p class="contact__facts mono">Based in Bangkok, Thailand</p>
+      <p class="availability">Available from January 2027 · Based in Bangkok, January to May 2027 · Remote welcome</p>
       <p class="contact__actions mono">
+        <a class="btn-resume mono" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Download resume (PDF) <span aria-hidden="true">↓</span></a>
         <button type="button" class="copy-btn" data-copy="sudarsun78@gmail.com" hidden>Copy email</button>
         <span class="copy-status" role="status" aria-live="polite"></span>
         <a href="https://github.com/SUDARSUN-24">GitHub <span aria-hidden="true">↗</span></a>

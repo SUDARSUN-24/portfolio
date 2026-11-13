@@ -1,20 +1,19 @@
 # Sudasun · Portfolio
 
-One-page portfolio: **https://sudarsun-24.github.io/**
+One-page portfolio of Sudasun, front-end developer in Bangkok: **https://sudasun.vercel.app/**
 
-Plain HTML, CSS and JavaScript. No framework, no build step, no trackers, no external requests.
+Plain HTML, CSS and JavaScript. No framework, no build step, no trackers. The only outside request is the GitHub test-status badge.
 
 ```
 portfolio/
-├── index.html        the whole site (Hero, Projects, About, Skills, Contact)
+├── index.html        the whole site (hero, work index, projects, about, contact)
 ├── 404.html          "page not found"
 ├── css/styles.css    mobile-first styles; light/dark follows the system
-├── js/main.js        optional extras (the email "Copy" button)
-├── fonts/            Instrument Sans + IBM Plex Mono (SIL Open Font License)
-├── assets/           project screenshots (WebP, 800 and 1600 wide), og-image.png
-├── favicon.svg
-├── robots.txt, sitemap.xml
-└── .nojekyll         tells GitHub Pages to serve files as they are
+├── js/main.js        optional extras (Bangkok clock, index preview, gallery viewer, copy email)
+├── fonts/            Instrument Serif, Geist, Geist Mono (SIL Open Font License)
+├── assets/           screenshots (WebP), resume.pdf, og-image.png
+├── favicon.svg, robots.txt, sitemap.xml
+└── vercel.json       security headers and caching
 ```
 
 ## Run it locally
@@ -37,4 +36,8 @@ python -c "from PIL import Image; im=Image.open('shot.png').convert('RGB'); [im.
 
 ## Deploy
 
-GitHub Pages from the `main` branch, root folder. Pushing to `main` updates the live site in about a minute.
+Hosted on Vercel (project `sudasun`). From this folder:
+
+```
+npx vercel@latest deploy --prod --yes
+```
