@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sudarsun-24.github.io/sitemap.xml
+Sitemap: https://sudasun.vercel.app/sitemap.xml
