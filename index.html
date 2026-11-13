@@ -135,7 +135,11 @@
         <div class="project__info">
           <p class="project__lede">A voice studio that runs in the browser. Type any text, choose a voice and hear it read aloud with live captions.</p>
           <dl class="project__meta">
-            <div><dt class="mono">Numbers</dt><dd>7 voices · 45+ languages · 116 tests</dd></div>
+            <div><dt class="mono">Tests</dt><dd>
+              <a href="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml">116 automated tests</a>, run on every push
+              <a class="badge" href="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml"><img src="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml/badge.svg?branch=main" alt="Current test status on GitHub Actions" height="20"></a>
+            </dd></div>
+            <div><dt class="mono">Languages</dt><dd>45, detected from the alphabet you type. Voices come from the visitor's browser, so the set varies by device.</dd></div>
             <div><dt class="mono">Role</dt><dd>Solo: design, front end, back end</dd></div>
             <div><dt class="mono">Built with</dt><dd>JavaScript, Web Speech API, Web Audio API, Netlify Functions</dd></div>
           </dl>
@@ -144,6 +148,14 @@
             <a href="https://github.com/SUDARSUN-24/Resonance">Code<span class="sr-only">: Resonance on GitHub</span> <span aria-hidden="true">↗</span></a>
           </p>
         </div>
+        <details class="case">
+          <summary><span class="mono">Case study</span><span class="case__hint">Problem, decision, result</span></summary>
+          <dl class="case__body">
+            <div><dt class="mono">Problem</dt><dd>Text-to-speech that works in any browser, with no install, no account and no paid API.</dd></div>
+            <div><dt class="mono">Decision</dt><dd>Use the browser's built-in speech voices, plus an optional open-source voice (Kokoro) that runs on the device in a Web Worker, instead of a paid cloud service.</dd></div>
+            <div><dt class="mono">Result</dt><dd>Free to run, works offline after the first visit, and a deploy only goes out when all 116 tests pass.</dd></div>
+          </dl>
+        </details>
       </article>
 
       <article class="project wrap" id="velonix" aria-labelledby="p2">
@@ -170,6 +182,14 @@
             <a href="https://github.com/SUDARSUN-24/Velonix">Code<span class="sr-only">: Velonix Customs on GitHub</span> <span aria-hidden="true">↗</span></a>
           </p>
         </div>
+        <details class="case">
+          <summary><span class="mono">Case study</span><span class="case__hint">Problem, decision, result</span></summary>
+          <dl class="case__body">
+            <div><dt class="mono">Problem</dt><dd>Show five vehicles in 3D and let people hear the engine, without making the page slow.</dd></div>
+            <div><dt class="mono">Decision</dt><dd>One shared Three.js scene for the home page and the configurator, and engine sound generated with the Web Audio API instead of recorded files.</dd></div>
+            <div><dt class="mono">Result</dt><dd>No audio files to download, and browser tests confirm the home page still works when 3D (WebGL) is unavailable.</dd></div>
+          </dl>
+        </details>
       </article>
 
       <article class="project wrap" id="whispers" aria-labelledby="p3">
@@ -180,7 +200,7 @@
         <figure class="project__shot project__shot--title" aria-hidden="true">
           <div class="titlecard">
             <span class="titlecard__eyebrow mono">A first-person horror game</span>
-            <span class="titlecard__name">Whispers<br><em>of the River</em></span>
+            <span class="titlecard__river"></span>
             <span class="titlecard__foot mono">Godot 4 · Windows</span>
           </div>
         </figure>
@@ -250,21 +270,33 @@
     <section class="about wrap" id="about" aria-labelledby="about-title">
       <div class="kicker"><h2 id="about-title" class="mono">About</h2></div>
       <div class="about__grid">
-        <p class="about__lede">I learn by shipping. Every project here is live, tested and built from scratch, mostly with plain HTML, CSS and JavaScript.</p>
-        <dl class="toolkit">
-          <div><dt class="mono">Front end</dt><dd>HTML, CSS, JavaScript, accessibility, responsive design</dd></div>
-          <div><dt class="mono">Graphics &amp; audio</dt><dd>Three.js, Web Audio API, Web Speech API, Godot</dd></div>
-          <div><dt class="mono">Back end</dt><dd>Node.js, Netlify Functions</dd></div>
-          <div><dt class="mono">Testing</dt><dd>Node test runner, Playwright, Puppeteer, Lighthouse</dd></div>
-          <div><dt class="mono">Tools</dt><dd>Git, GitHub, Vercel, Netlify</dd></div>
-        </dl>
+        <div class="about__text">
+          <p class="about__lede">I learn by shipping. Every project here is live, tested and built from scratch, mostly with plain HTML, CSS and JavaScript.</p>
+          <h3 class="about__sub mono">Education</h3>
+          <dl class="toolkit">
+            <div><dt class="mono">University</dt><dd>Siam University, Bangkok</dd></div>
+            <div><dt class="mono">Languages</dt><dd>English, Thai, Nepali, Hindi</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3 class="about__sub mono">Skills</h3>
+          <dl class="toolkit">
+            <div><dt class="mono">Front end</dt><dd>HTML, CSS, JavaScript, accessibility, responsive design</dd></div>
+            <div><dt class="mono">Browser APIs</dt><dd>Web Audio, Web Speech, Service Worker, Three.js (WebGL)</dd></div>
+            <div><dt class="mono">Testing</dt><dd>Playwright, Puppeteer, Lighthouse, Node test runner, GitHub Actions</dd></div>
+            <div><dt class="mono">Back end</dt><dd>Node.js, Netlify Functions</dd></div>
+            <div><dt class="mono">Tools</dt><dd>Git, GitHub, Vercel, Netlify</dd></div>
+            <div><dt class="mono">Games &amp; 3D</dt><dd>Godot, GDScript, Blender, Mixamo</dd></div>
+          </dl>
+        </div>
       </div>
     </section>
 
     <!-- ============ CONTACT ============ -->
     <section class="contact wrap" id="contact" aria-labelledby="contact-title">
       <div class="kicker"><h2 id="contact-title" class="mono">Contact</h2></div>
-      <p class="contact__line">Have a role in mind? <a href="mailto:sudarsun78@gmail.com">sudarsun78@gmail.com</a></p>
+      <p class="contact__line">Hiring a front-end intern or junior developer? Email&nbsp;me at <a href="mailto:sudarsun78@gmail.com">sudarsun78@gmail.com</a></p>
+      <p class="contact__facts mono">Based in Bangkok, Thailand</p>
       <p class="contact__actions mono">
         <button type="button" class="copy-btn" data-copy="sudarsun78@gmail.com" hidden>Copy email</button>
         <span class="copy-status" role="status" aria-live="polite"></span>

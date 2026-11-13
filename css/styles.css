@@ -245,14 +245,13 @@ p a, dd a { text-decoration: underline; text-decoration-thickness: 1px; text-und
     #0d0b0a;
 }
 .titlecard__eyebrow, .titlecard__foot { color: #8f877c; }
-.titlecard__name {
-  align-self: center;
-  font-family: var(--serif);
-  font-size: clamp(2.6rem, 11vw, 7rem);
-  line-height: .92;
-  letter-spacing: -0.02em;
+.titlecard__river {
+  align-self: end;
+  height: 1px;
+  margin-bottom: 18%;
+  background: linear-gradient(90deg, transparent, rgb(230 162 94 / .7) 30%, rgb(230 162 94 / .9) 50%, rgb(230 162 94 / .7) 70%, transparent);
+  box-shadow: 0 0 18px 2px rgb(230 162 94 / .35);
 }
-.titlecard__name em { color: #e6a25e; }
 .titlecard__foot { justify-self: end; }
 
 /* Concepts */
@@ -270,7 +269,7 @@ p a, dd a { text-decoration: underline; text-decoration-thickness: 1px; text-und
 
 /* ---------- About ---------- */
 .about { padding-block: 3rem; }
-.about__grid { display: grid; gap: 2.5rem; padding-top: 1rem; }
+.about__grid { display: grid; gap: 0; padding-top: 1rem; }
 .about__lede {
   font-family: var(--serif);
   font-size: clamp(1.9rem, 6.5vw, 3.5rem);
@@ -332,6 +331,50 @@ p a, dd a { text-decoration: underline; text-decoration-thickness: 1px; text-und
 }
 .colophon a { padding-block: .3rem; }
 
+
+/* ---------- Evidence badge ---------- */
+.badge { display: inline-block; vertical-align: middle; margin-left: .2rem; padding: .3rem .15rem; line-height: 0; }
+.badge img { height: 20px; width: auto; }
+
+/* ---------- Case study (details) ---------- */
+.case { margin-top: 2rem; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
+.case summary {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  min-height: 48px;
+  padding-block: .9rem;
+  cursor: pointer;
+  list-style: none;
+}
+.case summary::-webkit-details-marker { display: none; }
+.case summary::after {
+  content: "+";
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--accent);
+}
+.case[open] summary::after { content: "−"; }
+.case summary:hover .mono { color: var(--accent); }
+.case__hint { color: var(--muted); font-size: .95rem; }
+.case__body { display: grid; gap: 0; padding-bottom: 1rem; }
+.case__body > div {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: .75rem;
+  align-items: baseline;
+  padding-block: .7rem;
+  border-top: 1px solid var(--rule);
+}
+.case__body dt { color: var(--muted); }
+.case__body dd { font-size: 1.05rem; line-height: 1.5; max-width: 60ch; }
+
+/* ---------- About sub-headings, contact facts ---------- */
+.about__sub { margin: 2.25rem 0 .7rem; color: var(--muted); font-weight: 400; }
+.contact__facts { margin-top: 1.25rem; color: var(--muted); }
+
 /* =========================================================
    Wider screens
    ========================================================= */
@@ -369,6 +412,8 @@ p a, dd a { text-decoration: underline; text-decoration-thickness: 1px; text-und
 
   .about { padding-block: 5rem; }
   .about__grid { grid-template-columns: 1.3fr 1fr; gap: 4rem; padding-top: 1.5rem; }
+  .about__grid > div:last-child .about__sub { margin-top: .4rem; }
+  .case__body > div { grid-template-columns: 9rem 1fr; }
   .contact { padding-block: 5rem 6rem; }
 
   .colophon { grid-template-columns: 1fr 2fr auto; align-items: baseline; }
