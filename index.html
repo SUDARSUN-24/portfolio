@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sudasun · Front-end developer in Bangkok</title>
-  <meta name="description" content="Sudasun is a front-end developer in Bangkok and a student at Siam University. Selected work: a browser voice studio, a 3D vehicle configurator, a 3D horror game and two concept websites.">
+  <meta name="description" content="Sudasun is a front-end developer in Bangkok and an IT student at Siam University. Eleven projects: web apps, a university library system, a desktop AI assistant, a LINE bot, three games and concept websites.">
   <link rel="canonical" href="https://sudasun.vercel.app/">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f3eee6" media="(prefers-color-scheme: light)">
@@ -14,7 +14,7 @@
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Sudasun">
   <meta property="og:title" content="Sudasun · Front-end developer in Bangkok">
-  <meta property="og:description" content="Selected work: a browser voice studio, a 3D vehicle configurator, a 3D horror game and two concept websites.">
+  <meta property="og:description" content="Eleven projects: web apps, a university library system, a desktop AI assistant, a LINE bot, three games and concept websites.">
   <meta property="og:url" content="https://sudasun.vercel.app/">
   <meta property="og:image" content="https://sudasun.vercel.app/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -51,84 +51,127 @@
       <nav aria-label="Main">
         <ul class="masthead__nav mono" role="list">
           <li><a href="#work">Work</a></li>
+          <li class="hide-sm"><a href="#games">Games</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a class="masthead__cta" href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
+    <span class="masthead__progress" aria-hidden="true"></span>
   </header>
 
   <main id="main">
     <!-- ============ HERO ============ -->
     <section class="hero wrap" id="top" aria-labelledby="hero-title">
+      <p class="hero__status mono"><span class="pulse" aria-hidden="true"></span>Open to internships &amp; junior roles · from January 2027</p>
       <h1 id="hero-title" class="hero__title">
-        Sudasun is a front-end developer in Bangkok, building <em>careful</em> things for the&nbsp;browser.
+        Sudasun is a front-end developer in Bangkok who builds web apps, desktop tools and <em>games</em>.
       </h1>
-      <dl class="hero__facts">
-        <div><dt class="mono">Now</dt><dd>Student at Siam University</dd></div>
-        <div><dt class="mono">Looking for</dt><dd>Front-end internship or junior role</dd></div>
-        <div><dt class="mono">Speaks</dt><dd>English, Thai, Nepali, Hindi</dd></div>
+      <div class="hero__row">
+        <p class="hero__intro">IT student at Siam University. I design, build and test my own projects end to end, from a bilingual library system to a 3D action RPG.</p>
+        <p class="hero__actions">
+          <a class="btn btn--solid" href="#work">See the work <span aria-hidden="true">↓</span></a>
+          <a class="btn" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Resume (PDF)</a>
+        </p>
+      </div>
+
+      <dl class="stats">
+        <div><dt class="mono">Projects built</dt><dd data-count="11">11</dd></div>
+        <div><dt class="mono">Games in Godot</dt><dd data-count="3">3</dd></div>
+        <div><dt class="mono">Automated tests</dt><dd data-count="370" data-suffix="+">370+</dd></div>
+        <div><dt class="mono">Commits in 2026</dt><dd data-count="600" data-suffix="+">600+</dd></div>
       </dl>
-      <ul class="hero__links mono" role="list">
-        <li><a href="mailto:sudarsun78@gmail.com">Email <span aria-hidden="true">↗</span></a></li>
-        <li><a href="https://github.com/SUDARSUN-24">GitHub <span aria-hidden="true">↗</span></a></li>
-        <li><a href="https://www.linkedin.com/in/sudarsun-020298348/">LinkedIn <span aria-hidden="true">↗</span></a></li>
-      </ul>
+
+      <dl class="hero__facts">
+        <div><dt class="mono">Now</dt><dd>B.Sc. Information Technology, Siam University</dd></div>
+        <div><dt class="mono">Speaks</dt><dd>English, Thai, Nepali, Hindi</dd></div>
+        <div><dt class="mono">Elsewhere</dt><dd class="hero__links mono">
+          <a href="https://github.com/SUDARSUN-24">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="https://www.linkedin.com/in/sudarsun-020298348/">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a href="mailto:sudarsun78@gmail.com">Email <span aria-hidden="true">↗</span></a>
+        </dd></div>
+      </dl>
     </section>
+
+    <!-- ============ STACK MARQUEE ============ -->
+    <div class="marquee" aria-label="Tools I have shipped with">
+      <ul class="marquee__track mono" role="list">
+        <li>JavaScript</li><li>TypeScript</li><li>Next.js</li><li>React</li><li>Three.js</li><li>Node.js</li><li>Python</li><li>PySide6</li><li>PostgreSQL</li><li>Prisma</li><li>Docker</li><li>Cloudflare Workers</li><li>Netlify Functions</li><li>Playwright</li><li>Godot 4</li><li>Blender</li><li>Web Audio API</li><li>Web Speech API</li><li>GitHub Actions</li>
+      </ul>
+      <ul class="marquee__track mono" role="list" aria-hidden="true">
+        <li>JavaScript</li><li>TypeScript</li><li>Next.js</li><li>React</li><li>Three.js</li><li>Node.js</li><li>Python</li><li>PySide6</li><li>PostgreSQL</li><li>Prisma</li><li>Docker</li><li>Cloudflare Workers</li><li>Netlify Functions</li><li>Playwright</li><li>Godot 4</li><li>Blender</li><li>Web Audio API</li><li>Web Speech API</li><li>GitHub Actions</li>
+      </ul>
+    </div>
 
     <!-- ============ INDEX ============ -->
     <section class="index wrap" id="work" aria-labelledby="work-title">
       <div class="kicker">
-        <h2 id="work-title" class="mono">Selected work</h2>
-        <span class="mono" aria-hidden="true">(05)</span>
+        <h2 id="work-title" class="mono">All work</h2>
+        <span class="mono" aria-hidden="true">(11)</span>
+      </div>
+      <div class="filters" role="group" aria-label="Filter projects" hidden>
+        <button type="button" class="chip mono" data-filter="all" aria-pressed="true">All <span>11</span></button>
+        <button type="button" class="chip mono" data-filter="web" aria-pressed="false">Web apps <span>3</span></button>
+        <button type="button" class="chip mono" data-filter="tools" aria-pressed="false">Tools &amp; AI <span>2</span></button>
+        <button type="button" class="chip mono" data-filter="games" aria-pressed="false">Games <span>3</span></button>
+        <button type="button" class="chip mono" data-filter="concept" aria-pressed="false">Concept sites <span>3</span></button>
       </div>
       <ol class="index__list" role="list">
-        <li><a class="index__row" href="#resonance" data-preview="/assets/resonance-800.webp">
-          <span class="index__no mono">01</span>
-          <span class="index__name">Resonance</span>
-          <span class="index__type mono">Web app</span>
-          <span class="index__year mono">2026</span>
-        </a></li>
-        <li><a class="index__row" href="#velonix" data-preview="/assets/velonix-800.webp">
-          <span class="index__no mono">02</span>
-          <span class="index__name">Velonix Customs</span>
-          <span class="index__type mono">3D web app</span>
-          <span class="index__year mono">2026</span>
-        </a></li>
-        <li><a class="index__row" href="#whispers" data-preview="/assets/wotr-crossing-800.webp">
-          <span class="index__no mono">03</span>
-          <span class="index__name">Whispers of the River</span>
-          <span class="index__type mono">Game · group</span>
-          <span class="index__year mono">2026</span>
-        </a></li>
-        <li><a class="index__row" href="#atelier-thorne" data-preview="/assets/atelier-thorne-800.webp">
-          <span class="index__no mono">04</span>
-          <span class="index__name">Atelier Thorne</span>
-          <span class="index__type mono">Concept site</span>
-          <span class="index__year mono">2026</span>
-        </a></li>
-        <li><a class="index__row" href="#sample-cafe" data-preview="/assets/sample-cafe-800.webp">
-          <span class="index__no mono">05</span>
-          <span class="index__name">Sample Cafe</span>
-          <span class="index__type mono">Concept site</span>
-          <span class="index__year mono">2026</span>
-        </a></li>
+        <li data-cat="web"><a class="index__row" href="#resonance" data-preview="/assets/resonance-800.webp">
+          <span class="index__no mono">01</span><span class="index__name">Resonance</span>
+          <span class="index__type mono">Voice studio · web app</span><span class="index__year mono">2026</span></a></li>
+        <li data-cat="web"><a class="index__row" href="#siam-library" data-preview="/assets/library-home-800.webp">
+          <span class="index__no mono">02</span><span class="index__name">Siam Library</span>
+          <span class="index__type mono">Full-stack · university</span><span class="index__year mono">2026</span></a></li>
+        <li data-cat="web"><a class="index__row" href="#velonix" data-preview="/assets/velonix-800.webp">
+          <span class="index__no mono">03</span><span class="index__name">Velonix Customs</span>
+          <span class="index__type mono">3D web app</span><span class="index__year mono">2026</span></a></li>
+        <li data-cat="tools"><a class="index__row" href="#vedant" data-preview="/assets/vedant-800.webp">
+          <span class="index__no mono">04</span><span class="index__name">Vedant</span>
+          <span class="index__type mono">Desktop AI assistant</span><span class="index__year mono">2026</span></a></li>
+        <li data-cat="tools"><a class="index__row" href="#khun-chuay" data-preview="/assets/khun-chuay-menu-800.webp">
+          <span class="index__no mono">05</span><span class="index__name">Khun Chuay</span>
+          <span class="index__type mono">LINE bot</span><span class="index__year mono">2026</span></a></li>
+        <li data-cat="games"><a class="index__row" href="#whispers" data-preview="/assets/wotr-crossing-800.webp">
+          <span class="index__no mono">06</span><span class="index__name">Whispers of the River</span>
+          <span class="index__type mono">3D horror · team lead</span><span class="index__year mono">2026</span></a></li>
+        <li data-cat="games"><a class="index__row" href="#mahabharat" data-preview="/assets/mb-release-800.webp">
+          <span class="index__no mono">07</span><span class="index__name">Mahabharat</span>
+          <span class="index__type mono">3D action RPG</span><span class="index__year mono">2026</span></a></li>
+        <li data-cat="games"><a class="index__row" href="#isle-wood" data-preview="/assets/biw-news-800.webp">
+          <span class="index__no mono">08</span><span class="index__name">Buried at Isle Wood</span>
+          <span class="index__type mono">2D detective game</span><span class="index__year mono">2026</span></a></li>
+        <li data-cat="concept"><a class="index__row" href="#sample-hotel" data-preview="/assets/sample-hotel-800.webp">
+          <span class="index__no mono">09</span><span class="index__name">Sample Hotel</span>
+          <span class="index__type mono">Concept site · booking</span><span class="index__year mono">2026</span></a></li>
+        <li data-cat="concept"><a class="index__row" href="#sample-cafe" data-preview="/assets/sample-cafe-800.webp">
+          <span class="index__no mono">10</span><span class="index__name">Sample Cafe</span>
+          <span class="index__type mono">Concept site</span><span class="index__year mono">2026</span></a></li>
+        <li data-cat="concept"><a class="index__row" href="#atelier-thorne" data-preview="/assets/atelier-thorne-800.webp">
+          <span class="index__no mono">11</span><span class="index__name">Atelier Thorne</span>
+          <span class="index__type mono">Concept site</span><span class="index__year mono">2026</span></a></li>
       </ol>
       <img class="index__preview" alt="" aria-hidden="true" width="800" height="500" hidden>
     </section>
 
-    <!-- ============ PROJECTS ============ -->
-    <div class="projects">
+    <!-- ============ CHAPTER 1: WEB APPS & TOOLS ============ -->
+    <section class="chapter" aria-labelledby="ch-apps">
+      <div class="wrap chapter__head">
+        <span class="chapter__no mono">Part one</span>
+        <h2 id="ch-apps" class="chapter__title">Web apps <em>&amp;</em> tools</h2>
+        <p class="chapter__note">Things people use: in a browser, on a desktop, inside LINE.</p>
+      </div>
 
       <article class="project wrap" id="resonance" aria-labelledby="p1">
         <header class="project__head">
           <span class="mono">01 — Web app</span>
           <h3 id="p1" class="project__title">Resonance</h3>
         </header>
-        <figure class="project__shot">
+        <figure class="frame">
+          <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i><span class="frame__url">resonancesun.netlify.app</span></div>
           <img src="/assets/resonance-800.webp"
                srcset="/assets/resonance-800.webp 800w, /assets/resonance-1600.webp 1600w"
-               sizes="(min-width: 1200px) 1136px, calc(100vw - 2 * var(--gutter))"
+               sizes="(min-width: 1264px) 1200px, calc(100vw - 2 * var(--gutter))"
                width="1600" height="1000" decoding="async"
                alt="Resonance home page: a dark studio screen with a ring of voice characters and a box to type text for a voice to read.">
         </figure>
@@ -139,9 +182,9 @@
               <a href="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml">116 automated tests</a>, run on every push
               <a class="badge" href="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml"><img src="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml/badge.svg?branch=main" alt="Current test status on GitHub Actions" height="20"></a>
             </dd></div>
-            <div><dt class="mono">Languages</dt><dd>45+: 45 built in, plus any others the visitor's device has voices for. Languages with their own alphabet (18, such as Thai, Hindi and Arabic) are detected as you type.</dd></div>
+            <div><dt class="mono">Languages</dt><dd>45+: 45 built in, plus any others the visitor's device has voices for. 18 languages with their own alphabet (such as Thai, Hindi and Arabic) are detected as you type.</dd></div>
             <div><dt class="mono">Role</dt><dd>Solo: design, front end, back end</dd></div>
-            <div><dt class="mono">Built with</dt><dd>JavaScript, Web Speech API, Web Audio API, Netlify Functions</dd></div>
+            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>JavaScript</li><li>Web Speech API</li><li>Web Audio API</li><li>Web Workers</li><li>Netlify Functions</li></ul></dd></div>
           </dl>
           <p class="project__links mono">
             <a href="https://resonancesun.netlify.app/">Visit site<span class="sr-only">: Resonance</span> <span aria-hidden="true">↗</span></a>
@@ -158,15 +201,68 @@
         </details>
       </article>
 
-      <article class="project wrap" id="velonix" aria-labelledby="p2">
+      <article class="project wrap" id="siam-library" aria-labelledby="p2">
         <header class="project__head">
-          <span class="mono">02 — 3D web app</span>
-          <h3 id="p2" class="project__title">Velonix Customs</h3>
+          <span class="mono">02 — Full-stack web app · university project</span>
+          <h3 id="p2" class="project__title">Siam Library <em>Book Preview</em></h3>
         </header>
-        <figure class="project__shot">
+        <div class="game-gallery" data-gallery>
+          <figure class="frame">
+            <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i><span class="frame__url">siam-library.vercel.app</span></div>
+            <a class="shot-link" href="/assets/library-home-1440.webp" data-caption="Home: search the catalogue, browse by shelf or category, in Thai or English.">
+              <img src="/assets/library-home-800.webp"
+                   srcset="/assets/library-home-800.webp 800w, /assets/library-home-1440.webp 1440w"
+                   sizes="(min-width: 1264px) 1200px, calc(100vw - 2 * var(--gutter))"
+                   width="1440" height="900" loading="lazy" decoding="async"
+                   alt="Siam University Library home page: the headline 'Read before you borrow', a search box, and cards to browse by shelf and by category.">
+            </a>
+          </figure>
+          <ul class="gallery gallery--3" aria-label="More screenshots from Siam Library">
+            <li><a class="shot-link" href="/assets/library-book-1440.webp" data-caption="Book page: a page-turning preview, availability and the exact shelf and row.">
+              <img src="/assets/library-book-800.webp" width="800" height="500" loading="lazy" decoding="async"
+                   alt="A book page for 'Thinking in Algorithms': cover, author, an Available badge, the location Shelf A, Row 1, and a large page preview."></a></li>
+            <li><a class="shot-link" href="/assets/library-catalogue-1440.webp" data-caption="Catalogue with filters for availability, language, shelf and category.">
+              <img src="/assets/library-catalogue-800.webp" width="800" height="500" loading="lazy" decoding="async"
+                   alt="The All books catalogue with filters down the left side and a grid of colourful book covers."></a></li>
+            <li><a class="shot-link" href="/assets/library-qr-1440.webp" data-caption="Every book and shelf has a QR code that opens its page on a phone.">
+              <img src="/assets/library-qr-800.webp" width="800" height="500" loading="lazy" decoding="async"
+                   alt="Book details table with author, category, language, year, publisher and ISBN, and a QR code to scan."></a></li>
+          </ul>
+        </div>
+        <div class="project__info">
+          <p class="project__lede">Students read a short preview of any library book, see if it is on the shelf and exactly where, then borrow it at the counter.</p>
+          <dl class="project__meta">
+            <div><dt class="mono">Tests</dt><dd>66 end-to-end tests in Playwright, on desktop and mobile browsers</dd></div>
+            <div><dt class="mono">Staff area</dt><dd>Add books, upload page photos from a phone, mark books borrowed or returned, print QR stickers</dd></div>
+            <div><dt class="mono">Security</dt><dd>Two-step login (authenticator app), server-side role checks, rate-limited login, nonce-based Content Security Policy</dd></div>
+            <div><dt class="mono">Team</dt><dd>University project, team of two</dd></div>
+            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>Next.js 16</li><li>TypeScript</li><li>Tailwind</li><li>PostgreSQL</li><li>Prisma</li><li>Auth.js</li><li>Docker</li></ul></dd></div>
+          </dl>
+          <p class="project__links mono">
+            <a href="https://siam-library.vercel.app/">Visit site<span class="sr-only">: Siam Library Book Preview</span> <span aria-hidden="true">↗</span></a>
+            <span class="muted">Code in a private university repo</span>
+          </p>
+        </div>
+        <details class="case">
+          <summary><span class="mono">Case study</span><span class="case__hint">Problem, decision, result</span></summary>
+          <dl class="case__body">
+            <div><dt class="mono">Problem</dt><dd>Students can't judge a library book from its title, and can't tell if it is on the shelf until they walk there.</dd></div>
+            <div><dt class="mono">Decision</dt><dd>Add a "look inside" preview of 5–10 pages, live availability and the exact shelf and row, plus a QR code on every book and shelf that links the physical library to the website.</dd></div>
+            <div><dt class="mono">Result</dt><dd>Live on Vercel with a Neon PostgreSQL database and private photo storage, in Thai and English, with a Docker setup ready for a university server.</dd></div>
+          </dl>
+        </details>
+      </article>
+
+      <article class="project wrap" id="velonix" aria-labelledby="p3">
+        <header class="project__head">
+          <span class="mono">03 — 3D web app</span>
+          <h3 id="p3" class="project__title">Velonix Customs</h3>
+        </header>
+        <figure class="frame">
+          <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i><span class="frame__url">velonixsun.vercel.app</span></div>
           <img src="/assets/velonix-800.webp"
                srcset="/assets/velonix-800.webp 800w, /assets/velonix-1600.webp 1600w"
-               sizes="(min-width: 1200px) 1136px, calc(100vw - 2 * var(--gutter))"
+               sizes="(min-width: 1264px) 1200px, calc(100vw - 2 * var(--gutter))"
                width="1600" height="1000" loading="lazy" decoding="async"
                alt="Velonix configurator: a blue coupé rendered in 3D on a neon grid, beside a panel of model, paint and wheel options and a running price.">
         </figure>
@@ -175,7 +271,7 @@
           <dl class="project__meta">
             <div><dt class="mono">Detail</dt><dd>Engine sound made in code, no audio files</dd></div>
             <div><dt class="mono">Role</dt><dd>Solo: design, 3D, front end</dd></div>
-            <div><dt class="mono">Built with</dt><dd>JavaScript, Three.js, Web Audio API, Puppeteer</dd></div>
+            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>JavaScript</li><li>Three.js</li><li>Web Audio API</li><li>Puppeteer</li></ul></dd></div>
           </dl>
           <p class="project__links mono">
             <a href="https://velonixsun.vercel.app/">Visit site<span class="sr-only">: Velonix Customs</span> <span aria-hidden="true">↗</span></a>
@@ -192,17 +288,87 @@
         </details>
       </article>
 
-      <article class="project wrap" id="whispers" aria-labelledby="p3">
+      <article class="project wrap" id="vedant" aria-labelledby="p4">
         <header class="project__head">
-          <span class="mono">03 — Game · group project</span>
-          <h3 id="p3" class="project__title">Whispers of the River</h3>
+          <span class="mono">04 — Desktop app · Windows</span>
+          <h3 id="p4" class="project__title">Vedant</h3>
+        </header>
+        <figure class="frame frame--window">
+          <div class="frame__bar" aria-hidden="true"><span class="frame__url">VEDANT — v1.0</span><b>–</b><b>□</b><b>✕</b></div>
+          <img src="/assets/vedant-800.webp"
+               srcset="/assets/vedant-800.webp 800w, /assets/vedant-1440.webp 1440w"
+               sizes="(min-width: 1264px) 1200px, calc(100vw - 2 * var(--gutter))"
+               width="1440" height="900" loading="lazy" decoding="async"
+               alt="Vedant's window: a glowing cyan ring visualiser in standby on a black background, a greeting that says 'Online. How can I help?', and a message box with Talk and Send buttons.">
+        </figure>
+        <div class="project__info">
+          <p class="project__lede">A personal AI assistant for the desktop. Talk or type, hear it answer, and let it remember things, set reminders and open your apps.</p>
+          <dl class="project__meta">
+            <div><dt class="mono">Tests</dt><dd>174 automated tests (pytest), plus a built-in self-test for microphone, speech and AI provider</dd></div>
+            <div><dt class="mono">Safety</dt><dd>Opens only apps on an allowlist, asks before acting, and never runs shell commands</dd></div>
+            <div><dt class="mono">Free to run</dt><dd>Local models through Ollama (works offline) or Google Gemini's free tier</dd></div>
+            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>Python</li><li>PySide6 (Qt)</li><li>SQLite</li><li>Ollama</li><li>Gemini API</li><li>PyInstaller</li></ul></dd></div>
+          </dl>
+          <p class="project__links mono">
+            <span class="muted">Windows app · demo on request</span>
+          </p>
+        </div>
+      </article>
+
+      <article class="project project--split wrap" id="khun-chuay" aria-labelledby="p5">
+        <div class="split__text">
+          <header class="project__head">
+            <span class="mono">05 — LINE bot</span>
+            <h3 id="p5" class="project__title">Khun Chuay <span class="th" lang="th">คุณช่วย</span></h3>
+          </header>
+          <p class="project__lede">A LINE bot for everyday life in Thailand. Split a bill with a real PromptPay QR code, and get PM2.5 and rain alerts for where you are.</p>
+          <dl class="project__meta">
+            <div><dt class="mono">Detail</dt><dd>PromptPay QR codes generated inside the bot (EMVCo payload, CRC-16 and a hand-written PNG encoder), so no outside service sees a phone number</dd></div>
+            <div><dt class="mono">Data</dt><dd>Nearest of about 170 official air-quality stations, Thai PM2.5 bands, rain forecasts and a 7:00 morning summary</dd></div>
+            <div><dt class="mono">Tests</dt><dd>21 automated tests, plus a simulated LINE chat to try it with no accounts</dd></div>
+            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>JavaScript</li><li>Cloudflare Workers</li><li>Cloudflare KV</li><li>LINE Messaging API</li></ul></dd></div>
+          </dl>
+          <p class="project__links mono">
+            <a href="https://github.com/SUDARSUN-24/khun-chuay">Code<span class="sr-only">: Khun Chuay on GitHub</span> <span aria-hidden="true">↗</span></a>
+          </p>
+        </div>
+        <figure class="chat" aria-label="Example conversation: splitting a 1,850 baht bill between four people">
+          <div class="chat__head"><span class="chat__avatar" aria-hidden="true">🙏</span><span>Khun Chuay</span></div>
+          <ol class="chat__log" role="list" lang="th">
+            <li class="bot">💸 ยอดรวมทั้งบิลเท่าไหร่?</li>
+            <li class="me">1850</li>
+            <li class="bot">หาร ฿1,850 กี่คน?<span class="chat__chips"><b>2 คน</b><b>3 คน</b><b>4 คน</b></span></li>
+            <li class="me">4 คน</li>
+            <li class="bot">มีค่าเซอร์วิสหรือ VAT?<span class="chat__chips"><b>ไม่มี</b><b>VAT 7%</b><b>เซอร์วิส+VAT</b></span></li>
+            <li class="me">เซอร์วิส+VAT</li>
+            <li class="bot bot--total">💸 คนละ <strong>฿544.37</strong><span class="chat__qr" aria-hidden="true"></span><small>PromptPay QR · scan with any Thai bank app</small></li>
+          </ol>
+          <img class="chat__menu" src="/assets/khun-chuay-menu-800.webp" width="800" height="540" loading="lazy" decoding="async"
+               alt="The bot's button menu: Split bill, Who hasn't paid, Get paid, Air quality, Rain and weather, Settings, each in Thai and English." lang="en">
+          <figcaption class="mono">Real flow from the bot · service 10% then VAT 7%, rounded up</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <!-- ============ CHAPTER 2: GAMES (dark band) ============ -->
+    <section class="chapter band" id="games" aria-labelledby="ch-games">
+      <div class="wrap chapter__head">
+        <span class="chapter__no mono">Part two</span>
+        <h2 id="ch-games" class="chapter__title">Games <em>in Godot</em></h2>
+        <p class="chapter__note">Three games, from first-person horror to a 25-character epic. All tuned to run on a laptop's built-in graphics.</p>
+      </div>
+
+      <article class="project wrap" id="whispers" aria-labelledby="p6">
+        <header class="project__head">
+          <span class="mono">06 — 3D horror · group project</span>
+          <h3 id="p6" class="project__title">Whispers of the River</h3>
         </header>
         <div class="game-gallery" data-gallery>
           <figure class="project__shot project__shot--game">
             <a class="shot-link" href="/assets/wotr-crossing-1600.webp" data-caption="The crossing: rowing to the far bank at night.">
               <img src="/assets/wotr-crossing-800.webp"
                    srcset="/assets/wotr-crossing-800.webp 800w, /assets/wotr-crossing-1600.webp 1600w"
-                   sizes="(min-width: 1200px) 1136px, calc(100vw - 2 * var(--gutter))"
+                   sizes="(min-width: 1264px) 1200px, calc(100vw - 2 * var(--gutter))"
                    width="1600" height="900" loading="lazy" decoding="async"
                    alt="First-person view from a wooden rowing boat at night. A lantern hangs at the bow, dead trees stand in the dark water and lamplit huts wait on the far shore.">
             </a>
@@ -230,8 +396,8 @@
           <p class="project__lede">A first-person 3D horror game. Cross a river at night into a village haunted by a Vetala, a spirit from Indian folklore.</p>
           <dl class="project__meta">
             <div><dt class="mono">Detail</dt><dd>Three graphics modes, controller support, automated playthrough tests</dd></div>
-            <div><dt class="mono">Role</dt><dd>Team lead: programming, level design, story, audio</dd></div>
-            <div><dt class="mono">Built with</dt><dd>Godot 4, GDScript, Blender, Meshy, Mixamo</dd></div>
+            <div><dt class="mono">Role</dt><dd>Team lead: programming, level design, story, audio · 400+ of the team's commits</dd></div>
+            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>Godot 4</li><li>GDScript</li><li>Blender</li><li>Meshy</li><li>Mixamo</li></ul></dd></div>
           </dl>
           <p class="project__links mono">
             <span class="muted">Windows build · demo on request</span>
@@ -239,61 +405,171 @@
         </div>
       </article>
 
-      <section class="concepts wrap" aria-labelledby="concepts-title">
-        <div class="concepts__head">
-          <h3 id="concepts-title" class="concepts__title">Concept projects <em>(fictional clients)</em></h3>
-          <p class="muted">Sites for made-up businesses, built as if for a real brief.</p>
+      <article class="project wrap" id="mahabharat" aria-labelledby="p7">
+        <header class="project__head">
+          <span class="mono">07 — 3D action RPG · solo</span>
+          <h3 id="p7" class="project__title">Mahabharat <em>The Epic of Dharma</em></h3>
+        </header>
+        <div class="game-gallery" data-gallery>
+          <figure class="project__shot project__shot--game">
+            <a class="shot-link" href="/assets/mb-release-1280.webp" data-caption="Champion duel: Arjuna draws the Gandiva against Karna.">
+              <img src="/assets/mb-release-800.webp"
+                   srcset="/assets/mb-release-800.webp 800w, /assets/mb-release-1280.webp 1280w"
+                   sizes="(min-width: 1264px) 1200px, calc(100vw - 2 * var(--gutter))"
+                   width="1280" height="720" loading="lazy" decoding="async"
+                   alt="Third-person view of Arjuna drawing a glowing golden bow on a dusty battlefield, with health bars for Arjuna and Karna and a row of divine weapon slots along the bottom.">
+            </a>
+          </figure>
+          <ul class="gallery" aria-label="More screenshots from Mahabharat">
+            <li><a class="shot-link" href="/assets/mb-menu-1280.webp" data-caption="Main menu.">
+              <img src="/assets/mb-menu-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="Main menu: MAHABHARAT, The Epic of Dharma, in gold on deep navy, with buttons to begin, continue or load a journey."></a></li>
+            <li><a class="shot-link" href="/assets/mb-select-1280.webp" data-caption="Choose any of 25 characters, each with their own story route.">
+              <img src="/assets/mb-select-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="Character select: a list of Pandava and Kaurava heroes, with Arjuna's stats, special ability and starting chapter."></a></li>
+            <li><a class="shot-link" href="/assets/mb-world-1280.webp" data-caption="Hastinapura: explore, talk to people and take on local tasks.">
+              <img src="/assets/mb-world-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="A sunny town square in Hastinapura with villagers, stone houses, a quest panel and a minimap."></a></li>
+            <li><a class="shot-link" href="/assets/mb-solar-1280.webp" data-caption="Karna's Solar Arrow incoming: intercept it with a full draw.">
+              <img src="/assets/mb-solar-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="A duel prompt: Karna's Solar Arrow is incoming and the player must intercept the glowing arrow."></a></li>
+            <li><a class="shot-link" href="/assets/mb-garuda-1280.webp" data-caption="Garudastra: a golden eagle arrow.">
+              <img src="/assets/mb-garuda-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="A golden eagle made of light swoops low over the desert battlefield."></a></li>
+          </ul>
+          <p class="gallery__note mono">Captured in game on a laptop (Intel Iris Xe, OpenGL 3.3).</p>
         </div>
-        <div class="concepts__grid">
-          <article class="project project--small" id="atelier-thorne" aria-labelledby="p4">
-            <header class="project__head">
-              <span class="mono">04 — Concept site</span>
-              <h4 id="p4" class="project__title">Atelier Thorne</h4>
-            </header>
-            <figure class="project__shot">
-              <img src="/assets/atelier-thorne-800.webp"
-                   srcset="/assets/atelier-thorne-800.webp 800w, /assets/atelier-thorne-1600.webp 1600w"
-                   sizes="(min-width: 1200px) 548px, (min-width: 760px) 46vw, calc(100vw - 2 * var(--gutter))"
-                   width="1600" height="1000" loading="lazy" decoding="async"
-                   alt="Atelier Thorne home page: the headline 'One pattern, cut for you alone' beside a photo of a tailor cutting navy cloth.">
-            </figure>
-            <p class="project__lede">Website for a fictional bespoke tailor in Bangkok.</p>
-            <p class="project__stack muted">Solo · HTML, CSS, JavaScript, Web3Forms</p>
-            <p class="project__links mono">
-              <a href="https://sudarsun-24.github.io/Tailor_trial/">Visit site<span class="sr-only">: Atelier Thorne</span> <span aria-hidden="true">↗</span></a>
-              <a href="https://github.com/SUDARSUN-24/Tailor_trial">Code<span class="sr-only">: Atelier Thorne on GitHub</span> <span aria-hidden="true">↗</span></a>
-            </p>
-          </article>
+        <div class="project__info">
+          <p class="project__lede">Play the Indian epic as any of 25 characters. Explore 13 locations, help local people and fight through the 18-day war.</p>
+          <dl class="project__meta">
+            <div><dt class="mono">Scale</dt><dd>25 playable characters with their own costumes, weapons and seven animations · 13 locations · 18 war skirmishes · boss duels against Bhishma, Drona and Karna</dd></div>
+            <div><dt class="mono">Combat</dt><dd>Charged archery with shoulder aim, elemental powers and weather, counters and dodges</dd></div>
+            <div><dt class="mono">Role</dt><dd>Solo: design, programming, story, character pipeline</dd></div>
+            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>Godot 4</li><li>GDScript</li><li>Blender</li><li>MakeHuman (CC0)</li></ul></dd></div>
+          </dl>
+          <p class="project__links mono">
+            <span class="muted">Windows build · demo on request</span>
+          </p>
+        </div>
+      </article>
 
-          <article class="project project--small" id="sample-cafe" aria-labelledby="p5">
-            <header class="project__head">
-              <span class="mono">05 — Concept site</span>
-              <h4 id="p5" class="project__title">Sample Cafe</h4>
-            </header>
-            <figure class="project__shot">
-              <img src="/assets/sample-cafe-800.webp"
-                   srcset="/assets/sample-cafe-800.webp 800w, /assets/sample-cafe-1600.webp 1600w"
-                   sizes="(min-width: 1200px) 548px, (min-width: 760px) 46vw, calc(100vw - 2 * var(--gutter))"
-                   width="1600" height="1000" loading="lazy" decoding="async"
-                   alt="Sample Cafe home page in English: a warm photo of iced lattes, the cafe name, today's opening status and buttons for directions and LINE.">
-            </figure>
-            <p class="project__lede">Thai/English website for a fictional Bangkok cafe, with table booking.</p>
-            <p class="project__stack muted">Solo · HTML, CSS, JavaScript, Netlify Functions</p>
-            <p class="project__links mono">
-              <a href="https://sample-cafe-demo.netlify.app/">Visit site<span class="sr-only">: Sample Cafe</span> <span aria-hidden="true">↗</span></a>
-              <a href="https://github.com/SUDARSUN-24/sample-cafe">Code<span class="sr-only">: Sample Cafe on GitHub</span> <span aria-hidden="true">↗</span></a>
-            </p>
-          </article>
+      <article class="project wrap" id="isle-wood" aria-labelledby="p8">
+        <header class="project__head">
+          <span class="mono">08 — 2D detective game · solo · in progress</span>
+          <h3 id="p8" class="project__title">Buried at Isle Wood</h3>
+        </header>
+        <div class="game-gallery" data-gallery>
+          <figure class="project__shot project__shot--game">
+            <a class="shot-link" href="/assets/biw-news-1280.webp" data-caption="Chapter 1 opens on the late-night news about Isle Wood Academy.">
+              <img src="/assets/biw-news-800.webp"
+                   srcset="/assets/biw-news-800.webp 800w, /assets/biw-news-1280.webp 1280w"
+                   sizes="(min-width: 1264px) 1200px, calc(100vw - 2 * var(--gutter))"
+                   width="1280" height="720" loading="lazy" decoding="async"
+                   alt="A flat, muted illustration of an old television showing a reporter outside Isle Wood Academy, with a dialogue box below.">
+            </a>
+          </figure>
+          <ul class="gallery gallery--4" aria-label="More screenshots from Buried at Isle Wood">
+            <li><a class="shot-link" href="/assets/biw-living-1280.webp" data-caption="The living room at night: click around to find clues.">
+              <img src="/assets/biw-living-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="A living room at night with a green sofa, bookshelf, family photos and a coffee mug on the table."></a></li>
+            <li><a class="shot-link" href="/assets/biw-notebook-1280.webp" data-caption="The notebook: combine two clues to find what doesn't add up.">
+              <img src="/assets/biw-notebook-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="The notebook screen listing clues such as 'Isle Wood murders' and 'The fake murder', with a Combine button."></a></li>
+            <li><a class="shot-link" href="/assets/biw-call-1280.webp" data-caption="1:42 a.m.: Dad calls.">
+              <img src="/assets/biw-call-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="Close-up of hands holding a phone showing an incoming call from Dad at 01:42, with Judith's worried portrait beside the dialogue."></a></li>
+            <li><a class="shot-link" href="/assets/biw-nightmare-1280.webp" data-caption="The nightmare: a heartbeat timer that only changes your nerve.">
+              <img src="/assets/biw-nightmare-800.webp" width="800" height="450" loading="lazy" decoding="async"
+                   alt="A dark storage room with a closed door. Judith's frightened portrait sits beside a line of inner monologue."></a></li>
+          </ul>
         </div>
-      </section>
-    </div>
+        <div class="project__info">
+          <p class="project__lede">A 1920s point-and-click detective thriller with a little horror. Chapter 1, "The Call", is about 15–20 minutes long.</p>
+          <dl class="project__meta">
+            <div><dt class="mono">Systems</dt><dd>Notebook with clue combining, dialogue choices, a "nerve" meter, a hint book, a nightmare mini-game, autosave and continue</dd></div>
+            <div><dt class="mono">Detail</dt><dd>All text lives in data files so it can be translated; art swaps in by file name with no code changes</dd></div>
+            <div><dt class="mono">Role</dt><dd>Solo: design, programming</dd></div>
+            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>Godot 4.7</li><li>GDScript</li><li>JSON data</li></ul></dd></div>
+          </dl>
+          <p class="project__links mono">
+            <span class="muted">Chapter 1 playable · Windows build coming</span>
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ CHAPTER 3: CONCEPT SITES ============ -->
+    <section class="chapter concepts" aria-labelledby="ch-concepts">
+      <div class="wrap chapter__head">
+        <span class="chapter__no mono">Part three</span>
+        <h2 id="ch-concepts" class="chapter__title">Concept sites <em class="sm">for fictional clients</em></h2>
+        <p class="chapter__note">Websites for made-up businesses, built as if for a real brief: bilingual, fast, and easy for an owner to update.</p>
+      </div>
+      <div class="wrap concepts__grid">
+        <article class="card" id="sample-hotel" aria-labelledby="p9">
+          <figure class="frame frame--small">
+            <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <img src="/assets/sample-hotel-800.webp"
+                 srcset="/assets/sample-hotel-800.webp 800w, /assets/sample-hotel-1600.webp 1600w"
+                 sizes="(min-width: 1264px) 384px, (min-width: 960px) 30vw, (min-width: 640px) 46vw, calc(100vw - 2 * var(--gutter))"
+                 width="1600" height="1000" loading="lazy" decoding="async"
+                 alt="Sample Hotel home page in Thai: the hotel name in large type beside a photo of a palm-lined pool at dusk, with a bar to choose dates, nights and guests.">
+          </figure>
+          <span class="mono card__no">09 — Concept site</span>
+          <h3 id="p9" class="card__title">Sample Hotel</h3>
+          <p class="card__lede">Thai/English site for a fictional Chiang Mai hotel: check free rooms, see the total and book. A voice concierge answers questions out loud.</p>
+          <ul class="tags" role="list"><li>JavaScript</li><li>Netlify Functions</li><li>Netlify Blobs</li><li>Web Speech API</li></ul>
+          <p class="project__links mono">
+            <a href="https://sample-hotel-demo.netlify.app/">Visit site<span class="sr-only">: Sample Hotel</span> <span aria-hidden="true">↗</span></a>
+          </p>
+        </article>
+
+        <article class="card" id="sample-cafe" aria-labelledby="p10">
+          <figure class="frame frame--small">
+            <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <img src="/assets/sample-cafe-800.webp"
+                 srcset="/assets/sample-cafe-800.webp 800w, /assets/sample-cafe-1600.webp 1600w"
+                 sizes="(min-width: 1264px) 384px, (min-width: 960px) 30vw, (min-width: 640px) 46vw, calc(100vw - 2 * var(--gutter))"
+                 width="1600" height="1000" loading="lazy" decoding="async"
+                 alt="Sample Cafe home page in English: a warm photo of iced lattes, the cafe name, today's opening status and buttons for directions and LINE.">
+          </figure>
+          <span class="mono card__no">10 — Concept site</span>
+          <h3 id="p10" class="card__title">Sample Cafe</h3>
+          <p class="card__lede">Thai/English site for a fictional Bangkok cafe, with table booking, pre-orders and a staff dashboard.</p>
+          <ul class="tags" role="list"><li>JavaScript</li><li>Netlify Functions</li><li>No framework</li></ul>
+          <p class="project__links mono">
+            <a href="https://sample-cafe-demo.netlify.app/">Visit site<span class="sr-only">: Sample Cafe</span> <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/SUDARSUN-24/sample-cafe">Code<span class="sr-only">: Sample Cafe on GitHub</span> <span aria-hidden="true">↗</span></a>
+          </p>
+        </article>
+
+        <article class="card" id="atelier-thorne" aria-labelledby="p11">
+          <figure class="frame frame--small">
+            <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <img src="/assets/atelier-thorne-800.webp"
+                 srcset="/assets/atelier-thorne-800.webp 800w, /assets/atelier-thorne-1600.webp 1600w"
+                 sizes="(min-width: 1264px) 384px, (min-width: 960px) 30vw, (min-width: 640px) 46vw, calc(100vw - 2 * var(--gutter))"
+                 width="1600" height="1000" loading="lazy" decoding="async"
+                 alt="Atelier Thorne home page: the headline 'One pattern, cut for you alone' beside a photo of a tailor cutting navy cloth.">
+          </figure>
+          <span class="mono card__no">11 — Concept site</span>
+          <h3 id="p11" class="card__title">Atelier Thorne</h3>
+          <p class="card__lede">Six-page website for a fictional bespoke tailor in Bangkok, with a filterable gallery and a consultation form.</p>
+          <ul class="tags" role="list"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Web3Forms</li></ul>
+          <p class="project__links mono">
+            <a href="https://sudarsun-24.github.io/Tailor_trial/">Visit site<span class="sr-only">: Atelier Thorne</span> <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/SUDARSUN-24/Tailor_trial">Code<span class="sr-only">: Atelier Thorne on GitHub</span> <span aria-hidden="true">↗</span></a>
+          </p>
+        </article>
+      </div>
+    </section>
 
     <!-- ============ ABOUT ============ -->
     <section class="about wrap" id="about" aria-labelledby="about-title">
       <div class="kicker"><h2 id="about-title" class="mono">About</h2></div>
       <div class="about__grid">
         <div class="about__text">
-          <p class="about__lede">I learn by shipping. Every project here is live, tested and built from scratch, mostly with plain HTML, CSS and JavaScript.</p>
+          <p class="about__lede">I learn by shipping. Eleven projects so far, from a Thai LINE bot to a 3D action RPG, built from scratch and backed by tests.</p>
           <h3 class="about__sub mono">Education</h3>
           <dl class="toolkit">
             <div><dt class="mono">Degree</dt><dd>B.Sc. Information Technology, Siam University</dd></div>
@@ -301,17 +577,18 @@
             <div><dt class="mono">Languages</dt><dd>English, Thai, Nepali, Hindi</dd></div>
           </dl>
           <p class="availability">Available from January 2027 · Based in Bangkok, January to May 2027 · Remote welcome</p>
-          <p class="about__actions"><a class="btn-resume mono" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Download resume (PDF) <span aria-hidden="true">↓</span></a></p>
+          <p class="about__actions"><a class="btn" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Download resume (PDF) <span aria-hidden="true">↓</span></a></p>
         </div>
         <div>
           <h3 class="about__sub mono">Skills</h3>
           <dl class="toolkit">
-            <div><dt class="mono">Front end</dt><dd>HTML, CSS, JavaScript, accessibility, responsive design</dd></div>
-            <div><dt class="mono">Browser APIs</dt><dd>Web Audio, Web Speech, Service Worker, Three.js (WebGL)</dd></div>
-            <div><dt class="mono">Testing</dt><dd>Playwright, Puppeteer, Lighthouse, Node test runner, GitHub Actions</dd></div>
-            <div><dt class="mono">Back end</dt><dd>Node.js, Netlify Functions</dd></div>
-            <div><dt class="mono">Tools</dt><dd>Git, GitHub, Vercel, Netlify</dd></div>
-            <div><dt class="mono">Games &amp; 3D</dt><dd>Godot, GDScript, Blender, Mixamo</dd></div>
+            <div><dt class="mono">Front end</dt><dd>HTML, CSS, JavaScript, TypeScript, React, Next.js, Tailwind, accessibility, responsive design</dd></div>
+            <div><dt class="mono">Browser APIs</dt><dd>Web Audio, Web Speech, Web Workers, Service Worker, Three.js (WebGL)</dd></div>
+            <div><dt class="mono">Back end &amp; data</dt><dd>Node.js, Netlify Functions, Cloudflare Workers, PostgreSQL, Prisma, Auth.js, SQLite</dd></div>
+            <div><dt class="mono">Desktop &amp; AI</dt><dd>Python, PySide6 (Qt), Ollama, Gemini API, PyInstaller</dd></div>
+            <div><dt class="mono">Testing</dt><dd>Playwright, Puppeteer, pytest, Node test runner, Lighthouse, GitHub Actions</dd></div>
+            <div><dt class="mono">Tools</dt><dd>Git, GitHub, Docker, Vercel, Netlify</dd></div>
+            <div><dt class="mono">Games &amp; 3D</dt><dd>Godot 4, GDScript, Blender, Mixamo</dd></div>
           </dl>
         </div>
       </div>
@@ -323,11 +600,11 @@
       <p class="contact__line">Hiring a front-end intern or junior developer? Email&nbsp;me at <a href="mailto:sudarsun78@gmail.com">sudarsun78@gmail.com</a></p>
       <p class="availability">Available from January 2027 · Based in Bangkok, January to May 2027 · Remote welcome</p>
       <p class="contact__actions mono">
-        <a class="btn-resume mono" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Download resume (PDF) <span aria-hidden="true">↓</span></a>
-        <button type="button" class="copy-btn" data-copy="sudarsun78@gmail.com" hidden>Copy email</button>
+        <a class="btn btn--solid" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Download resume (PDF) <span aria-hidden="true">↓</span></a>
+        <button type="button" class="btn copy-btn" data-copy="sudarsun78@gmail.com" hidden>Copy email</button>
         <span class="copy-status" role="status" aria-live="polite"></span>
-        <a href="https://github.com/SUDARSUN-24">GitHub <span aria-hidden="true">↗</span></a>
-        <a href="https://www.linkedin.com/in/sudarsun-020298348/">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a class="link" href="https://github.com/SUDARSUN-24">GitHub <span aria-hidden="true">↗</span></a>
+        <a class="link" href="https://www.linkedin.com/in/sudarsun-020298348/">LinkedIn <span aria-hidden="true">↗</span></a>
       </p>
     </section>
   </main>
