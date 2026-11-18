@@ -38,18 +38,66 @@ var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
       io.unobserve(entry.target);
       var el = entry.target;
       var end = Number(el.getAttribute("data-count"));
-      var suffix = el.getAttribute("data-suffix") || "";
       var start = performance.now();
-      var dur = 1200;
+      var dur = 1400;
       (function step(now) {
         var t = Math.min(1, (now - start) / dur);
-        var eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = Math.round(end * eased) + (t === 1 ? suffix : "");
+        el.textContent = Math.round(end * (1 - Math.pow(1 - t, 3)));
         if (t < 1) requestAnimationFrame(step);
       })(start);
     });
   }, { threshold: 0.6 });
   nums.forEach(function (n) { io.observe(n); });
+})();
+
+// Hero headline: wrap each word so it can rise into place.
+(function () {
+  var h = document.querySelector("[data-split]");
+  if (!h || reduceMotion) return;
+  var i = 0;
+  function wrap(node) {
+    var outer = document.createElement("span");
+    outer.className = "w";
+    var inner = document.createElement("span");
+    inner.style.setProperty("--wi", i++);
+    inner.appendChild(node);
+    outer.appendChild(inner);
+    return outer;
+  }
+  Array.prototype.slice.call(h.childNodes).forEach(function (node) {
+    if (node.nodeType === 3) {
+      var frag = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach(function (part) {
+        if (!part) return;
+        frag.appendChild(/^\s+$/.test(part) ? document.createTextNode(" ") : wrap(document.createTextNode(part)));
+      });
+      h.replaceChild(frag, node);
+    } else if (node.nodeType === 1) {
+      h.replaceChild(wrap(node.cloneNode(true)), node);
+    }
+  });
+})();
+
+// Hero collage: cards drift with the mouse (fine pointers only).
+(function () {
+  var c = document.querySelector(".collage");
+  if (!c || reduceMotion || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  var hero = document.querySelector(".hero");
+  var raf = 0, px = 0, py = 0;
+  hero.addEventListener("mousemove", function (e) {
+    var r = c.getBoundingClientRect();
+    px = ((e.clientX - (r.left + r.width / 2)) / window.innerWidth) * 2;
+    py = ((e.clientY - (r.top + r.height / 2)) / window.innerHeight) * 2;
+    if (!raf) raf = requestAnimationFrame(function () {
+      raf = 0;
+      c.style.setProperty("--px", px.toFixed(3));
+      c.style.setProperty("--py", py.toFixed(3));
+    });
+  });
+  hero.addEventListener("mouseleave", function () {
+    c.style.setProperty("--px", 0);
+    c.style.setProperty("--py", 0);
+  });
 })();
 
 // Fade sections in as they scroll into view (only those below the fold).

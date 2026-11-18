@@ -47,9 +47,9 @@
   <header class="masthead">
     <div class="wrap masthead__inner">
       <a class="masthead__name" href="#top">Sudasun</a>
-      <p class="masthead__place mono" aria-hidden="true">Bangkok<span class="masthead__clock" data-clock></span></p>
+      <p class="masthead__place label" aria-hidden="true">Bangkok<span class="masthead__clock" data-clock></span></p>
       <nav aria-label="Main">
-        <ul class="masthead__nav mono" role="list">
+        <ul class="masthead__nav label" role="list">
           <li><a href="#work">Work</a></li>
           <li class="hide-sm"><a href="#games">Games</a></li>
           <li><a href="#about">About</a></li>
@@ -63,29 +63,38 @@
   <main id="main">
     <!-- ============ HERO ============ -->
     <section class="hero wrap" id="top" aria-labelledby="hero-title">
-      <p class="hero__status mono"><span class="pulse" aria-hidden="true"></span>Open to internships &amp; junior roles · from January 2027</p>
-      <h1 id="hero-title" class="hero__title">
-        Sudasun is a front-end developer in Bangkok who builds web apps, desktop tools and <em>games</em>.
-      </h1>
-      <div class="hero__row">
-        <p class="hero__intro">IT student at Siam University. I design, build and test my own projects end to end, from a bilingual library system to a 3D action RPG.</p>
-        <p class="hero__actions">
-          <a class="btn btn--solid" href="#work">See the work <span aria-hidden="true">↓</span></a>
-          <a class="btn" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Resume (PDF)</a>
-        </p>
+      <div class="hero__grid">
+        <div class="hero__main">
+          <p class="hero__status label"><span class="pulse" aria-hidden="true"></span>Open to internships &amp; junior roles · from January 2027</p>
+          <p class="hero__eyebrow label">Front-end developer · Bangkok, Thailand</p>
+          <h1 id="hero-title" class="hero__title" data-split>Sudasun builds web apps, desktop tools <span class="amp">&amp;</span> <em>games</em>.</h1>
+          <p class="hero__intro">IT student at Siam University. I design, build and test my own projects end to end, from a bilingual library system to a 3D action RPG.</p>
+          <p class="hero__actions">
+            <a class="btn btn--solid" href="#work">See the work <span aria-hidden="true">↓</span></a>
+            <a class="btn" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Resume (PDF)</a>
+          </p>
+        </div>
+
+        <div class="collage" aria-hidden="true">
+          <a class="collage__card" href="#resonance" tabindex="-1" style="--i:0"><img src="/assets/resonance-800.webp" alt="" width="800" height="500" decoding="async"><span class="label">Resonance</span></a>
+          <a class="collage__card" href="#siam-library" tabindex="-1" style="--i:1"><img src="/assets/library-home-800.webp" alt="" width="800" height="500" decoding="async"><span class="label">Siam Library</span></a>
+          <a class="collage__card" href="#mahabharat" tabindex="-1" style="--i:2"><img src="/assets/mb-release-800.webp" alt="" width="800" height="450" decoding="async"><span class="label">Mahabharat</span></a>
+          <a class="collage__card" href="#vedant" tabindex="-1" style="--i:3"><img src="/assets/vedant-800.webp" alt="" width="800" height="500" decoding="async"><span class="label">Vedant</span></a>
+          <a class="collage__card" href="#isle-wood" tabindex="-1" style="--i:4"><img src="/assets/biw-news-800.webp" alt="" width="800" height="450" decoding="async"><span class="label">Isle Wood</span></a>
+        </div>
       </div>
 
       <dl class="stats">
-        <div><dt class="mono">Projects built</dt><dd data-count="11">11</dd></div>
-        <div><dt class="mono">Games in Godot</dt><dd data-count="3">3</dd></div>
-        <div><dt class="mono">Automated tests</dt><dd data-count="370" data-suffix="+">370+</dd></div>
-        <div><dt class="mono">Commits in 2026</dt><dd data-count="600" data-suffix="+">600+</dd></div>
+        <div><dt class="label">Projects built</dt><dd><span data-count="11">11</span></dd></div>
+        <div><dt class="label">Games in Godot</dt><dd><span data-count="3">3</span></dd></div>
+        <div><dt class="label">Automated tests</dt><dd><span data-count="370">370</span><span class="suf">+</span></dd></div>
+        <div><dt class="label">Commits in 2026</dt><dd><span data-count="600">600</span><span class="suf">+</span></dd></div>
       </dl>
 
       <dl class="hero__facts">
-        <div><dt class="mono">Now</dt><dd>B.Sc. Information Technology, Siam University</dd></div>
-        <div><dt class="mono">Speaks</dt><dd>English, Thai, Nepali, Hindi</dd></div>
-        <div><dt class="mono">Elsewhere</dt><dd class="hero__links mono">
+        <div><dt class="label">Now</dt><dd>B.Sc. Information Technology, Siam University</dd></div>
+        <div><dt class="label">Speaks</dt><dd>English, Thai, Nepali, Hindi</dd></div>
+        <div><dt class="label">Elsewhere</dt><dd class="hero__links label">
           <a href="https://github.com/SUDARSUN-24">GitHub <span aria-hidden="true">↗</span></a>
           <a href="https://www.linkedin.com/in/sudarsun-020298348/">LinkedIn <span aria-hidden="true">↗</span></a>
           <a href="mailto:sudarsun78@gmail.com">Email <span aria-hidden="true">↗</span></a>
@@ -95,61 +104,61 @@
 
     <!-- ============ STACK MARQUEE ============ -->
     <div class="marquee" aria-label="Tools I have shipped with">
-      <ul class="marquee__track mono" role="list">
-        <li>JavaScript</li><li>TypeScript</li><li>Next.js</li><li>React</li><li>Three.js</li><li>Node.js</li><li>Python</li><li>PySide6</li><li>PostgreSQL</li><li>Prisma</li><li>Docker</li><li>Cloudflare Workers</li><li>Netlify Functions</li><li>Playwright</li><li>Godot 4</li><li>Blender</li><li>Web Audio API</li><li>Web Speech API</li><li>GitHub Actions</li>
+      <ul class="marquee__track" role="list">
+        <li>JavaScript</li><li><em>TypeScript</em></li><li>Next.js</li><li><em>React</em></li><li>Three.js</li><li><em>Node.js</em></li><li>Python</li><li><em>PySide6</em></li><li>PostgreSQL</li><li><em>Prisma</em></li><li>Docker</li><li><em>Cloudflare Workers</em></li><li>Playwright</li><li><em>Godot 4</em></li><li>Blender</li><li><em>Web Audio</em></li><li>Web Speech</li><li><em>GitHub Actions</em></li>
       </ul>
-      <ul class="marquee__track mono" role="list" aria-hidden="true">
-        <li>JavaScript</li><li>TypeScript</li><li>Next.js</li><li>React</li><li>Three.js</li><li>Node.js</li><li>Python</li><li>PySide6</li><li>PostgreSQL</li><li>Prisma</li><li>Docker</li><li>Cloudflare Workers</li><li>Netlify Functions</li><li>Playwright</li><li>Godot 4</li><li>Blender</li><li>Web Audio API</li><li>Web Speech API</li><li>GitHub Actions</li>
+      <ul class="marquee__track" role="list" aria-hidden="true">
+        <li>JavaScript</li><li><em>TypeScript</em></li><li>Next.js</li><li><em>React</em></li><li>Three.js</li><li><em>Node.js</em></li><li>Python</li><li><em>PySide6</em></li><li>PostgreSQL</li><li><em>Prisma</em></li><li>Docker</li><li><em>Cloudflare Workers</em></li><li>Playwright</li><li><em>Godot 4</em></li><li>Blender</li><li><em>Web Audio</em></li><li>Web Speech</li><li><em>GitHub Actions</em></li>
       </ul>
     </div>
 
     <!-- ============ INDEX ============ -->
     <section class="index wrap" id="work" aria-labelledby="work-title">
       <div class="kicker">
-        <h2 id="work-title" class="mono">All work</h2>
-        <span class="mono" aria-hidden="true">(11)</span>
+        <h2 id="work-title" class="label">All work</h2>
+        <span class="label" aria-hidden="true">(11)</span>
       </div>
       <div class="filters" role="group" aria-label="Filter projects" hidden>
-        <button type="button" class="chip mono" data-filter="all" aria-pressed="true">All <span>11</span></button>
-        <button type="button" class="chip mono" data-filter="web" aria-pressed="false">Web apps <span>3</span></button>
-        <button type="button" class="chip mono" data-filter="tools" aria-pressed="false">Tools &amp; AI <span>2</span></button>
-        <button type="button" class="chip mono" data-filter="games" aria-pressed="false">Games <span>3</span></button>
-        <button type="button" class="chip mono" data-filter="concept" aria-pressed="false">Concept sites <span>3</span></button>
+        <button type="button" class="chip label" data-filter="all" aria-pressed="true">All <span>11</span></button>
+        <button type="button" class="chip label" data-filter="web" aria-pressed="false">Web apps <span>3</span></button>
+        <button type="button" class="chip label" data-filter="tools" aria-pressed="false">Tools &amp; AI <span>2</span></button>
+        <button type="button" class="chip label" data-filter="games" aria-pressed="false">Games <span>3</span></button>
+        <button type="button" class="chip label" data-filter="concept" aria-pressed="false">Concept sites <span>3</span></button>
       </div>
       <ol class="index__list" role="list">
         <li data-cat="web"><a class="index__row" href="#resonance" data-preview="/assets/resonance-800.webp">
-          <span class="index__no mono">01</span><span class="index__name">Resonance</span>
-          <span class="index__type mono">Voice studio · web app</span><span class="index__year mono">2026</span></a></li>
+          <span class="index__no label">01</span><span class="index__name">Resonance</span>
+          <span class="index__type label">Voice studio · web app</span><span class="index__year label">2026</span></a></li>
         <li data-cat="web"><a class="index__row" href="#siam-library" data-preview="/assets/library-home-800.webp">
-          <span class="index__no mono">02</span><span class="index__name">Siam Library</span>
-          <span class="index__type mono">Full-stack · university</span><span class="index__year mono">2026</span></a></li>
+          <span class="index__no label">02</span><span class="index__name">Siam Library</span>
+          <span class="index__type label">Full-stack · university</span><span class="index__year label">2026</span></a></li>
         <li data-cat="web"><a class="index__row" href="#velonix" data-preview="/assets/velonix-800.webp">
-          <span class="index__no mono">03</span><span class="index__name">Velonix Customs</span>
-          <span class="index__type mono">3D web app</span><span class="index__year mono">2026</span></a></li>
+          <span class="index__no label">03</span><span class="index__name">Velonix Customs</span>
+          <span class="index__type label">3D web app</span><span class="index__year label">2026</span></a></li>
         <li data-cat="tools"><a class="index__row" href="#vedant" data-preview="/assets/vedant-800.webp">
-          <span class="index__no mono">04</span><span class="index__name">Vedant</span>
-          <span class="index__type mono">Desktop AI assistant</span><span class="index__year mono">2026</span></a></li>
+          <span class="index__no label">04</span><span class="index__name">Vedant</span>
+          <span class="index__type label">Desktop AI assistant</span><span class="index__year label">2026</span></a></li>
         <li data-cat="tools"><a class="index__row" href="#khun-chuay" data-preview="/assets/khun-chuay-menu-800.webp">
-          <span class="index__no mono">05</span><span class="index__name">Khun Chuay</span>
-          <span class="index__type mono">LINE bot</span><span class="index__year mono">2026</span></a></li>
+          <span class="index__no label">05</span><span class="index__name">Khun Chuay</span>
+          <span class="index__type label">LINE bot</span><span class="index__year label">2026</span></a></li>
         <li data-cat="games"><a class="index__row" href="#whispers" data-preview="/assets/wotr-crossing-800.webp">
-          <span class="index__no mono">06</span><span class="index__name">Whispers of the River</span>
-          <span class="index__type mono">3D horror · team lead</span><span class="index__year mono">2026</span></a></li>
+          <span class="index__no label">06</span><span class="index__name">Whispers of the River</span>
+          <span class="index__type label">3D horror · team lead</span><span class="index__year label">2026</span></a></li>
         <li data-cat="games"><a class="index__row" href="#mahabharat" data-preview="/assets/mb-release-800.webp">
-          <span class="index__no mono">07</span><span class="index__name">Mahabharat</span>
-          <span class="index__type mono">3D action RPG</span><span class="index__year mono">2026</span></a></li>
+          <span class="index__no label">07</span><span class="index__name">Mahabharat</span>
+          <span class="index__type label">3D action RPG</span><span class="index__year label">2026</span></a></li>
         <li data-cat="games"><a class="index__row" href="#isle-wood" data-preview="/assets/biw-news-800.webp">
-          <span class="index__no mono">08</span><span class="index__name">Buried at Isle Wood</span>
-          <span class="index__type mono">2D detective game</span><span class="index__year mono">2026</span></a></li>
+          <span class="index__no label">08</span><span class="index__name">Buried at Isle Wood</span>
+          <span class="index__type label">2D detective game</span><span class="index__year label">2026</span></a></li>
         <li data-cat="concept"><a class="index__row" href="#sample-hotel" data-preview="/assets/sample-hotel-800.webp">
-          <span class="index__no mono">09</span><span class="index__name">Sample Hotel</span>
-          <span class="index__type mono">Concept site · booking</span><span class="index__year mono">2026</span></a></li>
+          <span class="index__no label">09</span><span class="index__name">Sample Hotel</span>
+          <span class="index__type label">Concept site · booking</span><span class="index__year label">2026</span></a></li>
         <li data-cat="concept"><a class="index__row" href="#sample-cafe" data-preview="/assets/sample-cafe-800.webp">
-          <span class="index__no mono">10</span><span class="index__name">Sample Cafe</span>
-          <span class="index__type mono">Concept site</span><span class="index__year mono">2026</span></a></li>
+          <span class="index__no label">10</span><span class="index__name">Sample Cafe</span>
+          <span class="index__type label">Concept site</span><span class="index__year label">2026</span></a></li>
         <li data-cat="concept"><a class="index__row" href="#atelier-thorne" data-preview="/assets/atelier-thorne-800.webp">
-          <span class="index__no mono">11</span><span class="index__name">Atelier Thorne</span>
-          <span class="index__type mono">Concept site</span><span class="index__year mono">2026</span></a></li>
+          <span class="index__no label">11</span><span class="index__name">Atelier Thorne</span>
+          <span class="index__type label">Concept site</span><span class="index__year label">2026</span></a></li>
       </ol>
       <img class="index__preview" alt="" aria-hidden="true" width="800" height="500" hidden>
     </section>
@@ -157,14 +166,14 @@
     <!-- ============ CHAPTER 1: WEB APPS & TOOLS ============ -->
     <section class="chapter" aria-labelledby="ch-apps">
       <div class="wrap chapter__head">
-        <span class="chapter__no mono">Part one</span>
+        <span class="chapter__no label">Part one</span><span class="chapter__num" aria-hidden="true">01</span>
         <h2 id="ch-apps" class="chapter__title">Web apps <em>&amp;</em> tools</h2>
         <p class="chapter__note">Things people use: in a browser, on a desktop, inside LINE.</p>
       </div>
 
       <article class="project wrap" id="resonance" aria-labelledby="p1">
         <header class="project__head">
-          <span class="mono">01 — Web app</span>
+          <span class="label">01 — Web app</span>
           <h3 id="p1" class="project__title">Resonance</h3>
         </header>
         <figure class="frame">
@@ -178,32 +187,32 @@
         <div class="project__info">
           <p class="project__lede">A voice studio that runs in the browser. Type any text, choose a voice and hear it read aloud with live captions.</p>
           <dl class="project__meta">
-            <div><dt class="mono">Tests</dt><dd>
+            <div><dt class="label">Tests</dt><dd>
               <a href="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml">116 automated tests</a>, run on every push
               <a class="badge" href="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml"><img src="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml/badge.svg?branch=main" alt="Current test status on GitHub Actions" height="20"></a>
             </dd></div>
-            <div><dt class="mono">Languages</dt><dd>45+: 45 built in, plus any others the visitor's device has voices for. 18 languages with their own alphabet (such as Thai, Hindi and Arabic) are detected as you type.</dd></div>
-            <div><dt class="mono">Role</dt><dd>Solo: design, front end, back end</dd></div>
-            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>JavaScript</li><li>Web Speech API</li><li>Web Audio API</li><li>Web Workers</li><li>Netlify Functions</li></ul></dd></div>
+            <div><dt class="label">Languages</dt><dd>45+: 45 built in, plus any others the visitor's device has voices for. 18 languages with their own alphabet (such as Thai, Hindi and Arabic) are detected as you type.</dd></div>
+            <div><dt class="label">Role</dt><dd>Solo: design, front end, back end</dd></div>
+            <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>JavaScript</li><li>Web Speech API</li><li>Web Audio API</li><li>Web Workers</li><li>Netlify Functions</li></ul></dd></div>
           </dl>
-          <p class="project__links mono">
+          <p class="project__links label">
             <a href="https://resonancesun.netlify.app/">Visit site<span class="sr-only">: Resonance</span> <span aria-hidden="true">↗</span></a>
             <a href="https://github.com/SUDARSUN-24/Resonance">Code<span class="sr-only">: Resonance on GitHub</span> <span aria-hidden="true">↗</span></a>
           </p>
         </div>
         <details class="case">
-          <summary><span class="mono">Case study</span><span class="case__hint">Problem, decision, result</span></summary>
+          <summary><span class="label">Case study</span><span class="case__hint">Problem, decision, result</span></summary>
           <dl class="case__body">
-            <div><dt class="mono">Problem</dt><dd>Text-to-speech that works in any browser, with no install, no account and no paid API.</dd></div>
-            <div><dt class="mono">Decision</dt><dd>Use the browser's built-in speech voices, plus an optional open-source voice (Kokoro) that runs on the device in a Web Worker, instead of a paid cloud service.</dd></div>
-            <div><dt class="mono">Result</dt><dd>Free to run, works offline after the first visit, and a deploy only goes out when all 116 tests pass.</dd></div>
+            <div><dt class="label">Problem</dt><dd>Text-to-speech that works in any browser, with no install, no account and no paid API.</dd></div>
+            <div><dt class="label">Decision</dt><dd>Use the browser's built-in speech voices, plus an optional open-source voice (Kokoro) that runs on the device in a Web Worker, instead of a paid cloud service.</dd></div>
+            <div><dt class="label">Result</dt><dd>Free to run, works offline after the first visit, and a deploy only goes out when all 116 tests pass.</dd></div>
           </dl>
         </details>
       </article>
 
       <article class="project wrap" id="siam-library" aria-labelledby="p2">
         <header class="project__head">
-          <span class="mono">02 — Full-stack web app · university project</span>
+          <span class="label">02 — Full-stack web app · university project</span>
           <h3 id="p2" class="project__title">Siam Library <em>Book Preview</em></h3>
         </header>
         <div class="game-gallery" data-gallery>
@@ -232,30 +241,30 @@
         <div class="project__info">
           <p class="project__lede">Students read a short preview of any library book, see if it is on the shelf and exactly where, then borrow it at the counter.</p>
           <dl class="project__meta">
-            <div><dt class="mono">Tests</dt><dd>66 end-to-end tests in Playwright, on desktop and mobile browsers</dd></div>
-            <div><dt class="mono">Staff area</dt><dd>Add books, upload page photos from a phone, mark books borrowed or returned, print QR stickers</dd></div>
-            <div><dt class="mono">Security</dt><dd>Two-step login (authenticator app), server-side role checks, rate-limited login, nonce-based Content Security Policy</dd></div>
-            <div><dt class="mono">Role</dt><dd>Solo university project: design, front end, back end, database, tests</dd></div>
-            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>Next.js 16</li><li>TypeScript</li><li>Tailwind</li><li>PostgreSQL</li><li>Prisma</li><li>Auth.js</li><li>Docker</li></ul></dd></div>
+            <div><dt class="label">Tests</dt><dd>66 end-to-end tests in Playwright, on desktop and mobile browsers</dd></div>
+            <div><dt class="label">Staff area</dt><dd>Add books, upload page photos from a phone, mark books borrowed or returned, print QR stickers</dd></div>
+            <div><dt class="label">Security</dt><dd>Two-step login (authenticator app), server-side role checks, rate-limited login, nonce-based Content Security Policy</dd></div>
+            <div><dt class="label">Role</dt><dd>Solo university project: design, front end, back end, database, tests</dd></div>
+            <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>Next.js 16</li><li>TypeScript</li><li>Tailwind</li><li>PostgreSQL</li><li>Prisma</li><li>Auth.js</li><li>Docker</li></ul></dd></div>
           </dl>
-          <p class="project__links mono">
+          <p class="project__links label">
             <a href="https://siam-library.vercel.app/">Visit site<span class="sr-only">: Siam Library Book Preview</span> <span aria-hidden="true">↗</span></a>
             <span class="muted">Code in a private university repo</span>
           </p>
         </div>
         <details class="case">
-          <summary><span class="mono">Case study</span><span class="case__hint">Problem, decision, result</span></summary>
+          <summary><span class="label">Case study</span><span class="case__hint">Problem, decision, result</span></summary>
           <dl class="case__body">
-            <div><dt class="mono">Problem</dt><dd>Students can't judge a library book from its title, and can't tell if it is on the shelf until they walk there.</dd></div>
-            <div><dt class="mono">Decision</dt><dd>Add a "look inside" preview of 5–10 pages, live availability and the exact shelf and row, plus a QR code on every book and shelf that links the physical library to the website.</dd></div>
-            <div><dt class="mono">Result</dt><dd>Live on Vercel with a Neon PostgreSQL database and private photo storage, in Thai and English, with a Docker setup ready for a university server.</dd></div>
+            <div><dt class="label">Problem</dt><dd>Students can't judge a library book from its title, and can't tell if it is on the shelf until they walk there.</dd></div>
+            <div><dt class="label">Decision</dt><dd>Add a "look inside" preview of 5–10 pages, live availability and the exact shelf and row, plus a QR code on every book and shelf that links the physical library to the website.</dd></div>
+            <div><dt class="label">Result</dt><dd>Live on Vercel with a Neon PostgreSQL database and private photo storage, in Thai and English, with a Docker setup ready for a university server.</dd></div>
           </dl>
         </details>
       </article>
 
       <article class="project wrap" id="velonix" aria-labelledby="p3">
         <header class="project__head">
-          <span class="mono">03 — 3D web app</span>
+          <span class="label">03 — 3D web app</span>
           <h3 id="p3" class="project__title">Velonix Customs</h3>
         </header>
         <figure class="frame">
@@ -269,28 +278,28 @@
         <div class="project__info">
           <p class="project__lede">A 3D vehicle showroom. Rotate five vehicles, customise one in the configurator and rev its engine.</p>
           <dl class="project__meta">
-            <div><dt class="mono">Detail</dt><dd>Engine sound made in code, no audio files</dd></div>
-            <div><dt class="mono">Role</dt><dd>Solo: design, 3D, front end</dd></div>
-            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>JavaScript</li><li>Three.js</li><li>Web Audio API</li><li>Puppeteer</li></ul></dd></div>
+            <div><dt class="label">Detail</dt><dd>Engine sound made in code, no audio files</dd></div>
+            <div><dt class="label">Role</dt><dd>Solo: design, 3D, front end</dd></div>
+            <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>JavaScript</li><li>Three.js</li><li>Web Audio API</li><li>Puppeteer</li></ul></dd></div>
           </dl>
-          <p class="project__links mono">
+          <p class="project__links label">
             <a href="https://velonixsun.vercel.app/">Visit site<span class="sr-only">: Velonix Customs</span> <span aria-hidden="true">↗</span></a>
             <a href="https://github.com/SUDARSUN-24/Velonix">Code<span class="sr-only">: Velonix Customs on GitHub</span> <span aria-hidden="true">↗</span></a>
           </p>
         </div>
         <details class="case">
-          <summary><span class="mono">Case study</span><span class="case__hint">Problem, decision, result</span></summary>
+          <summary><span class="label">Case study</span><span class="case__hint">Problem, decision, result</span></summary>
           <dl class="case__body">
-            <div><dt class="mono">Problem</dt><dd>Show five vehicles in 3D and let people hear the engine, without making the page slow.</dd></div>
-            <div><dt class="mono">Decision</dt><dd>One shared Three.js scene for the home page and the configurator, and engine sound generated with the Web Audio API instead of recorded files.</dd></div>
-            <div><dt class="mono">Result</dt><dd>No audio files to download, and browser tests confirm the home page still works when 3D (WebGL) is unavailable.</dd></div>
+            <div><dt class="label">Problem</dt><dd>Show five vehicles in 3D and let people hear the engine, without making the page slow.</dd></div>
+            <div><dt class="label">Decision</dt><dd>One shared Three.js scene for the home page and the configurator, and engine sound generated with the Web Audio API instead of recorded files.</dd></div>
+            <div><dt class="label">Result</dt><dd>No audio files to download, and browser tests confirm the home page still works when 3D (WebGL) is unavailable.</dd></div>
           </dl>
         </details>
       </article>
 
       <article class="project wrap" id="vedant" aria-labelledby="p4">
         <header class="project__head">
-          <span class="mono">04 — Desktop app · Windows</span>
+          <span class="label">04 — Desktop app · Windows</span>
           <h3 id="p4" class="project__title">Vedant</h3>
         </header>
         <figure class="frame frame--window">
@@ -304,12 +313,12 @@
         <div class="project__info">
           <p class="project__lede">A personal AI assistant for the desktop. Talk or type, hear it answer, and let it remember things, set reminders and open your apps.</p>
           <dl class="project__meta">
-            <div><dt class="mono">Tests</dt><dd>174 automated tests (pytest), plus a built-in self-test for microphone, speech and AI provider</dd></div>
-            <div><dt class="mono">Safety</dt><dd>Opens only apps on an allowlist, asks before acting, and never runs shell commands</dd></div>
-            <div><dt class="mono">Free to run</dt><dd>Local models through Ollama (works offline) or Google Gemini's free tier</dd></div>
-            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>Python</li><li>PySide6 (Qt)</li><li>SQLite</li><li>Ollama</li><li>Gemini API</li><li>PyInstaller</li></ul></dd></div>
+            <div><dt class="label">Tests</dt><dd>174 automated tests (pytest), plus a built-in self-test for microphone, speech and AI provider</dd></div>
+            <div><dt class="label">Safety</dt><dd>Opens only apps on an allowlist, asks before acting, and never runs shell commands</dd></div>
+            <div><dt class="label">Free to run</dt><dd>Local models through Ollama (works offline) or Google Gemini's free tier</dd></div>
+            <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>Python</li><li>PySide6 (Qt)</li><li>SQLite</li><li>Ollama</li><li>Gemini API</li><li>PyInstaller</li></ul></dd></div>
           </dl>
-          <p class="project__links mono">
+          <p class="project__links label">
             <span class="muted">Windows app · demo on request</span>
           </p>
         </div>
@@ -318,17 +327,17 @@
       <article class="project project--split wrap" id="khun-chuay" aria-labelledby="p5">
         <div class="split__text">
           <header class="project__head">
-            <span class="mono">05 — LINE bot</span>
+            <span class="label">05 — LINE bot</span>
             <h3 id="p5" class="project__title">Khun Chuay <span class="th" lang="th">คุณช่วย</span></h3>
           </header>
           <p class="project__lede">A LINE bot for everyday life in Thailand. Split a bill with a real PromptPay QR code, and get PM2.5 and rain alerts for where you are.</p>
           <dl class="project__meta">
-            <div><dt class="mono">Detail</dt><dd>PromptPay QR codes generated inside the bot (EMVCo payload, CRC-16 and a hand-written PNG encoder), so no outside service sees a phone number</dd></div>
-            <div><dt class="mono">Data</dt><dd>Nearest of about 170 official air-quality stations, Thai PM2.5 bands, rain forecasts and a 7:00 morning summary</dd></div>
-            <div><dt class="mono">Tests</dt><dd>21 automated tests, plus a simulated LINE chat to try it with no accounts</dd></div>
-            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>JavaScript</li><li>Cloudflare Workers</li><li>Cloudflare KV</li><li>LINE Messaging API</li></ul></dd></div>
+            <div><dt class="label">Detail</dt><dd>PromptPay QR codes generated inside the bot (EMVCo payload, CRC-16 and a hand-written PNG encoder), so no outside service sees a phone number</dd></div>
+            <div><dt class="label">Data</dt><dd>Nearest of about 170 official air-quality stations, Thai PM2.5 bands, rain forecasts and a 7:00 morning summary</dd></div>
+            <div><dt class="label">Tests</dt><dd>21 automated tests, plus a simulated LINE chat to try it with no accounts</dd></div>
+            <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>JavaScript</li><li>Cloudflare Workers</li><li>Cloudflare KV</li><li>LINE Messaging API</li></ul></dd></div>
           </dl>
-          <p class="project__links mono">
+          <p class="project__links label">
             <a href="https://github.com/SUDARSUN-24/khun-chuay">Code<span class="sr-only">: Khun Chuay on GitHub</span> <span aria-hidden="true">↗</span></a>
           </p>
         </div>
@@ -345,7 +354,7 @@
           </ol>
           <img class="chat__menu" src="/assets/khun-chuay-menu-800.webp" width="800" height="540" loading="lazy" decoding="async"
                alt="The bot's button menu: Split bill, Who hasn't paid, Get paid, Air quality, Rain and weather, Settings, each in Thai and English." lang="en">
-          <figcaption class="mono">Real flow from the bot · service 10% then VAT 7%, rounded up</figcaption>
+          <figcaption class="label">Real flow from the bot · service 10% then VAT 7%, rounded up</figcaption>
         </figure>
       </article>
     </section>
@@ -353,14 +362,14 @@
     <!-- ============ CHAPTER 2: GAMES (dark band) ============ -->
     <section class="chapter band" id="games" aria-labelledby="ch-games">
       <div class="wrap chapter__head">
-        <span class="chapter__no mono">Part two</span>
+        <span class="chapter__no label">Part two</span><span class="chapter__num" aria-hidden="true">02</span>
         <h2 id="ch-games" class="chapter__title">Games <em>in Godot</em></h2>
         <p class="chapter__note">Three games, from first-person horror to a 25-character epic. All tuned to run on a laptop's built-in graphics.</p>
       </div>
 
       <article class="project wrap" id="whispers" aria-labelledby="p6">
         <header class="project__head">
-          <span class="mono">06 — 3D horror · group project</span>
+          <span class="label">06 — 3D horror · group project</span>
           <h3 id="p6" class="project__title">Whispers of the River</h3>
         </header>
         <div class="game-gallery" data-gallery>
@@ -390,16 +399,16 @@
               <img src="/assets/wotr-graphics-800.webp" width="800" height="450" loading="lazy" decoding="async"
                    alt="Options screen, Graphics tab, with graphics mode set to Medium and settings for quality, anti-aliasing, shadows, textures, environment, effects, water, fog and brightness."></a></li>
           </ul>
-          <p class="gallery__note mono">Captured in game on a laptop (Intel Iris Xe). Gameplay shots use the in-game brightness at 140%.</p>
+          <p class="gallery__note label">Captured in game on a laptop (Intel Iris Xe). Gameplay shots use the in-game brightness at 140%.</p>
         </div>
         <div class="project__info">
           <p class="project__lede">A first-person 3D horror game. Cross a river at night into a village haunted by a Vetala, a spirit from Indian folklore.</p>
           <dl class="project__meta">
-            <div><dt class="mono">Detail</dt><dd>Three graphics modes, controller support, automated playthrough tests</dd></div>
-            <div><dt class="mono">Role</dt><dd>Team lead: programming, level design, story, audio · 400+ of the team's commits</dd></div>
-            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>Godot 4</li><li>GDScript</li><li>Blender</li><li>Meshy</li><li>Mixamo</li></ul></dd></div>
+            <div><dt class="label">Detail</dt><dd>Three graphics modes, controller support, automated playthrough tests</dd></div>
+            <div><dt class="label">Role</dt><dd>Team lead: programming, level design, story, audio · 400+ of the team's commits</dd></div>
+            <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>Godot 4</li><li>GDScript</li><li>Blender</li><li>Meshy</li><li>Mixamo</li></ul></dd></div>
           </dl>
-          <p class="project__links mono">
+          <p class="project__links label">
             <span class="muted">Windows build · demo on request</span>
           </p>
         </div>
@@ -407,7 +416,7 @@
 
       <article class="project wrap" id="mahabharat" aria-labelledby="p7">
         <header class="project__head">
-          <span class="mono">07 — 3D action RPG · solo</span>
+          <span class="label">07 — 3D action RPG · solo</span>
           <h3 id="p7" class="project__title">Mahabharat <em>The Epic of Dharma</em></h3>
         </header>
         <div class="game-gallery" data-gallery>
@@ -437,17 +446,17 @@
               <img src="/assets/mb-garuda-800.webp" width="800" height="450" loading="lazy" decoding="async"
                    alt="A golden eagle made of light swoops low over the desert battlefield."></a></li>
           </ul>
-          <p class="gallery__note mono">Captured in game on a laptop (Intel Iris Xe, OpenGL 3.3).</p>
+          <p class="gallery__note label">Captured in game on a laptop (Intel Iris Xe, OpenGL 3.3).</p>
         </div>
         <div class="project__info">
           <p class="project__lede">Play the Indian epic as any of 25 characters. Explore 13 locations, help local people and fight through the 18-day war.</p>
           <dl class="project__meta">
-            <div><dt class="mono">Scale</dt><dd>25 playable characters with their own costumes, weapons and seven animations · 13 locations · 18 war skirmishes · boss duels against Bhishma, Drona and Karna</dd></div>
-            <div><dt class="mono">Combat</dt><dd>Charged archery with shoulder aim, elemental powers and weather, counters and dodges</dd></div>
-            <div><dt class="mono">Role</dt><dd>Solo: design, programming, story, character pipeline</dd></div>
-            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>Godot 4</li><li>GDScript</li><li>Blender</li><li>MakeHuman (CC0)</li></ul></dd></div>
+            <div><dt class="label">Scale</dt><dd>25 playable characters with their own costumes, weapons and seven animations · 13 locations · 18 war skirmishes · boss duels against Bhishma, Drona and Karna</dd></div>
+            <div><dt class="label">Combat</dt><dd>Charged archery with shoulder aim, elemental powers and weather, counters and dodges</dd></div>
+            <div><dt class="label">Role</dt><dd>Solo: design, programming, story, character pipeline</dd></div>
+            <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>Godot 4</li><li>GDScript</li><li>Blender</li><li>MakeHuman (CC0)</li></ul></dd></div>
           </dl>
-          <p class="project__links mono">
+          <p class="project__links label">
             <span class="muted">Windows build · demo on request</span>
           </p>
         </div>
@@ -455,7 +464,7 @@
 
       <article class="project wrap" id="isle-wood" aria-labelledby="p8">
         <header class="project__head">
-          <span class="mono">08 — 2D detective game · solo · in progress</span>
+          <span class="label">08 — 2D detective game · solo · in progress</span>
           <h3 id="p8" class="project__title">Buried at Isle Wood</h3>
         </header>
         <div class="game-gallery" data-gallery>
@@ -486,12 +495,12 @@
         <div class="project__info">
           <p class="project__lede">A 1920s point-and-click detective thriller with a little horror. Chapter 1, "The Call", is about 15–20 minutes long.</p>
           <dl class="project__meta">
-            <div><dt class="mono">Systems</dt><dd>Notebook with clue combining, dialogue choices, a "nerve" meter, a hint book, a nightmare mini-game, autosave and continue</dd></div>
-            <div><dt class="mono">Detail</dt><dd>All text lives in data files so it can be translated; art swaps in by file name with no code changes</dd></div>
-            <div><dt class="mono">Role</dt><dd>Solo: design, programming</dd></div>
-            <div><dt class="mono">Built with</dt><dd><ul class="tags" role="list"><li>Godot 4.7</li><li>GDScript</li><li>JSON data</li></ul></dd></div>
+            <div><dt class="label">Systems</dt><dd>Notebook with clue combining, dialogue choices, a "nerve" meter, a hint book, a nightmare mini-game, autosave and continue</dd></div>
+            <div><dt class="label">Detail</dt><dd>All text lives in data files so it can be translated; art swaps in by file name with no code changes</dd></div>
+            <div><dt class="label">Role</dt><dd>Solo: design, programming</dd></div>
+            <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>Godot 4.7</li><li>GDScript</li><li>JSON data</li></ul></dd></div>
           </dl>
-          <p class="project__links mono">
+          <p class="project__links label">
             <span class="muted">Chapter 1 playable · Windows build coming</span>
           </p>
         </div>
@@ -501,7 +510,7 @@
     <!-- ============ CHAPTER 3: CONCEPT SITES ============ -->
     <section class="chapter concepts" aria-labelledby="ch-concepts">
       <div class="wrap chapter__head">
-        <span class="chapter__no mono">Part three</span>
+        <span class="chapter__no label">Part three</span><span class="chapter__num" aria-hidden="true">03</span>
         <h2 id="ch-concepts" class="chapter__title">Concept sites <em class="sm">for fictional clients</em></h2>
         <p class="chapter__note">Websites for made-up businesses, built as if for a real brief: bilingual, fast, and easy for an owner to update.</p>
       </div>
@@ -515,11 +524,11 @@
                  width="1600" height="1000" loading="lazy" decoding="async"
                  alt="Sample Hotel home page in Thai: the hotel name in large type beside a photo of a palm-lined pool at dusk, with a bar to choose dates, nights and guests.">
           </figure>
-          <span class="mono card__no">09 — Concept site</span>
+          <span class="label card__no">09 — Concept site</span>
           <h3 id="p9" class="card__title">Sample Hotel</h3>
           <p class="card__lede">Thai/English site for a fictional Chiang Mai hotel: check free rooms, see the total and book. A voice concierge answers questions out loud.</p>
           <ul class="tags" role="list"><li>JavaScript</li><li>Netlify Functions</li><li>Netlify Blobs</li><li>Web Speech API</li></ul>
-          <p class="project__links mono">
+          <p class="project__links label">
             <a href="https://sample-hotel-demo.netlify.app/">Visit site<span class="sr-only">: Sample Hotel</span> <span aria-hidden="true">↗</span></a>
           </p>
         </article>
@@ -533,11 +542,11 @@
                  width="1600" height="1000" loading="lazy" decoding="async"
                  alt="Sample Cafe home page in English: a warm photo of iced lattes, the cafe name, today's opening status and buttons for directions and LINE.">
           </figure>
-          <span class="mono card__no">10 — Concept site</span>
+          <span class="label card__no">10 — Concept site</span>
           <h3 id="p10" class="card__title">Sample Cafe</h3>
           <p class="card__lede">Thai/English site for a fictional Bangkok cafe, with table booking, pre-orders and a staff dashboard.</p>
           <ul class="tags" role="list"><li>JavaScript</li><li>Netlify Functions</li><li>No framework</li></ul>
-          <p class="project__links mono">
+          <p class="project__links label">
             <a href="https://sample-cafe-demo.netlify.app/">Visit site<span class="sr-only">: Sample Cafe</span> <span aria-hidden="true">↗</span></a>
             <a href="https://github.com/SUDARSUN-24/sample-cafe">Code<span class="sr-only">: Sample Cafe on GitHub</span> <span aria-hidden="true">↗</span></a>
           </p>
@@ -552,11 +561,11 @@
                  width="1600" height="1000" loading="lazy" decoding="async"
                  alt="Atelier Thorne home page: the headline 'One pattern, cut for you alone' beside a photo of a tailor cutting navy cloth.">
           </figure>
-          <span class="mono card__no">11 — Concept site</span>
+          <span class="label card__no">11 — Concept site</span>
           <h3 id="p11" class="card__title">Atelier Thorne</h3>
           <p class="card__lede">Six-page website for a fictional bespoke tailor in Bangkok, with a filterable gallery and a consultation form.</p>
           <ul class="tags" role="list"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Web3Forms</li></ul>
-          <p class="project__links mono">
+          <p class="project__links label">
             <a href="https://sudarsun-24.github.io/Tailor_trial/">Visit site<span class="sr-only">: Atelier Thorne</span> <span aria-hidden="true">↗</span></a>
             <a href="https://github.com/SUDARSUN-24/Tailor_trial">Code<span class="sr-only">: Atelier Thorne on GitHub</span> <span aria-hidden="true">↗</span></a>
           </p>
@@ -566,29 +575,29 @@
 
     <!-- ============ ABOUT ============ -->
     <section class="about wrap" id="about" aria-labelledby="about-title">
-      <div class="kicker"><h2 id="about-title" class="mono">About</h2></div>
+      <div class="kicker"><h2 id="about-title" class="label">About</h2></div>
       <div class="about__grid">
         <div class="about__text">
-          <p class="about__lede">I learn by shipping. Eleven projects so far, from a Thai LINE bot to a 3D action RPG, built from scratch and backed by tests.</p>
-          <h3 class="about__sub mono">Education</h3>
+          <p class="about__lede">I learn by <em>shipping</em>. Eleven projects so far, from a Thai LINE bot to a 3D action RPG, built from scratch and backed by tests.</p>
+          <h3 class="about__sub label">Education</h3>
           <dl class="toolkit">
-            <div><dt class="mono">Degree</dt><dd>B.Sc. Information Technology, Siam University</dd></div>
-            <div><dt class="mono">Graduating</dt><dd>Expected May 2027</dd></div>
-            <div><dt class="mono">Languages</dt><dd>English, Thai, Nepali, Hindi</dd></div>
+            <div><dt class="label">Degree</dt><dd>B.Sc. Information Technology, Siam University</dd></div>
+            <div><dt class="label">Graduating</dt><dd>Expected May 2027</dd></div>
+            <div><dt class="label">Languages</dt><dd>English, Thai, Nepali, Hindi</dd></div>
           </dl>
           <p class="availability">Available from January 2027 · Based in Bangkok, January to May 2027 · Remote welcome</p>
           <p class="about__actions"><a class="btn" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Download resume (PDF) <span aria-hidden="true">↓</span></a></p>
         </div>
         <div>
-          <h3 class="about__sub mono">Skills</h3>
+          <h3 class="about__sub label">Skills</h3>
           <dl class="toolkit">
-            <div><dt class="mono">Front end</dt><dd>HTML, CSS, JavaScript, TypeScript, React, Next.js, Tailwind, accessibility, responsive design</dd></div>
-            <div><dt class="mono">Browser APIs</dt><dd>Web Audio, Web Speech, Web Workers, Service Worker, Three.js (WebGL)</dd></div>
-            <div><dt class="mono">Back end &amp; data</dt><dd>Node.js, Netlify Functions, Cloudflare Workers, PostgreSQL, Prisma, Auth.js, SQLite</dd></div>
-            <div><dt class="mono">Desktop &amp; AI</dt><dd>Python, PySide6 (Qt), Ollama, Gemini API, PyInstaller</dd></div>
-            <div><dt class="mono">Testing</dt><dd>Playwright, Puppeteer, pytest, Node test runner, Lighthouse, GitHub Actions</dd></div>
-            <div><dt class="mono">Tools</dt><dd>Git, GitHub, Docker, Vercel, Netlify</dd></div>
-            <div><dt class="mono">Games &amp; 3D</dt><dd>Godot 4, GDScript, Blender, Mixamo</dd></div>
+            <div><dt class="label">Front end</dt><dd>HTML, CSS, JavaScript, TypeScript, React, Next.js, Tailwind, accessibility, responsive design</dd></div>
+            <div><dt class="label">Browser APIs</dt><dd>Web Audio, Web Speech, Web Workers, Service Worker, Three.js (WebGL)</dd></div>
+            <div><dt class="label">Back end &amp; data</dt><dd>Node.js, Netlify Functions, Cloudflare Workers, PostgreSQL, Prisma, Auth.js, SQLite</dd></div>
+            <div><dt class="label">Desktop &amp; AI</dt><dd>Python, PySide6 (Qt), Ollama, Gemini API, PyInstaller</dd></div>
+            <div><dt class="label">Testing</dt><dd>Playwright, Puppeteer, pytest, Node test runner, Lighthouse, GitHub Actions</dd></div>
+            <div><dt class="label">Tools</dt><dd>Git, GitHub, Docker, Vercel, Netlify</dd></div>
+            <div><dt class="label">Games &amp; 3D</dt><dd>Godot 4, GDScript, Blender, Mixamo</dd></div>
           </dl>
         </div>
       </div>
@@ -596,10 +605,10 @@
 
     <!-- ============ CONTACT ============ -->
     <section class="contact wrap" id="contact" aria-labelledby="contact-title">
-      <div class="kicker"><h2 id="contact-title" class="mono">Contact</h2></div>
+      <div class="kicker"><h2 id="contact-title" class="label">Contact</h2></div>
       <p class="contact__line">Hiring a front-end intern or junior developer? Email&nbsp;me at <a href="mailto:sudarsun78@gmail.com">sudarsun78@gmail.com</a></p>
       <p class="availability">Available from January 2027 · Based in Bangkok, January to May 2027 · Remote welcome</p>
-      <p class="contact__actions mono">
+      <p class="contact__actions label">
         <a class="btn btn--solid" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Download resume (PDF) <span aria-hidden="true">↓</span></a>
         <button type="button" class="btn copy-btn" data-copy="sudarsun78@gmail.com" hidden>Copy email</button>
         <span class="copy-status" role="status" aria-live="polite"></span>
@@ -609,10 +618,13 @@
     </section>
   </main>
 
-  <footer class="colophon wrap mono">
-    <p>© 2026 Sudasun</p>
-    <p>Set in Instrument Serif and Geist. Hand-built, no framework.</p>
-    <p><a href="#top">Back to top <span aria-hidden="true">↑</span></a></p>
+  <footer class="colophon">
+    <div class="wrap colophon__row label">
+      <p>© 2026 Sudasun</p>
+      <p>Set in Instrument Serif, Geist and Geist Mono. Hand-built, no framework.</p>
+      <p><a href="#top">Back to top <span aria-hidden="true">↑</span></a></p>
+    </div>
+    <p class="colophon__mark" aria-hidden="true">Sudasun<em>.</em></p>
   </footer>
 
   <script src="/js/main.js" defer></script>
