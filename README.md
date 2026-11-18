@@ -11,7 +11,7 @@ portfolio/
 ├── css/styles.css    mobile-first styles; light/dark follows the system
 ├── js/main.js        optional extras (Bangkok clock, index preview, gallery viewer, copy email)
 ├── fonts/            Instrument Serif, Geist, Geist Mono (SIL Open Font License)
-├── assets/           screenshots (WebP), resume.pdf, og-image.png
+├── assets/           screenshots (WebP), resume.pdf, og-image-v2.png
 ├── favicon.svg, robots.txt, sitemap.xml
 └── vercel.json       security headers and caching
 ```
