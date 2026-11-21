@@ -1056,10 +1056,6 @@ p a, dd a { text-decoration: underline; text-decoration-thickness: 1px; text-und
 }
 .project.reveal.is-in .frame:not(.frame--small),
 .project.reveal.is-in .project__shot--game { clip-path: inset(0 0 0 0 round var(--radius)); }
-.project.reveal .frame:not(.frame--small) > img,
-.project.reveal .project__shot--game img { scale: 1.12; transition: scale 1.6s var(--ease-out) .1s; }
-.project.reveal.is-in .frame:not(.frame--small) > img,
-.project.reveal.is-in .project__shot--game img { scale: 1; }
 
 /* Games band: lantern light */
 .band::after {
@@ -1074,3 +1070,58 @@ p a, dd a { text-decoration: underline; text-decoration-thickness: 1px; text-und
   .project.reveal .frame, .project.reveal .project__shot--game { clip-path: none; }
 }
 @media print { .field, .cursor { display: none !important; } }
+
+/* ---------- Scroll effects (whole page) ---------- */
+/* Letters fly in, then ripple on hover */
+.chars .cw { display: inline-block; white-space: nowrap; }
+.chars .ch {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(.45em) rotate(7deg) scale(.9);
+  filter: blur(8px);
+  transition: opacity .7s ease, transform 1s var(--ease-out), filter .8s ease;
+  transition-delay: calc(var(--ci, 0) * 24ms);
+}
+.chars.chars-in .ch { opacity: 1; transform: none; filter: none; }
+.chars.chars-in:hover .ch { animation: ch-wave .7s var(--ease-out) calc(var(--ci, 0) * 28ms); }
+@keyframes ch-wave {
+  35% { transform: translateY(-.16em) rotate(-4deg); color: var(--accent); }
+  100% { transform: none; }
+}
+
+/* Headings lean with scroll speed */
+.project__title, .chapter__title, .card__title { transform: skewY(var(--skew, 0deg)); transform-origin: 0 50%; }
+
+/* Words light up as you scroll */
+.scrub .sw { opacity: .16; transition: opacity .4s ease, color .4s ease; }
+.scrub .sw.on { opacity: 1; }
+
+/* Staggered entrances */
+.project.reveal .project__meta > div,
+.project.reveal .gallery li,
+.card.reveal .tags li,
+.project.reveal .tags li {
+  opacity: 0; translate: 0 22px;
+  transition: opacity .6s ease, translate .9s var(--ease-out);
+  transition-delay: calc(.3s + var(--si, 0) * 80ms);
+}
+.project.reveal .tags li, .card.reveal .tags li { translate: 0 0; scale: .5; transition-property: opacity, scale; transition-delay: calc(.6s + var(--si, 0) * 55ms); }
+.project.reveal.is-in .project__meta > div,
+.project.reveal.is-in .gallery li,
+.project.reveal.is-in .tags li,
+.card.reveal.is-in .tags li { opacity: 1; translate: 0 0; scale: 1; }
+
+.index__list.stagger > li { opacity: 0; translate: -40px 0; transition: opacity .6s ease, translate .9s var(--ease-out); transition-delay: calc(var(--si, 0) * 60ms); }
+.index__list.stagger.is-in > li { opacity: 1; translate: 0 0; }
+
+/* Screenshots drift inside their frames */
+img.para { transform: translate3d(0, var(--py, 0%), 0) scale(1.14); will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  .chars .ch { opacity: 1; transform: none; filter: none; }
+  .scrub .sw { opacity: 1; }
+  img.para { transform: none; }
+}
+@media print {
+  .chars .ch, .scrub .sw, .project .project__meta > div, .tags li, .index__list > li { opacity: 1 !important; transform: none !important; filter: none !important; }
+}

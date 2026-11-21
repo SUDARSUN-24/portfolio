@@ -483,6 +483,8 @@ var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matche
     ctx.globalCompositeOperation = "source-over";
     ctx.strokeStyle = "rgba(" + color + ",0.55)";
     ctx.lineWidth = 1.25;
+    var sv = Math.max(-40, Math.min(40, (window.__scrollVel || 0) * 14));   // lines streak when you scroll
+    window.__scrollVel = (window.__scrollVel || 0) * 0.9;
     ctx.beginPath();
     for (var i = 0; i < ps.length; i++) {
       var p = ps[i];
@@ -496,14 +498,14 @@ var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matche
         vy += (dy / d) * f * 2.2 + (dx / d) * f * 3.4;
       }
       p.ix *= 0.93; p.iy *= 0.93;
-      p.x += vx + p.ix; p.y += vy + p.iy;
+      p.x += vx + p.ix; p.y += vy + p.iy - sv;
       if (--p.life < 0 || p.x < -10 || p.x > w + 10 || p.y < -10 || p.y > h + 10) { spawn(p); continue; }
       ctx.moveTo(p.px, p.py);
       ctx.lineTo(p.x, p.y);
     }
     ctx.stroke();
   }
-  function visibleAmount() { return Math.max(0, Math.min(1, 1 - window.scrollY / (h * 0.85))); }
+  function visibleAmount() { return Math.max(0.42, Math.min(1, 1 - window.scrollY / (h * 0.85))); }
   function loop() {
     raf = 0;
     var o = visibleAmount();
@@ -634,4 +636,136 @@ var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matche
     band.classList.add("is-lit");
   });
   band.addEventListener("pointerleave", function () { band.classList.remove("is-lit"); });
+})();
+
+// ---------- Scroll effects (whole page) ----------
+(function () {
+  if (reduceMotion || !("IntersectionObserver" in window)) return;
+  var root = document.documentElement;
+  var vh = window.innerHeight;
+  window.addEventListener("resize", function () { vh = window.innerHeight; });
+
+  var seg = (window.Intl && Intl.Segmenter) ? new Intl.Segmenter(undefined, { granularity: "grapheme" }) : null;
+  function graphemes(word) {
+    if (!seg) return word.split("");
+    var out = [], it = seg.segment(word)[Symbol.iterator](), s;
+    while (!(s = it.next()).done) out.push(s.value.segment);
+    return out;
+  }
+  // Wrap every text node's words (and optionally letters) in spans, keeping <em> etc.
+  function split(el, mode) {
+    var i = 0;
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function (word) {
+            if (!word) return;
+            if (/^\s+$/.test(word)) { frag.appendChild(document.createTextNode(" ")); return; }
+            var w = document.createElement("span");
+            if (mode === "chars") {
+              w.className = "cw";
+              graphemes(word).forEach(function (ch) {
+                var c = document.createElement("span");
+                c.className = "ch"; c.style.setProperty("--ci", i++); c.textContent = ch;
+                w.appendChild(c);
+              });
+            } else {
+              w.className = "sw"; w.textContent = word; i++;
+            }
+            frag.appendChild(w);
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1 && !n.classList.contains("sr-only")) {
+          walk(n);
+        }
+      });
+    })(el);
+    return i;
+  }
+
+  // 1. Big titles: letters fly in when they arrive, and ripple when you hover them.
+  var titles = document.querySelectorAll(".project__title, .card__title, .chapter__title, .contact__line");
+  var tio = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("chars-in"); tio.unobserve(e.target); }
+    });
+  }, { threshold: 0.25 });
+  titles.forEach(function (el) {
+    if (el.querySelector("a")) return;          // keep links (contact) intact
+    el.setAttribute("aria-label", el.textContent.replace(/\s+/g, " ").trim());
+    split(el, "chars");
+    Array.prototype.forEach.call(el.children, function (c) { c.setAttribute("aria-hidden", "true"); });
+    el.classList.add("chars");
+    tio.observe(el);
+  });
+
+  // 2. Ledes: words light up one by one as you scroll through them.
+  var ledes = [];
+  document.querySelectorAll(".project__lede, .about__lede, .ai__lede, .chapter__note").forEach(function (el) {
+    var n = split(el, "words");
+    el.classList.add("scrub");
+    ledes.push({ el: el, words: el.querySelectorAll(".sw"), n: n, lit: -1 });
+  });
+
+  // 3. Staggered entrances inside each project (meta rows, tags, thumbnails) and the index.
+  function stagger(list) { Array.prototype.forEach.call(list, function (el, i) { el.style.setProperty("--si", i); }); }
+  document.querySelectorAll(".project, .card").forEach(function (p) {
+    stagger(p.querySelectorAll(".project__meta > div"));
+    stagger(p.querySelectorAll(".tags li"));
+    stagger(p.querySelectorAll(".gallery li"));
+  });
+  var idx = document.querySelector(".index__list");
+  if (idx && idx.getBoundingClientRect().top > vh) {
+    stagger(idx.children);
+    idx.classList.add("stagger");
+    var iio = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { idx.classList.add("is-in"); iio.disconnect(); }
+    }, { threshold: 0.1 });
+    iio.observe(idx);
+  }
+
+  // 4. Screenshots drift inside their frames (parallax).
+  var shots = Array.prototype.slice.call(document.querySelectorAll(".project .frame:not(.frame--small) > img, .project .frame .shot-link img, .project__shot--game img"));
+  shots.forEach(function (img) { img.classList.add("para"); });
+
+  // 5. Headings lean with scroll speed.
+  var skew = 0, lastY = window.scrollY, lastT = performance.now();
+
+  var queued = false;
+  function frame() {
+    queued = false;
+    // ledes
+    ledes.forEach(function (l) {
+      var r = l.el.getBoundingClientRect();
+      if (r.bottom < -50 || r.top > vh + 50) return;
+      var p = Math.max(0, Math.min(1, (vh * 0.92 - r.top) / (vh * 0.5)));
+      var lit = Math.round(p * l.n);
+      if (lit === l.lit) return;
+      l.lit = lit;
+      for (var i = 0; i < l.words.length; i++) l.words[i].classList.toggle("on", i < lit);
+    });
+    // parallax
+    shots.forEach(function (img) {
+      var box = img.parentNode.getBoundingClientRect();
+      if (box.bottom < -100 || box.top > vh + 100) return;
+      var off = ((box.top + box.height / 2) - vh / 2) / vh;      // -1 .. 1 roughly
+      img.style.setProperty("--py", (off * -7).toFixed(2) + "%");
+    });
+    // skew decays back to zero
+    skew *= 0.85;
+    root.style.setProperty("--skew", skew.toFixed(2) + "deg");
+    if (Math.abs(skew) > 0.05) { queued = true; requestAnimationFrame(frame); }
+    else root.style.setProperty("--skew", "0deg");
+  }
+  window.addEventListener("scroll", function () {
+    var now = performance.now(), y = window.scrollY;
+    var v = (y - lastY) / Math.max(8, now - lastT);
+    lastY = y; lastT = now;
+    var target = Math.max(-5, Math.min(5, v * -2.2));
+    if (Math.abs(target) > Math.abs(skew)) skew = target;
+    window.__scrollVel = v;
+    if (!queued) { queued = true; requestAnimationFrame(frame); }
+  }, { passive: true });
+  frame();
 })();
