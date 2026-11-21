@@ -27,6 +27,7 @@
 
   <link rel="preload" href="/fonts/instrument-serif-normal-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/geist-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="/js/theme.js"></script>
   <link rel="stylesheet" href="/css/styles.css">
 
   <script type="application/ld+json">
@@ -56,6 +57,8 @@
           <li><a href="#work">Work</a></li>
           <li class="hide-sm"><a href="#games">Games</a></li>
           <li><a href="#about">About</a></li>
+          <li class="hide-sm"><button type="button" class="kbd-btn" data-palette hidden aria-label="Open the quick jump menu" aria-keyshortcuts="Control+K Meta+K">Jump <kbd>Ctrl K</kbd></button></li>
+          <li><button type="button" class="theme-btn" data-theme-toggle hidden aria-label="Switch between light and dark"><span aria-hidden="true"></span></button></li>
           <li><a class="masthead__cta" href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -96,6 +99,7 @@
 
       <dl class="hero__facts">
         <div><dt class="label">Now</dt><dd>B.Sc. Information Technology, Siam University</dd></div>
+        <div><dt class="label">AI</dt><dd>I build with AI tools (Claude, Meshy) and test everything myself. <a href="#ai">How I use it</a></dd></div>
         <div><dt class="label">Speaks</dt><dd>English, Thai, Nepali, Hindi</dd></div>
         <div><dt class="label">Elsewhere</dt><dd class="hero__links label">
           <a href="https://github.com/SUDARSUN-24">GitHub <span aria-hidden="true">↗</span></a>
@@ -328,6 +332,16 @@
           <span class="label card__no">05 — LINE bot</span>
           <h3 id="p5" class="card__title">Khun Chuay <span class="th" lang="th">คุณช่วย</span></h3>
           <p class="card__lede">A LINE bot for everyday life in Thailand: split a bill with a real PromptPay QR code, get PM2.5 and rain alerts. The QR code is generated inside the bot, so no outside service sees a phone number. 21 automated tests.</p>
+          <form class="split" data-billsplit hidden aria-label="Try the bill split">
+            <p class="label split__title">Try it: split a bill</p>
+            <div class="split__row">
+              <label><span class="label">Bill (฿)</span><input type="number" inputmode="decimal" min="0" step="any" value="1850" data-bill></label>
+              <label><span class="label">People</span><input type="number" inputmode="numeric" min="1" max="50" step="1" value="4" data-people></label>
+              <label><span class="label">Add</span><select data-extra><option value="none">Nothing</option><option value="vat">VAT 7%</option><option value="both" selected>Service 10% + VAT 7%</option></select></label>
+            </div>
+            <p class="split__out" role="status" aria-live="polite" data-out></p>
+            <p class="split__note">Same maths as the bot: service first, then VAT, rounded up to the satang. The real bot also draws the PromptPay QR.</p>
+          </form>
           <ul class="tags" role="list"><li>JavaScript</li><li>Cloudflare Workers</li><li>LINE Messaging API</li></ul>
           <p class="project__links label">
             <a href="https://github.com/SUDARSUN-24/khun-chuay">Code<span class="sr-only">: Khun Chuay on GitHub</span> <span aria-hidden="true">↗</span></a>
@@ -564,6 +578,19 @@
       </div>
     </section>
 
+    <!-- ============ AI ============ -->
+    <section class="ai wrap" id="ai" aria-labelledby="ai-title">
+      <div class="kicker"><h2 id="ai-title" class="label">How I use AI</h2></div>
+      <div class="ai__grid">
+        <p class="ai__lede">Yes, I build with <em>AI</em>. I want you to hear that from me, not guess it.</p>
+        <ul class="ai__list" role="list">
+          <li><strong>What I use.</strong> Claude (Claude Code) to plan, write and review code, and Meshy to generate 3D models for the games.</li>
+          <li><strong>What I do.</strong> I choose what to build, design how it should work, read and test what the AI writes, and fix what it gets wrong.</li>
+          <li><strong>How you can check.</strong> Most of the code is public on GitHub with its tests and commit history, and I'm glad to walk through any project line by line in an interview.</li>
+        </ul>
+      </div>
+    </section>
+
     <!-- ============ CONTACT ============ -->
     <section class="contact wrap" id="contact" aria-labelledby="contact-title">
       <div class="kicker"><h2 id="contact-title" class="label">Contact</h2></div>
@@ -582,7 +609,7 @@
   <footer class="colophon">
     <div class="wrap colophon__row label">
       <p>© 2026 Sudasun</p>
-      <p>Set in Instrument Serif, Geist and Geist Mono. Hand-built, no framework.</p>
+      <p>Set in Instrument Serif, Geist and Geist Mono. No framework. Built with AI assistance (Claude Code), directed and tested by me. Press Ctrl+K to jump anywhere.</p>
       <p><a href="#top">Back to top <span aria-hidden="true">↑</span></a></p>
     </div>
     <p class="colophon__mark" aria-hidden="true">Sudasun<em>.</em></p>

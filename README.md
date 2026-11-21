@@ -4,12 +4,15 @@ One-page portfolio of Sudasun, front-end developer in Bangkok: **https://sudasun
 
 Plain HTML, CSS and JavaScript. No framework, no build step, no trackers. The only outside request is the GitHub test-status badge.
 
+Built with AI assistance (Claude Code), directed and tested by me. The site says so too, in the hero and in the "How I use AI" section.
+
 ```
 portfolio/
 ├── index.html        the whole site (hero, work index, projects, about, contact)
 ├── 404.html          "page not found"
 ├── css/styles.css    mobile-first styles; light/dark follows the system
-├── js/main.js        optional extras (Bangkok clock, index preview, gallery viewer, copy email)
+├── js/main.js        optional extras (Ctrl+K jump menu, light/dark toggle, tilt, bill-split demo, gallery viewer, copy email)
+├── js/theme.js       applies a saved light/dark choice before first paint
 ├── fonts/            Instrument Serif, Geist, Geist Mono (SIL Open Font License)
 ├── assets/           screenshots (WebP), resume.pdf, og-image-v2.png
 ├── favicon.svg, robots.txt, sitemap.xml
