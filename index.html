@@ -21,6 +21,9 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Sudasun, front-end developer in Bangkok: 11 projects, 3 games, 370+ tests, with screenshots of Resonance, Siam Library, Velonix, Mahabharat and Buried at Isle Wood">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sudasun · Front-end developer in Bangkok">
+  <meta name="twitter:description" content="Eleven projects: web apps, a university library system, a desktop AI assistant, a LINE bot, three games and concept websites.">
+  <meta name="twitter:image" content="https://sudasun.vercel.app/assets/og-image-v2.png">
 
   <link rel="preload" href="/fonts/instrument-serif-normal-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/geist-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -66,9 +69,9 @@
       <div class="hero__grid">
         <div class="hero__main">
           <p class="hero__status label"><span class="pulse" aria-hidden="true"></span>Open to internships &amp; junior roles · from January 2027</p>
-          <p class="hero__eyebrow label">Front-end developer · Bangkok, Thailand</p>
-          <h1 id="hero-title" class="hero__title" data-split>Sudasun builds web apps, desktop tools <span class="amp">&amp;</span> <em>games</em>.</h1>
-          <p class="hero__intro">IT student at Siam University. I design, build and test my own projects end to end, from a bilingual library system to a 3D action RPG.</p>
+          <p class="hero__eyebrow label">Front-end developer, full-stack when the job needs it · Bangkok</p>
+          <h1 id="hero-title" class="hero__title" data-split>Sudasun builds tested web apps <span class="amp">&amp;</span> <em>games</em>.</h1>
+          <p class="hero__intro">IT student at Siam University. I design, build and test my own projects end to end, from a bilingual library system with two-step login to a 3D action RPG.</p>
           <p class="hero__actions">
             <a class="btn btn--solid" href="#work">See the work <span aria-hidden="true">↓</span></a>
             <a class="btn" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Resume (PDF)</a>
@@ -126,12 +129,12 @@
         <button type="button" class="chip label" data-filter="concept" aria-pressed="false">Concept sites <span>3</span></button>
       </div>
       <ol class="index__list" role="list">
-        <li data-cat="web"><a class="index__row" href="#resonance" data-preview="/assets/resonance-800.webp">
-          <span class="index__no label">01</span><span class="index__name">Resonance</span>
-          <span class="index__type label">Voice studio · web app</span><span class="index__year label">2026</span></a></li>
         <li data-cat="web"><a class="index__row" href="#siam-library" data-preview="/assets/library-home-800.webp">
-          <span class="index__no label">02</span><span class="index__name">Siam Library</span>
+          <span class="index__no label">01</span><span class="index__name">Siam Library</span>
           <span class="index__type label">Full-stack · university</span><span class="index__year label">2026</span></a></li>
+        <li data-cat="web"><a class="index__row" href="#resonance" data-preview="/assets/resonance-800.webp">
+          <span class="index__no label">02</span><span class="index__name">Resonance</span>
+          <span class="index__type label">Voice studio · web app</span><span class="index__year label">2026</span></a></li>
         <li data-cat="web"><a class="index__row" href="#velonix" data-preview="/assets/velonix-800.webp">
           <span class="index__no label">03</span><span class="index__name">Velonix Customs</span>
           <span class="index__type label">3D web app</span><span class="index__year label">2026</span></a></li>
@@ -171,48 +174,9 @@
         <p class="chapter__note">Things people use: in a browser, on a desktop, inside LINE.</p>
       </div>
 
-      <article class="project wrap" id="resonance" aria-labelledby="p1">
-        <header class="project__head">
-          <span class="label">01 — Web app</span>
-          <h3 id="p1" class="project__title">Resonance</h3>
-        </header>
-        <figure class="frame">
-          <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i><span class="frame__url">resonancesun.netlify.app</span></div>
-          <img src="/assets/resonance-800.webp"
-               srcset="/assets/resonance-800.webp 800w, /assets/resonance-1600.webp 1600w"
-               sizes="(min-width: 1264px) 1200px, calc(100vw - 2 * var(--gutter))"
-               width="1600" height="1000" decoding="async"
-               alt="Resonance home page: a dark studio screen with a ring of voice characters and a box to type text for a voice to read.">
-        </figure>
-        <div class="project__info">
-          <p class="project__lede">A voice studio that runs in the browser. Type any text, choose a voice and hear it read aloud with live captions.</p>
-          <dl class="project__meta">
-            <div><dt class="label">Tests</dt><dd>
-              <a href="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml">116 automated tests</a>, run on every push
-              <a class="badge" href="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml"><img src="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml/badge.svg?branch=main" alt="Current test status on GitHub Actions" height="20"></a>
-            </dd></div>
-            <div><dt class="label">Languages</dt><dd>45+: 45 built in, plus any others the visitor's device has voices for. 18 languages with their own alphabet (such as Thai, Hindi and Arabic) are detected as you type.</dd></div>
-            <div><dt class="label">Role</dt><dd>Solo: design, front end, back end</dd></div>
-            <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>JavaScript</li><li>Web Speech API</li><li>Web Audio API</li><li>Web Workers</li><li>Netlify Functions</li></ul></dd></div>
-          </dl>
-          <p class="project__links label">
-            <a href="https://resonancesun.netlify.app/">Visit site<span class="sr-only">: Resonance</span> <span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/SUDARSUN-24/Resonance">Code<span class="sr-only">: Resonance on GitHub</span> <span aria-hidden="true">↗</span></a>
-          </p>
-        </div>
-        <details class="case">
-          <summary><span class="label">Case study</span><span class="case__hint">Problem, decision, result</span></summary>
-          <dl class="case__body">
-            <div><dt class="label">Problem</dt><dd>Text-to-speech that works in any browser, with no install, no account and no paid API.</dd></div>
-            <div><dt class="label">Decision</dt><dd>Use the browser's built-in speech voices, plus an optional open-source voice (Kokoro) that runs on the device in a Web Worker, instead of a paid cloud service.</dd></div>
-            <div><dt class="label">Result</dt><dd>Free to run, works offline after the first visit, and a deploy only goes out when all 116 tests pass.</dd></div>
-          </dl>
-        </details>
-      </article>
-
       <article class="project wrap" id="siam-library" aria-labelledby="p2">
         <header class="project__head">
-          <span class="label">02 — Full-stack web app · university project</span>
+          <span class="label">01 — Full-stack web app · university project</span>
           <h3 id="p2" class="project__title">Siam Library <em>Book Preview</em></h3>
         </header>
         <div class="game-gallery" data-gallery>
@@ -252,12 +216,53 @@
             <a href="https://github.com/SUDARSUN-24/siam-library">Code<span class="sr-only">: Siam Library on GitHub</span> <span aria-hidden="true">↗</span></a>
           </p>
         </div>
-        <details class="case">
-          <summary><span class="label">Case study</span><span class="case__hint">Problem, decision, result</span></summary>
+        <details class="case" open>
+          <summary><span class="label">Case study</span><span class="case__hint">Problem, decision, trade-off, result</span></summary>
           <dl class="case__body">
             <div><dt class="label">Problem</dt><dd>Students can't judge a library book from its title, and can't tell if it is on the shelf until they walk there.</dd></div>
             <div><dt class="label">Decision</dt><dd>Add a "look inside" preview of 5–10 pages, live availability and the exact shelf and row, plus a QR code on every book and shelf that links the physical library to the website.</dd></div>
+            <div><dt class="label">Trade-off</dt><dd>A preview of 5–10 pages keeps the upload work small for staff, but it is a teaser, not the whole book, and borrowing still happens at the counter.</dd></div>
             <div><dt class="label">Result</dt><dd>Live on Vercel with a Neon PostgreSQL database and private photo storage, in Thai and English, with a Docker setup ready for a university server.</dd></div>
+          </dl>
+        </details>
+      </article>
+
+      <article class="project wrap" id="resonance" aria-labelledby="p1">
+        <header class="project__head">
+          <span class="label">02 — Web app</span>
+          <h3 id="p1" class="project__title">Resonance</h3>
+        </header>
+        <figure class="frame">
+          <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i><span class="frame__url">resonancesun.netlify.app</span></div>
+          <img src="/assets/resonance-800.webp"
+               srcset="/assets/resonance-800.webp 800w, /assets/resonance-1600.webp 1600w"
+               sizes="(min-width: 1264px) 1200px, calc(100vw - 2 * var(--gutter))"
+               width="1600" height="1000" decoding="async"
+               alt="Resonance home page: a dark studio screen with a ring of voice characters and a box to type text for a voice to read.">
+        </figure>
+        <div class="project__info">
+          <p class="project__lede">A voice studio that runs in the browser. Type any text, choose a voice and hear it read aloud with live captions.</p>
+          <dl class="project__meta">
+            <div><dt class="label">Tests</dt><dd>
+              <a href="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml">116 automated tests</a>, run on every push
+              <a class="badge" href="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml"><img src="https://github.com/SUDARSUN-24/Resonance/actions/workflows/tests.yml/badge.svg?branch=main" alt="Current test status on GitHub Actions" height="20"></a>
+            </dd></div>
+            <div><dt class="label">Languages</dt><dd>45+: 45 built in, plus any others the visitor's device has voices for. 18 languages with their own alphabet (such as Thai, Hindi and Arabic) are detected as you type.</dd></div>
+            <div><dt class="label">Role</dt><dd>Solo: design, front end, back end</dd></div>
+            <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>JavaScript</li><li>Web Speech API</li><li>Web Audio API</li><li>Web Workers</li><li>Netlify Functions</li></ul></dd></div>
+          </dl>
+          <p class="project__links label">
+            <a href="https://resonancesun.netlify.app/">Visit site<span class="sr-only">: Resonance</span> <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/SUDARSUN-24/Resonance">Code<span class="sr-only">: Resonance on GitHub</span> <span aria-hidden="true">↗</span></a>
+          </p>
+        </div>
+        <details class="case" open>
+          <summary><span class="label">Case study</span><span class="case__hint">Problem, decision, trade-off, result</span></summary>
+          <dl class="case__body">
+            <div><dt class="label">Problem</dt><dd>Text-to-speech that works in any browser, with no install, no account and no paid API.</dd></div>
+            <div><dt class="label">Decision</dt><dd>Use the browser's built-in speech voices, plus an optional open-source voice (Kokoro) that runs on the device in a Web Worker, instead of a paid cloud service.</dd></div>
+            <div><dt class="label">Trade-off</dt><dd>Built-in voices sound different on every device and operating system, so quality is not the same for everyone. The on-device Kokoro voice gives one consistent sound, at the cost of a larger first download.</dd></div>
+            <div><dt class="label">Result</dt><dd>Free to run, works offline after the first visit, and a deploy only goes out when all 116 tests pass.</dd></div>
           </dl>
         </details>
       </article>
@@ -287,11 +292,12 @@
             <a href="https://github.com/SUDARSUN-24/Velonix">Code<span class="sr-only">: Velonix Customs on GitHub</span> <span aria-hidden="true">↗</span></a>
           </p>
         </div>
-        <details class="case">
-          <summary><span class="label">Case study</span><span class="case__hint">Problem, decision, result</span></summary>
+        <details class="case" open>
+          <summary><span class="label">Case study</span><span class="case__hint">Problem, decision, trade-off, result</span></summary>
           <dl class="case__body">
             <div><dt class="label">Problem</dt><dd>Show five vehicles in 3D and let people hear the engine, without making the page slow.</dd></div>
             <div><dt class="label">Decision</dt><dd>One shared Three.js scene for the home page and the configurator, and engine sound generated with the Web Audio API instead of recorded files.</dd></div>
+            <div><dt class="label">Trade-off</dt><dd>Engine sound made in code is tiny and loads instantly, but it is a synthesised approximation, not a recording of a real engine.</dd></div>
             <div><dt class="label">Result</dt><dd>No audio files to download, and browser tests confirm the home page still works when 3D (WebGL) is unavailable.</dd></div>
           </dl>
         </details>
@@ -383,19 +389,13 @@
                    alt="First-person view from a wooden rowing boat at night. A lantern hangs at the bow, dead trees stand in the dark water and lamplit huts wait on the far shore.">
             </a>
           </figure>
-          <ul class="gallery" aria-label="More screenshots from Whispers of the River">
-            <li><a class="shot-link" href="/assets/wotr-menu-1280.webp" data-caption="Title menu.">
-              <img src="/assets/wotr-menu-800.webp" width="800" height="450" loading="lazy" decoding="async"
-                   alt="Title screen: Whispers of the River in serif capitals over a rainy night dock, with New Game, Options, Credits and Exit."></a></li>
+          <ul class="gallery gallery--3" aria-label="More screenshots from Whispers of the River">
             <li><a class="shot-link" href="/assets/wotr-house-1600.webp" data-caption="The Ferryman's house, lit by the hand lamp.">
               <img src="/assets/wotr-house-800.webp" width="800" height="450" loading="lazy" decoding="async"
                    alt="Inside a wooden house at night, holding a lit oil lamp. A fire glows red at the back of the room."></a></li>
             <li><a class="shot-link" href="/assets/wotr-village-1600.webp" data-caption="The village, searched by the light of the Spirit Lamp.">
               <img src="/assets/wotr-village-800.webp" width="800" height="450" loading="lazy" decoding="async"
                    alt="A village yard at night. The Spirit Lamp's beam picks out a small table of candles beside a wooden house."></a></li>
-            <li><a class="shot-link" href="/assets/wotr-lamp-1600.webp" data-caption="Leaving the dock in the rain.">
-              <img src="/assets/wotr-lamp-800.webp" width="800" height="450" loading="lazy" decoding="async"
-                   alt="The bow of the boat in the rain, an oil lamp hanging from a curved pole, the river black beyond it."></a></li>
             <li><a class="shot-link" href="/assets/wotr-graphics-1280.webp" data-caption="Options, Graphics tab: Low, Medium and High modes, plus each setting on its own.">
               <img src="/assets/wotr-graphics-800.webp" width="800" height="450" loading="lazy" decoding="async"
                    alt="Options screen, Graphics tab, with graphics mode set to Medium and settings for quality, anti-aliasing, shadows, textures, environment, effects, water, fog and brightness."></a></li>
@@ -410,7 +410,8 @@
             <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>Godot 4</li><li>GDScript</li><li>Blender</li><li>Meshy</li><li>Mixamo</li></ul></dd></div>
           </dl>
           <p class="project__links label">
-            <span class="muted">Windows build · demo on request</span>
+            <a href="mailto:sudarsun78@gmail.com?subject=Demo%20request%3A%20Whispers%20of%20the%20River">Request a demo<span class="sr-only">: Whispers of the River</span> <span aria-hidden="true">↗</span></a>
+            <span class="muted">Windows build</span>
           </p>
         </div>
       </article>
@@ -430,19 +431,13 @@
                    alt="Third-person view of Arjuna drawing a glowing golden bow on a dusty battlefield, with health bars for Arjuna and Karna and a row of divine weapon slots along the bottom.">
             </a>
           </figure>
-          <ul class="gallery" aria-label="More screenshots from Mahabharat">
-            <li><a class="shot-link" href="/assets/mb-menu-1280.webp" data-caption="Main menu.">
-              <img src="/assets/mb-menu-800.webp" width="800" height="450" loading="lazy" decoding="async"
-                   alt="Main menu: MAHABHARAT, The Epic of Dharma, in gold on deep navy, with buttons to begin, continue or load a journey."></a></li>
+          <ul class="gallery gallery--3" aria-label="More screenshots from Mahabharat">
             <li><a class="shot-link" href="/assets/mb-select-1280.webp" data-caption="Choose any of 25 characters, each with their own story route.">
               <img src="/assets/mb-select-800.webp" width="800" height="450" loading="lazy" decoding="async"
                    alt="Character select: a list of Pandava and Kaurava heroes, with Arjuna's stats, special ability and starting chapter."></a></li>
             <li><a class="shot-link" href="/assets/mb-world-1280.webp" data-caption="Hastinapura: explore, talk to people and take on local tasks.">
               <img src="/assets/mb-world-800.webp" width="800" height="450" loading="lazy" decoding="async"
                    alt="A sunny town square in Hastinapura with villagers, stone houses, a quest panel and a minimap."></a></li>
-            <li><a class="shot-link" href="/assets/mb-solar-1280.webp" data-caption="Karna's Solar Arrow incoming: intercept it with a full draw.">
-              <img src="/assets/mb-solar-800.webp" width="800" height="450" loading="lazy" decoding="async"
-                   alt="A duel prompt: Karna's Solar Arrow is incoming and the player must intercept the glowing arrow."></a></li>
             <li><a class="shot-link" href="/assets/mb-garuda-1280.webp" data-caption="Garudastra: a golden eagle arrow.">
               <img src="/assets/mb-garuda-800.webp" width="800" height="450" loading="lazy" decoding="async"
                    alt="A golden eagle made of light swoops low over the desert battlefield."></a></li>
@@ -458,7 +453,8 @@
             <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>Godot 4</li><li>GDScript</li><li>Blender</li><li>MakeHuman (CC0)</li></ul></dd></div>
           </dl>
           <p class="project__links label">
-            <span class="muted">Windows build · demo on request</span>
+            <a href="mailto:sudarsun78@gmail.com?subject=Demo%20request%3A%20Mahabharat">Request a demo<span class="sr-only">: Mahabharat</span> <span aria-hidden="true">↗</span></a>
+            <span class="muted">Windows build</span>
           </p>
         </div>
       </article>
@@ -478,10 +474,7 @@
                    alt="A flat, muted illustration of an old television showing a reporter outside Isle Wood Academy, with a dialogue box below.">
             </a>
           </figure>
-          <ul class="gallery gallery--4" aria-label="More screenshots from Buried at Isle Wood">
-            <li><a class="shot-link" href="/assets/biw-living-1280.webp" data-caption="The living room at night: click around to find clues.">
-              <img src="/assets/biw-living-800.webp" width="800" height="450" loading="lazy" decoding="async"
-                   alt="A living room at night with a green sofa, bookshelf, family photos and a coffee mug on the table."></a></li>
+          <ul class="gallery gallery--3" aria-label="More screenshots from Buried at Isle Wood">
             <li><a class="shot-link" href="/assets/biw-notebook-1280.webp" data-caption="The notebook: combine two clues to find what doesn't add up.">
               <img src="/assets/biw-notebook-800.webp" width="800" height="450" loading="lazy" decoding="async"
                    alt="The notebook screen listing clues such as 'Isle Wood murders' and 'The fake murder', with a Combine button."></a></li>
@@ -502,6 +495,7 @@
             <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>Godot 4.7</li><li>GDScript</li><li>JSON data</li></ul></dd></div>
           </dl>
           <p class="project__links label">
+            <a href="mailto:sudarsun78@gmail.com?subject=Demo%20request%3A%20Buried%20at%20Isle%20Wood">Request a demo<span class="sr-only">: Buried at Isle Wood</span> <span aria-hidden="true">↗</span></a>
             <span class="muted">Chapter 1 playable · Windows build coming</span>
           </p>
         </div>
@@ -587,8 +581,6 @@
             <div><dt class="label">Graduating</dt><dd>Expected May 2027</dd></div>
             <div><dt class="label">Languages</dt><dd>English, Thai, Nepali, Hindi</dd></div>
           </dl>
-          <p class="availability">Available from January 2027 · Based in Bangkok, January to May 2027 · Remote welcome</p>
-          <p class="about__actions"><a class="btn" href="/assets/resume.pdf" type="application/pdf" download="Sudasun-resume.pdf">Download resume (PDF) <span aria-hidden="true">↓</span></a></p>
         </div>
         <div>
           <h3 class="about__sub label">Skills</h3>

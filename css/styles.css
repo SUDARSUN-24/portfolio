@@ -40,6 +40,7 @@
   --night-muted: #a59b8d;
   --night-rule: #342d27;
   --night-accent: #ff7a52;
+  --band-accent: #ff7a52;   /* accent on the inverted marquee band (dark band in light mode) */
 
   /* Fonts */
   --serif: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
@@ -73,6 +74,7 @@
     --muted: #a3998b;
     --rule: #342d27;
     --accent: #ff7a52;
+    --band-accent: #b5361b;
     --accent-soft: rgb(255 122 82 / .12);
     --on-accent: #1a0d07;
     --ok: #5cc887;
@@ -383,7 +385,7 @@ p a, dd a { text-decoration: underline; text-decoration-thickness: 1px; text-und
   line-height: 1;
   letter-spacing: -0.01em;
 }
-.marquee__track em { color: var(--accent); }
+.marquee__track em { color: var(--band-accent); }
 .marquee__track li::after { content: "✦"; margin-inline: 1.5rem; font-family: var(--sans); font-size: .4em; color: var(--muted); }
 .marquee:hover .marquee__track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-100%); } }
