@@ -915,6 +915,7 @@ p a, dd a { text-decoration: underline; text-decoration-thickness: 1px; text-und
 
 @media (min-width: 960px) {
   .concepts__grid { grid-template-columns: repeat(3, 1fr); }
+  .concepts__grid--2 { grid-template-columns: 1fr 1fr; }
   .hero__grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: 3rem; }
   .hero__title { font-size: clamp(3.5rem, 1rem + 5.2vw, 6.5rem); }
   .collage { max-width: none; }

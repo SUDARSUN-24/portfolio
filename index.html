@@ -303,67 +303,37 @@
         </details>
       </article>
 
-      <article class="project wrap" id="vedant" aria-labelledby="p4">
-        <header class="project__head">
-          <span class="label">04 — Desktop app · Windows</span>
-          <h3 id="p4" class="project__title">Vedant</h3>
-        </header>
-        <figure class="frame frame--window">
-          <div class="frame__bar" aria-hidden="true"><span class="frame__url">VEDANT — v1.0</span><b>–</b><b>□</b><b>✕</b></div>
-          <img src="/assets/vedant-800.webp"
-               srcset="/assets/vedant-800.webp 800w, /assets/vedant-1440.webp 1440w"
-               sizes="(min-width: 1264px) 1200px, calc(100vw - 2 * var(--gutter))"
-               width="1440" height="900" loading="lazy" decoding="async"
-               alt="Vedant's window: a glowing cyan ring visualiser in standby on a black background, a greeting that says 'Online. How can I help?', and a message box with Talk and Send buttons.">
-        </figure>
-        <div class="project__info">
-          <p class="project__lede">A personal AI assistant for the desktop. Talk or type, hear it answer, and let it remember things, set reminders and open your apps.</p>
-          <dl class="project__meta">
-            <div><dt class="label">Tests</dt><dd>174 automated tests (pytest), plus a built-in self-test for microphone, speech and AI provider</dd></div>
-            <div><dt class="label">Safety</dt><dd>Opens only apps on an allowlist, asks before acting, and never runs shell commands</dd></div>
-            <div><dt class="label">Free to run</dt><dd>Local models through Ollama (works offline) or Google Gemini's free tier</dd></div>
-            <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>Python</li><li>PySide6 (Qt)</li><li>SQLite</li><li>Ollama</li><li>Gemini API</li><li>PyInstaller</li></ul></dd></div>
-          </dl>
+      <div class="wrap concepts__grid concepts__grid--2">
+        <article class="card" id="vedant" aria-labelledby="p4">
+          <figure class="frame frame--small">
+            <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <img src="/assets/vedant-800.webp" width="800" height="500" loading="lazy" decoding="async"
+                 alt="Vedant's window: a glowing cyan ring visualiser in standby on a black background, a greeting that says 'Online. How can I help?', and a message box with Talk and Send buttons.">
+          </figure>
+          <span class="label card__no">04 — Desktop app · Windows</span>
+          <h3 id="p4" class="card__title">Vedant</h3>
+          <p class="card__lede">A personal AI assistant for the desktop. Talk or type, hear it answer, set reminders and open your apps. Runs free on local models or Gemini's free tier. 174 automated tests.</p>
+          <ul class="tags" role="list"><li>Python</li><li>PySide6</li><li>SQLite</li><li>Ollama</li></ul>
           <p class="project__links label">
             <a href="https://github.com/SUDARSUN-24/vedant-assistant">Code<span class="sr-only">: Vedant on GitHub</span> <span aria-hidden="true">↗</span></a>
-            <span class="muted">Windows app</span>
           </p>
-        </div>
-      </article>
+        </article>
 
-      <article class="project project--split wrap" id="khun-chuay" aria-labelledby="p5">
-        <div class="split__text">
-          <header class="project__head">
-            <span class="label">05 — LINE bot</span>
-            <h3 id="p5" class="project__title">Khun Chuay <span class="th" lang="th">คุณช่วย</span></h3>
-          </header>
-          <p class="project__lede">A LINE bot for everyday life in Thailand. Split a bill with a real PromptPay QR code, and get PM2.5 and rain alerts for where you are.</p>
-          <dl class="project__meta">
-            <div><dt class="label">Detail</dt><dd>PromptPay QR codes generated inside the bot (EMVCo payload, CRC-16 and a hand-written PNG encoder), so no outside service sees a phone number</dd></div>
-            <div><dt class="label">Data</dt><dd>Nearest of about 170 official air-quality stations, Thai PM2.5 bands, rain forecasts and a 7:00 morning summary</dd></div>
-            <div><dt class="label">Tests</dt><dd>21 automated tests, plus a simulated LINE chat to try it with no accounts</dd></div>
-            <div><dt class="label">Built with</dt><dd><ul class="tags" role="list"><li>JavaScript</li><li>Cloudflare Workers</li><li>Cloudflare KV</li><li>LINE Messaging API</li></ul></dd></div>
-          </dl>
+        <article class="card" id="khun-chuay" aria-labelledby="p5">
+          <figure class="frame frame--small">
+            <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <img src="/assets/khun-chuay-menu-800.webp" width="800" height="540" loading="lazy" decoding="async"
+                 alt="The bot's button menu: Split bill, Who hasn't paid, Get paid, Air quality, Rain and weather, Settings, each in Thai and English.">
+          </figure>
+          <span class="label card__no">05 — LINE bot</span>
+          <h3 id="p5" class="card__title">Khun Chuay <span class="th" lang="th">คุณช่วย</span></h3>
+          <p class="card__lede">A LINE bot for everyday life in Thailand: split a bill with a real PromptPay QR code, get PM2.5 and rain alerts. The QR code is generated inside the bot, so no outside service sees a phone number. 21 automated tests.</p>
+          <ul class="tags" role="list"><li>JavaScript</li><li>Cloudflare Workers</li><li>LINE Messaging API</li></ul>
           <p class="project__links label">
             <a href="https://github.com/SUDARSUN-24/khun-chuay">Code<span class="sr-only">: Khun Chuay on GitHub</span> <span aria-hidden="true">↗</span></a>
           </p>
-        </div>
-        <figure class="chat" aria-label="Example conversation: splitting a 1,850 baht bill between four people">
-          <div class="chat__head"><span class="chat__avatar" aria-hidden="true">🙏</span><span>Khun Chuay</span></div>
-          <ol class="chat__log" role="list" lang="th">
-            <li class="bot">💸 ยอดรวมทั้งบิลเท่าไหร่?</li>
-            <li class="me">1850</li>
-            <li class="bot">หาร ฿1,850 กี่คน?<span class="chat__chips"><b>2 คน</b><b>3 คน</b><b>4 คน</b></span></li>
-            <li class="me">4 คน</li>
-            <li class="bot">มีค่าเซอร์วิสหรือ VAT?<span class="chat__chips"><b>ไม่มี</b><b>VAT 7%</b><b>เซอร์วิส+VAT</b></span></li>
-            <li class="me">เซอร์วิส+VAT</li>
-            <li class="bot bot--total">💸 คนละ <strong>฿544.37</strong><span class="chat__qr" aria-hidden="true"></span><small>PromptPay QR · scan with any Thai bank app</small></li>
-          </ol>
-          <img class="chat__menu" src="/assets/khun-chuay-menu-800.webp" width="800" height="540" loading="lazy" decoding="async"
-               alt="The bot's button menu: Split bill, Who hasn't paid, Get paid, Air quality, Rain and weather, Settings, each in Thai and English." lang="en">
-          <figcaption class="label">Real flow from the bot · service 10% then VAT 7%, rounded up</figcaption>
-        </figure>
-      </article>
+        </article>
+      </div>
     </section>
 
     <!-- ============ CHAPTER 2: GAMES (dark band) ============ -->
@@ -507,7 +477,7 @@
       <div class="wrap chapter__head">
         <span class="chapter__no label">Part three</span><span class="chapter__num" aria-hidden="true">03</span>
         <h2 id="ch-concepts" class="chapter__title">Concept sites <em class="sm">for fictional clients</em></h2>
-        <p class="chapter__note">Websites for made-up businesses, built as if for a real brief: bilingual, fast, and easy for an owner to update.</p>
+        <p class="chapter__note">Practice briefs for made-up businesses: bilingual, fast, easy for an owner to update.</p>
       </div>
       <div class="wrap concepts__grid">
         <article class="card" id="sample-hotel" aria-labelledby="p9">
@@ -521,8 +491,7 @@
           </figure>
           <span class="label card__no">09 — Concept site</span>
           <h3 id="p9" class="card__title">Sample Hotel</h3>
-          <p class="card__lede">Thai/English site for a fictional Chiang Mai hotel: check free rooms, see the total and book. A voice concierge answers questions out loud.</p>
-          <ul class="tags" role="list"><li>JavaScript</li><li>Netlify Functions</li><li>Netlify Blobs</li><li>Web Speech API</li></ul>
+          <p class="card__lede">Thai/English booking site for a fictional Chiang Mai hotel, with a voice concierge.</p>
           <p class="project__links label">
             <a href="https://sample-hotel-demo.netlify.app/">Visit site<span class="sr-only">: Sample Hotel</span> <span aria-hidden="true">↗</span></a>
             <a href="https://github.com/SUDARSUN-24/sample-hotel">Code<span class="sr-only">: Sample Hotel on GitHub</span> <span aria-hidden="true">↗</span></a>
@@ -540,8 +509,7 @@
           </figure>
           <span class="label card__no">10 — Concept site</span>
           <h3 id="p10" class="card__title">Sample Cafe</h3>
-          <p class="card__lede">Thai/English site for a fictional Bangkok cafe, with table booking, pre-orders and a staff dashboard.</p>
-          <ul class="tags" role="list"><li>JavaScript</li><li>Netlify Functions</li><li>No framework</li></ul>
+          <p class="card__lede">Thai/English site for a fictional Bangkok cafe, with table booking and a staff dashboard.</p>
           <p class="project__links label">
             <a href="https://sample-cafe-demo.netlify.app/">Visit site<span class="sr-only">: Sample Cafe</span> <span aria-hidden="true">↗</span></a>
             <a href="https://github.com/SUDARSUN-24/sample-cafe">Code<span class="sr-only">: Sample Cafe on GitHub</span> <span aria-hidden="true">↗</span></a>
@@ -559,8 +527,7 @@
           </figure>
           <span class="label card__no">11 — Concept site</span>
           <h3 id="p11" class="card__title">Atelier Thorne</h3>
-          <p class="card__lede">Six-page website for a fictional bespoke tailor in Bangkok, with a filterable gallery and a consultation form.</p>
-          <ul class="tags" role="list"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Web3Forms</li></ul>
+          <p class="card__lede">Six-page site for a fictional Bangkok tailor, with a filterable gallery.</p>
           <p class="project__links label">
             <a href="https://sudarsun-24.github.io/Tailor_trial/">Visit site<span class="sr-only">: Atelier Thorne</span> <span aria-hidden="true">↗</span></a>
             <a href="https://github.com/SUDARSUN-24/Tailor_trial">Code<span class="sr-only">: Atelier Thorne on GitHub</span> <span aria-hidden="true">↗</span></a>
