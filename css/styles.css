@@ -1028,3 +1028,49 @@ p a, dd a { text-decoration: underline; text-decoration-thickness: 1px; text-und
   .tilt, .btn, .masthead__cta, .palette[open] { transition: none; animation: none; }
 }
 @media print { .theme-btn, .kbd-btn, .palette, .split { display: none !important; } }
+
+/* ---------- Effects layer ---------- */
+/* Flow field canvas (drawn by JS, behind everything) */
+.field { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .6s ease; }
+
+/* Cursor ring */
+.cursor {
+  position: fixed; left: 0; top: 0; z-index: 200; pointer-events: none;
+  width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%;
+  border: 1.5px solid #fff; mix-blend-mode: difference;
+  display: grid; place-items: center;
+  opacity: 0; scale: 1;
+  transition: opacity .25s ease, scale .35s var(--ease-out), background-color .25s ease;
+}
+.cursor.is-on { opacity: 1; }
+.cursor.is-big { scale: 1.7; }
+.cursor.has-label { scale: 2.3; background: #fff; }
+.cursor.is-down { scale: .8; }
+.cursor span { font-family: var(--mono); font-size: 5.5px; letter-spacing: .12em; text-transform: uppercase; color: #000; }
+
+/* Big screenshots wipe open as they arrive */
+.project.reveal .frame:not(.frame--small),
+.project.reveal .project__shot--game {
+  clip-path: inset(0 0 100% 0 round var(--radius));
+  transition: clip-path 1.2s var(--ease-out) .1s, transform .3s ease-out;
+}
+.project.reveal.is-in .frame:not(.frame--small),
+.project.reveal.is-in .project__shot--game { clip-path: inset(0 0 0 0 round var(--radius)); }
+.project.reveal .frame:not(.frame--small) > img,
+.project.reveal .project__shot--game img { scale: 1.12; transition: scale 1.6s var(--ease-out) .1s; }
+.project.reveal.is-in .frame:not(.frame--small) > img,
+.project.reveal.is-in .project__shot--game img { scale: 1; }
+
+/* Games band: lantern light */
+.band::after {
+  content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  opacity: 0; transition: opacity .6s ease;
+  background: radial-gradient(460px circle at var(--lx, 50%) var(--ly, 50%), rgb(255 196 130 / .07), transparent 45%, rgb(4 3 2 / .35) 100%);
+}
+.band.is-lit::after { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { display: none; }
+  .project.reveal .frame, .project.reveal .project__shot--game { clip-path: none; }
+}
+@media print { .field, .cursor { display: none !important; } }

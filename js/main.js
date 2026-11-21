@@ -433,3 +433,205 @@ var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matche
     trigger.addEventListener("click", open);
   }
 })();
+
+// ---------- Effects layer ----------
+
+// Living flow field behind the hero: thousands of short strokes follow a
+// moving current, swirl around the cursor and burst outward on click.
+// Fades out as you scroll past the hero and stops drawing when hidden.
+(function () {
+  var cv = document.createElement("canvas");
+  var ctx = cv.getContext && cv.getContext("2d");
+  if (!ctx) return;
+  cv.className = "field";
+  cv.setAttribute("aria-hidden", "true");
+  document.body.insertBefore(cv, document.body.firstChild);
+
+  var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+  var w = 0, h = 0, ps = [], t = 0, raf = 0, frame = 0;
+  var mx = -9999, my = -9999, color = "255,122,82";
+  var R = 150;
+
+  function readColor() {
+    var c = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
+    var m = /^#([0-9a-f]{6})$/i.exec(c);
+    if (m) { var n = parseInt(m[1], 16); color = (n >> 16) + "," + ((n >> 8) & 255) + "," + (n & 255); }
+  }
+  function spawn(p) {
+    p.x = Math.random() * w; p.y = Math.random() * h;
+    p.px = p.x; p.py = p.y; p.ix = 0; p.iy = 0;
+    p.s = 0.6 + Math.random() * 1.1;
+    p.life = 80 + Math.random() * 220;
+    return p;
+  }
+  function resize() {
+    w = window.innerWidth; h = window.innerHeight;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var count = Math.round(Math.max(120, Math.min(560, (w * h) / 3000)));
+    ps = [];
+    for (var i = 0; i < count; i++) ps.push(spawn({}));
+  }
+  function angle(x, y) {
+    return (Math.sin(x * 0.0021 + t * 0.0045) + Math.cos(y * 0.0026 - t * 0.0036) + Math.sin((x + y) * 0.0012 + t * 0.002)) * 1.7;
+  }
+  function step() {
+    t++;
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.fillStyle = "rgba(0,0,0,0.045)";
+    ctx.fillRect(0, 0, w, h);
+    ctx.globalCompositeOperation = "source-over";
+    ctx.strokeStyle = "rgba(" + color + ",0.55)";
+    ctx.lineWidth = 1.25;
+    ctx.beginPath();
+    for (var i = 0; i < ps.length; i++) {
+      var p = ps[i];
+      p.px = p.x; p.py = p.y;
+      var a = angle(p.x, p.y);
+      var vx = Math.cos(a) * p.s, vy = Math.sin(a) * p.s;
+      var dx = p.x - mx, dy = p.y - my, d2 = dx * dx + dy * dy;
+      if (d2 < R * R && d2 > 1) {
+        var d = Math.sqrt(d2), f = 1 - d / R;
+        vx += (dx / d) * f * 2.2 - (dy / d) * f * 3.4;   // push out and swirl
+        vy += (dy / d) * f * 2.2 + (dx / d) * f * 3.4;
+      }
+      p.ix *= 0.93; p.iy *= 0.93;
+      p.x += vx + p.ix; p.y += vy + p.iy;
+      if (--p.life < 0 || p.x < -10 || p.x > w + 10 || p.y < -10 || p.y > h + 10) { spawn(p); continue; }
+      ctx.moveTo(p.px, p.py);
+      ctx.lineTo(p.x, p.y);
+    }
+    ctx.stroke();
+  }
+  function visibleAmount() { return Math.max(0, Math.min(1, 1 - window.scrollY / (h * 0.85))); }
+  function loop() {
+    raf = 0;
+    var o = visibleAmount();
+    cv.style.opacity = (o * 0.9).toFixed(3);
+    if (o <= 0 || document.hidden) return;   // stop drawing; scroll/visibility restarts it
+    if (++frame % 90 === 0) readColor();
+    step();
+    raf = requestAnimationFrame(loop);
+  }
+  function start() { if (!raf && !reduceMotion) raf = requestAnimationFrame(loop); }
+
+  readColor();
+  resize();
+  if (reduceMotion) {
+    // One still frame, no animation.
+    for (var k = 0; k < 140; k++) step();
+    cv.style.opacity = "0.6";
+  } else {
+    start();
+  }
+  window.addEventListener("resize", function () { resize(); start(); });
+  window.addEventListener("scroll", function () { cv.style.opacity = (visibleAmount() * 0.9).toFixed(3); start(); }, { passive: true });
+  document.addEventListener("visibilitychange", start);
+  window.addEventListener("pointermove", function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+  document.documentElement.addEventListener("pointerleave", function () { mx = my = -9999; });
+  window.addEventListener("pointerdown", function (e) {
+    if (reduceMotion || visibleAmount() <= 0) return;
+    for (var i = 0; i < ps.length; i++) {
+      var p = ps[i], dx = p.x - e.clientX, dy = p.y - e.clientY, d = Math.sqrt(dx * dx + dy * dy) || 1;
+      if (d < 320) { var f = (1 - d / 320) * 14; p.ix += (dx / d) * f; p.iy += (dy / d) * f; }
+    }
+  });
+  var mo = new MutationObserver(readColor);
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+
+// Cursor ring that inverts whatever it is over and grows on anything clickable.
+(function () {
+  if (reduceMotion || !finePointer) return;
+  var ring = document.createElement("div");
+  ring.className = "cursor";
+  ring.setAttribute("aria-hidden", "true");
+  ring.innerHTML = "<span></span>";
+  document.body.appendChild(ring);
+  var label = ring.firstChild;
+  var x = -100, y = -100, cx = -100, cy = -100, raf = 0;
+  function tick() {
+    cx += (x - cx) * 0.2; cy += (y - cy) * 0.2;
+    ring.style.translate = cx.toFixed(1) + "px " + cy.toFixed(1) + "px";
+    raf = Math.abs(x - cx) + Math.abs(y - cy) > 0.3 ? requestAnimationFrame(tick) : 0;
+  }
+  document.addEventListener("pointermove", function (e) {
+    if (e.pointerType !== "mouse") return;
+    x = e.clientX; y = e.clientY;
+    ring.classList.add("is-on");
+    if (!raf) raf = requestAnimationFrame(tick);
+  }, { passive: true });
+  document.documentElement.addEventListener("pointerleave", function () { ring.classList.remove("is-on"); });
+  document.addEventListener("pointerover", function (e) {
+    var t = e.target.closest && e.target.closest(".shot-link, .collage__card, .index__row, a, button, summary, select, input, label");
+    ring.classList.toggle("is-big", !!t);
+    var text = "";
+    if (t && t.matches(".shot-link")) text = "View";
+    else if (t && t.matches(".collage__card, .index__row")) text = "Open";
+    label.textContent = text;
+    ring.classList.toggle("has-label", !!text);
+  });
+  document.addEventListener("pointerdown", function () { ring.classList.add("is-down"); });
+  document.addEventListener("pointerup", function () { ring.classList.remove("is-down"); });
+})();
+
+// The ticker speeds up with your scroll and runs backwards when you scroll up.
+(function () {
+  if (reduceMotion || !document.getAnimations) return;
+  var tracks = document.querySelectorAll(".marquee__track");
+  if (!tracks.length) return;
+  var last = window.scrollY, lastT = performance.now(), rate = 1, target = 1, raf = 0;
+  function anims() {
+    var out = [];
+    tracks.forEach(function (el) { el.getAnimations().forEach(function (a) { out.push(a); }); });
+    return out;
+  }
+  function loop() {
+    target += (1 - target) * 0.06;            // settle back to normal speed
+    rate += (target - rate) * 0.15;
+    anims().forEach(function (a) { a.updatePlaybackRate ? a.updatePlaybackRate(rate) : (a.playbackRate = rate); });
+    raf = Math.abs(rate - 1) > 0.02 ? requestAnimationFrame(loop) : 0;
+    if (!raf) anims().forEach(function (a) { a.updatePlaybackRate ? a.updatePlaybackRate(1) : (a.playbackRate = 1); });
+  }
+  window.addEventListener("scroll", function () {
+    var now = performance.now(), y = window.scrollY;
+    var v = (y - last) / Math.max(16, now - lastT);   // px per ms
+    last = y; lastT = now;
+    var boost = Math.min(9, Math.abs(v) * 6);
+    target = v < 0 ? -(1 + boost) : 1 + boost;
+    if (!raf) raf = requestAnimationFrame(loop);
+  }, { passive: true });
+})();
+
+// Giant chapter numerals drift against the scroll.
+(function () {
+  if (reduceMotion) return;
+  var nums = document.querySelectorAll(".chapter__num");
+  if (!nums.length) return;
+  var queued = false;
+  function update() {
+    queued = false;
+    var vh = window.innerHeight;
+    nums.forEach(function (el) {
+      var r = el.parentNode.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) return;
+      el.style.translate = "0 " + ((r.top - vh / 2) * -0.18).toFixed(1) + "px";
+    });
+  }
+  window.addEventListener("scroll", function () { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+})();
+
+// Games band: the page goes dark and you light it with a lantern.
+(function () {
+  if (reduceMotion || !finePointer) return;
+  var band = document.querySelector(".band");
+  if (!band) return;
+  band.addEventListener("pointermove", function (e) {
+    var r = band.getBoundingClientRect();
+    band.style.setProperty("--lx", (e.clientX - r.left).toFixed(0) + "px");
+    band.style.setProperty("--ly", (e.clientY - r.top).toFixed(0) + "px");
+    band.classList.add("is-lit");
+  });
+  band.addEventListener("pointerleave", function () { band.classList.remove("is-lit"); });
+})();
