@@ -14,7 +14,7 @@ portfolio/
 ├── js/main.js        optional extras (Ctrl+K jump menu, light/dark toggle, tilt, bill-split demo, gallery viewer, copy email)
 ├── js/theme.js       applies a saved light/dark choice before first paint
 ├── fonts/            Instrument Serif, Geist, Geist Mono (SIL Open Font License)
-├── assets/           screenshots (WebP), resume.pdf, og-image-v2.png
+├── assets/           screenshots (WebP), resume.pdf, og-image-v3.png
 ├── favicon.svg, robots.txt, sitemap.xml
 └── vercel.json       security headers and caching
 ```
