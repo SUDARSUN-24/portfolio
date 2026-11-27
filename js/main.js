@@ -16,15 +16,20 @@ var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 (function () {
   var bar = document.querySelector(".masthead__progress");
   if (!bar) return;
-  var queued = false;
+  var queued = false, max = 0;
+  // Measure the page height only when it changes; reading it on every scroll
+  // frame forced a full layout and made scrolling stutter.
+  function measure() { max = document.documentElement.scrollHeight - window.innerHeight; }
   function update() {
     queued = false;
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.setProperty("--progress", max > 0 ? Math.min(1, window.scrollY / max) : 0);
+    bar.style.setProperty("--progress", max > 0 ? Math.min(1, window.scrollY / max).toFixed(4) : 0);
   }
-  window.addEventListener("scroll", function () {
-    if (!queued) { queued = true; requestAnimationFrame(update); }
-  }, { passive: true });
+  function schedule() { if (!queued) { queued = true; requestAnimationFrame(update); } }
+  window.addEventListener("scroll", schedule, { passive: true });
+  window.addEventListener("resize", function () { measure(); schedule(); });
+  if ("ResizeObserver" in window) new ResizeObserver(function () { measure(); schedule(); }).observe(document.body);
+  window.addEventListener("load", function () { measure(); schedule(); });
+  measure();
   update();
 })();
 
@@ -436,9 +441,14 @@ var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matche
 
 // ---------- Effects layer ----------
 
-// Living flow field behind the hero: thousands of short strokes follow a
-// moving current, swirl around the cursor and burst outward on click.
-// Fades out as you scroll past the hero and stops drawing when hidden.
+// Living flow field behind the page: short strokes follow a slow current,
+// swirl around the cursor and burst outward on click.
+// Smoothness rules: the canvas is cleared and redrawn every frame (no smeared
+// leftovers), each stroke has a tail that fades out and fades in/out over
+// its life (no popping), motion is time-based (same speed at 60 or 120 Hz, no
+// jump after a dropped frame), scrolling drifts the field gently, and a phone's
+// address bar showing or hiding never resets it. Fixed-size buffers, so no
+// garbage-collection pauses. Stops drawing when the tab is hidden.
 (function () {
   var cv = document.createElement("canvas");
   var ctx = cv.getContext && cv.getContext("2d");
@@ -447,99 +457,171 @@ var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matche
   cv.setAttribute("aria-hidden", "true");
   document.body.insertBefore(cv, document.body.firstChild);
 
+  var TAIL = 5;                        // tail points kept per stroke
+  var SAMPLE = 7;                      // a tail point every 7 frames: long tails, few segments
+  var BUCKETS = 3;                     // alpha levels (one stroke() call each)
+  var MAX = 240;                       // most strokes on a big screen
+  var R = 160;                         // cursor swirl radius
   var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-  var w = 0, h = 0, ps = [], t = 0, raf = 0, frame = 0;
-  var mx = -9999, my = -9999, color = "255,122,82";
-  var R = 150;
+  var w = 0, h = 0, cw = 0, n = 0, t = 0, raf = 0, last = 0, frame = 0;
+  var color = "255,122,82", styles = [];
+  var mx = -9999, my = -9999, sx = -9999, sy = -9999, pull = 0, pullTarget = 0;
+  var lastScrollY = window.scrollY, drift = 0;
+
+  // per stroke: position, speed, push from a click, age, life; tail as a ring buffer
+  var X = new Float32Array(MAX), Y = new Float32Array(MAX), S = new Float32Array(MAX);
+  var IX = new Float32Array(MAX), IY = new Float32Array(MAX), AGE = new Float32Array(MAX), LIFE = new Float32Array(MAX);
+  var TX = new Float32Array(MAX * TAIL), TY = new Float32Array(MAX * TAIL);
+  var HEAD = new Uint8Array(MAX), LEN = new Uint8Array(MAX), ACC = new Float32Array(MAX);
 
   function readColor() {
     var c = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
     var m = /^#([0-9a-f]{6})$/i.exec(c);
-    if (m) { var n = parseInt(m[1], 16); color = (n >> 16) + "," + ((n >> 8) & 255) + "," + (n & 255); }
+    if (m) { var v = parseInt(m[1], 16); color = (v >> 16) + "," + ((v >> 8) & 255) + "," + (v & 255); }
+    for (var b = 0; b < BUCKETS; b++) styles[b] = "rgba(" + color + "," + (0.7 * (b + 1) / BUCKETS).toFixed(3) + ")";
   }
-  function spawn(p) {
-    p.x = Math.random() * w; p.y = Math.random() * h;
-    p.px = p.x; p.py = p.y; p.ix = 0; p.iy = 0;
-    p.s = 0.6 + Math.random() * 1.1;
-    p.life = 80 + Math.random() * 220;
-    return p;
+  function spawn(i, randomAge) {
+    X[i] = Math.random() * w; Y[i] = Math.random() * h;
+    IX[i] = IY[i] = 0;
+    S[i] = 0.55 + Math.random() * 0.9;
+    LIFE[i] = 140 + Math.random() * 260;  // in 60 Hz frames
+    AGE[i] = randomAge ? Math.random() * LIFE[i] : 0;
+    HEAD[i] = 0; LEN[i] = 1; ACC[i] = 0; TX[i * TAIL] = X[i]; TY[i * TAIL] = Y[i];
   }
   function resize() {
-    w = window.innerWidth; h = window.innerHeight;
+    var nw = window.innerWidth, nh = window.innerHeight;
+    var widthChanged = nw !== cw;       // a phone's address bar only changes the height
+    w = nw; h = nh; cw = nw;
     cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var count = Math.round(Math.max(120, Math.min(560, (w * h) / 3000)));
-    ps = [];
-    for (var i = 0; i < count; i++) ps.push(spawn({}));
+    ctx.lineCap = "butt"; ctx.lineJoin = "miter"; ctx.lineWidth = 1.3;
+    var target = Math.round(Math.max(90, Math.min(MAX, (w * h) / 5200)));
+    if (widthChanged) { for (var i = 0; i < target; i++) spawn(i, true); }
+    else { for (var j = n; j < target; j++) spawn(j, true); }
+    n = target;
   }
   function angle(x, y) {
     return (Math.sin(x * 0.0021 + t * 0.0045) + Math.cos(y * 0.0026 - t * 0.0036) + Math.sin((x + y) * 0.0012 + t * 0.002)) * 1.7;
   }
-  function step() {
-    t++;
-    ctx.globalCompositeOperation = "destination-out";
-    ctx.fillStyle = "rgba(0,0,0,0.045)";
-    ctx.fillRect(0, 0, w, h);
-    ctx.globalCompositeOperation = "source-over";
-    ctx.strokeStyle = "rgba(" + color + ",0.55)";
-    ctx.lineWidth = 1.25;
-    var sv = Math.max(-40, Math.min(40, (window.__scrollVel || 0) * 14));   // lines streak when you scroll
-    window.__scrollVel = (window.__scrollVel || 0) * 0.9;
-    ctx.beginPath();
-    for (var i = 0; i < ps.length; i++) {
-      var p = ps[i];
-      p.px = p.x; p.py = p.y;
-      var a = angle(p.x, p.y);
-      var vx = Math.cos(a) * p.s, vy = Math.sin(a) * p.s;
-      var dx = p.x - mx, dy = p.y - my, d2 = dx * dx + dy * dy;
-      if (d2 < R * R && d2 > 1) {
-        var d = Math.sqrt(d2), f = 1 - d / R;
-        vx += (dx / d) * f * 2.2 - (dy / d) * f * 3.4;   // push out and swirl
-        vy += (dy / d) * f * 2.2 + (dx / d) * f * 3.4;
+  function simulate(dt) {
+    t += dt;
+    // ease the cursor and its pull so the swirl glides instead of jumping
+    var k = 1 - Math.pow(0.8, dt);
+    if (sx < -9000 && mx > -9000) { sx = mx; sy = my; }
+    sx += (mx - sx) * k; sy += (my - sy) * k;
+    pull += (pullTarget - pull) * k;
+    var damp = Math.pow(0.93, dt), dy = drift; drift = 0;
+    for (var i = 0; i < n; i++) {
+      var x = X[i], y = Y[i], a = angle(x, y);
+      var vx = Math.cos(a) * S[i], vy = Math.sin(a) * S[i];
+      if (pull > 0.01) {
+        var ddx = x - sx, ddy = y - sy, d2 = ddx * ddx + ddy * ddy;
+        if (d2 < R * R && d2 > 1) {
+          var d = Math.sqrt(d2), f = (1 - d / R) * pull;
+          f = f * f * (3 - 2 * f);       // smoothstep: soft edge to the swirl
+          vx += (ddx / d) * f * 2.0 - (ddy / d) * f * 3.2;
+          vy += (ddy / d) * f * 2.0 + (ddx / d) * f * 3.2;
+        }
       }
-      p.ix *= 0.93; p.iy *= 0.93;
-      p.x += vx + p.ix; p.y += vy + p.iy - sv;
-      if (--p.life < 0 || p.x < -10 || p.x > w + 10 || p.y < -10 || p.y > h + 10) { spawn(p); continue; }
-      ctx.moveTo(p.px, p.py);
-      ctx.lineTo(p.x, p.y);
+      IX[i] *= damp; IY[i] *= damp;
+      x += (vx + IX[i]) * dt; y += (vy + IY[i]) * dt + dy;
+      X[i] = x; Y[i] = y;
+      var base = i * TAIL;
+      if (dy) for (var j = 0; j < TAIL; j++) TY[base + j] += dy;   // the tail drifts too: no streaks
+      ACC[i] += dt;
+      if (ACC[i] >= SAMPLE) {            // keep a tail point now and then
+        ACC[i] = 0;
+        HEAD[i] = (HEAD[i] + 1) % TAIL;
+        TX[base + HEAD[i]] = x; TY[base + HEAD[i]] = y;
+        if (LEN[i] < TAIL) LEN[i]++;
+      }
+      AGE[i] += dt;
+      if (AGE[i] > LIFE[i] || x < -40 || x > w + 40 || y < -40 || y > h + 40) spawn(i, false);
     }
-    ctx.stroke();
   }
-  function visibleAmount() { return Math.max(0.42, Math.min(1, 1 - window.scrollY / (h * 0.85))); }
-  function loop() {
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    for (var b = 0; b < BUCKETS; b++) {
+      ctx.beginPath();
+      for (var i = 0; i < n; i++) {
+        var len = LEN[i];
+        var life = AGE[i] / LIFE[i];
+        var lf = Math.min(1, life / 0.15, (1 - life) / 0.25);      // fade in, hold, fade out
+        if (lf <= 0.05) continue;
+        var base = i * TAIL, head = HEAD[i];
+        // walk from the oldest tail point to the live position; alpha grows towards
+        // the head. Neighbouring segments in the same alpha level join into one line.
+        var open = false;
+        for (var j = 1; j <= len; j++) {
+          var al = lf * (j / len);
+          var bk = (al * BUCKETS) | 0; if (bk >= BUCKETS) bk = BUCKETS - 1;
+          if (bk !== b || al < 0.1) { open = false; continue; }
+          var x1, y1;
+          if (j === len) { x1 = X[i]; y1 = Y[i]; }
+          else { var p1 = base + (head - len + j + 1 + TAIL) % TAIL; x1 = TX[p1]; y1 = TY[p1]; }
+          if (!open) { var p0 = base + (head - len + j + TAIL) % TAIL; ctx.moveTo(TX[p0], TY[p0]); open = true; }
+          ctx.lineTo(x1, y1);
+        }
+      }
+      ctx.strokeStyle = styles[b];
+      ctx.stroke();
+    }
+  }
+  function visibleAmount() { return Math.max(0.3, Math.min(1, 1 - window.scrollY / (h * 0.85))); }
+  var shownOpacity = -1;
+  function setOpacity() {
+    var o = Math.round(visibleAmount() * 0.85 * 50) / 50;   // coarse steps; CSS eases between them
+    if (o !== shownOpacity) { shownOpacity = o; cv.style.opacity = o; }
+  }
+  function loop(now) {
     raf = 0;
-    var o = visibleAmount();
-    cv.style.opacity = (o * 0.9).toFixed(3);
-    if (o <= 0 || document.hidden) return;   // stop drawing; scroll/visibility restarts it
+    if (document.hidden) { last = 0; return; }
+    var dt = last ? Math.min(3, (now - last) / 16.667) : 1;    // in 60 Hz frames; capped after a stall
+    last = now;
     if (++frame % 90 === 0) readColor();
-    step();
+    simulate(dt);
+    draw();
     raf = requestAnimationFrame(loop);
   }
-  function start() { if (!raf && !reduceMotion) raf = requestAnimationFrame(loop); }
+  function start() { if (!raf && !reduceMotion && !document.hidden) raf = requestAnimationFrame(loop); }
 
   readColor();
   resize();
+  setOpacity();
   if (reduceMotion) {
-    // One still frame, no animation.
-    for (var k = 0; k < 140; k++) step();
-    cv.style.opacity = "0.6";
+    for (var k = 0; k < 120; k++) simulate(1);   // one still frame, no animation
+    draw();
+    cv.style.opacity = "0.5";
   } else {
     start();
   }
-  window.addEventListener("resize", function () { resize(); start(); });
-  window.addEventListener("scroll", function () { cv.style.opacity = (visibleAmount() * 0.9).toFixed(3); start(); }, { passive: true });
-  document.addEventListener("visibilitychange", start);
-  window.addEventListener("pointermove", function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
-  document.documentElement.addEventListener("pointerleave", function () { mx = my = -9999; });
-  window.addEventListener("pointerdown", function (e) {
-    if (reduceMotion || visibleAmount() <= 0) return;
-    for (var i = 0; i < ps.length; i++) {
-      var p = ps[i], dx = p.x - e.clientX, dy = p.y - e.clientY, d = Math.sqrt(dx * dx + dy * dy) || 1;
-      if (d < 320) { var f = (1 - d / 320) * 14; p.ix += (dx / d) * f; p.iy += (dy / d) * f; }
-    }
+  var resizeTimer = 0;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { resize(); setOpacity(); if (reduceMotion) draw(); }, 120);
   });
-  var mo = new MutationObserver(readColor);
-  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  window.addEventListener("scroll", function () {
+    var y = window.scrollY, d = y - lastScrollY;
+    lastScrollY = y;
+    drift -= Math.max(-10, Math.min(10, d * 0.25));   // gentle parallax, capped per event
+    setOpacity();
+  }, { passive: true });
+  document.addEventListener("visibilitychange", start);
+  window.addEventListener("pointermove", function (e) {
+    if (e.pointerType === "touch") return;
+    mx = e.clientX; my = e.clientY; pullTarget = 1;
+  }, { passive: true });
+  document.documentElement.addEventListener("pointerleave", function () { pullTarget = 0; });
+  window.addEventListener("pointerdown", function (e) {
+    if (reduceMotion) return;
+    for (var i = 0; i < n; i++) {
+      var dx = X[i] - e.clientX, dy = Y[i] - e.clientY, d = Math.sqrt(dx * dx + dy * dy) || 1;
+      if (d < 300) { var f = 1 - d / 300; f = f * f * 9; IX[i] += (dx / d) * f; IY[i] += (dy / d) * f; }
+    }
+  }, { passive: true });
+  new MutationObserver(readColor).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  var mq = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
+  if (mq && mq.addEventListener) mq.addEventListener("change", readColor);
 })();
 
 // Cursor ring that inverts whatever it is over and grows on anything clickable.
@@ -641,7 +723,6 @@ var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matche
 // ---------- Scroll effects (whole page) ----------
 (function () {
   if (reduceMotion || !("IntersectionObserver" in window)) return;
-  var root = document.documentElement;
   var vh = window.innerHeight;
   window.addEventListener("resize", function () { vh = window.innerHeight; });
 
@@ -730,14 +811,39 @@ var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matche
   shots.forEach(function (img) { img.classList.add("para"); });
 
   // 5. Headings lean with scroll speed.
-  var skew = 0, lastY = window.scrollY, lastT = performance.now();
+  var skew = 0, lastY = window.scrollY, lastT = performance.now(), shownSkew = "";
+  // The lean is set on the headings themselves: a custom property on <html>
+  // would make the browser restyle the whole page every frame.
+  // Only headings on screen lean (each heading is split into letters, so
+  // restyling all of them every frame was expensive).
+  var leaners = document.querySelectorAll(".project__title, .chapter__title, .card__title");
+  var onScreen = [];
+  if ("IntersectionObserver" in window) {
+    var lio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var i = onScreen.indexOf(e.target);
+        if (e.isIntersecting && i < 0) { onScreen.push(e.target); e.target.style.setProperty("--skew", shownSkew || "0deg"); }
+        else if (!e.isIntersecting && i >= 0) { onScreen.splice(i, 1); e.target.style.setProperty("--skew", "0deg"); }
+      });
+    }, { rootMargin: "100px 0px" });
+    Array.prototype.forEach.call(leaners, function (el) { lio.observe(el); });
+  } else onScreen = Array.prototype.slice.call(leaners);
+  function setSkew(v) {
+    if (v === shownSkew) return;
+    shownSkew = v;
+    for (var i = 0; i < onScreen.length; i++) onScreen[i].style.setProperty("--skew", v);
+  }
 
-  var queued = false;
+  var queued = false, ledeRects = [], shotRects = [];
   function frame() {
     queued = false;
+    vh = window.innerHeight;
+    // Read every position first, then write: mixing them forces extra layouts.
+    for (var a = 0; a < ledes.length; a++) ledeRects[a] = ledes[a].el.getBoundingClientRect();
+    for (var b = 0; b < shots.length; b++) shotRects[b] = shots[b].parentNode.getBoundingClientRect();
     // ledes
-    ledes.forEach(function (l) {
-      var r = l.el.getBoundingClientRect();
+    ledes.forEach(function (l, k) {
+      var r = ledeRects[k];
       if (r.bottom < -50 || r.top > vh + 50) return;
       var p = Math.max(0, Math.min(1, (vh * 0.92 - r.top) / (vh * 0.5)));
       var lit = Math.round(p * l.n);
@@ -746,17 +852,17 @@ var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matche
       for (var i = 0; i < l.words.length; i++) l.words[i].classList.toggle("on", i < lit);
     });
     // parallax
-    shots.forEach(function (img) {
-      var box = img.parentNode.getBoundingClientRect();
+    shots.forEach(function (img, k) {
+      var box = shotRects[k];
       if (box.bottom < -100 || box.top > vh + 100) return;
       var off = ((box.top + box.height / 2) - vh / 2) / vh;      // -1 .. 1 roughly
-      img.style.setProperty("--py", (off * -7).toFixed(2) + "%");
+      var py = (off * -7).toFixed(2) + "%";
+      if (img.__py !== py) { img.__py = py; img.style.setProperty("--py", py); }
     });
     // skew decays back to zero
     skew *= 0.85;
-    root.style.setProperty("--skew", skew.toFixed(2) + "deg");
-    if (Math.abs(skew) > 0.05) { queued = true; requestAnimationFrame(frame); }
-    else root.style.setProperty("--skew", "0deg");
+    if (Math.abs(skew) > 0.05) { setSkew(skew.toFixed(2) + "deg"); queued = true; requestAnimationFrame(frame); }
+    else { skew = 0; setSkew("0deg"); }
   }
   window.addEventListener("scroll", function () {
     var now = performance.now(), y = window.scrollY;
