@@ -1093,8 +1093,9 @@ p a, dd a { text-decoration: underline; text-decoration-thickness: 1px; text-und
 .project__title, .chapter__title, .card__title { transform: skewY(var(--skew, 0deg)); transform-origin: 0 50%; }
 
 /* Words light up as you scroll */
-.scrub .sw { opacity: .16; transition: opacity .4s ease, color .4s ease; }
-.scrub .sw.on { opacity: 1; }
+/* Unlit words use the muted text colour (not low opacity) so they still pass contrast. */
+.scrub .sw { color: var(--muted); transition: color .4s ease; }
+.scrub .sw.on { color: inherit; }
 
 /* Staggered entrances */
 .project.reveal .project__meta > div,
@@ -1119,9 +1120,10 @@ img.para { transform: translate3d(0, var(--py, 0%), 0) scale(1.14); will-change:
 
 @media (prefers-reduced-motion: reduce) {
   .chars .ch { opacity: 1; transform: none; filter: none; }
-  .scrub .sw { opacity: 1; }
+  .scrub .sw { color: inherit; }
   img.para { transform: none; }
 }
 @media print {
   .chars .ch, .scrub .sw, .project .project__meta > div, .tags li, .index__list > li { opacity: 1 !important; transform: none !important; filter: none !important; }
+  .scrub .sw { color: inherit !important; }
 }
